@@ -12,7 +12,6 @@
     <section class="nav">
         <a href="/" class="recircle" style="float: left;"><b>ReCircle</b></a>
         <section class="protectedSection">
-            <a href="index.php"><b>Home</b></a>|
             <a href="/cart"><b>Cart</b></a>|
             <a href="/orderHistory"><b>Order History</b></a>|
             <a href="/profile"><b>Profile</b></a></div>|
