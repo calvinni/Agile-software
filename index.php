@@ -12,17 +12,18 @@
     <section class="nav">
         <a href="/" class="recircle" style="float: left;"><b>ReCircle</b></a>
         <section class="protectedSection">
+            <a href="index.php"><b>Home</b></a>|
             <a href="/cart"><b>Cart</b></a>|
             <a href="/orderHistory"><b>Order History</b></a>|
             <a href="/profile"><b>Profile</b></a></div>|
             <a class="logout"><b>Logout</b></a>
         </section>
         <section class="unprotectedSection">
-            <a href="login.html"><b>Login</b></a>|
-            <a href="register.html"><b>Register</b></a>
-            <a href="locateUs.html"><b>Locate Us</b></a>
-            <a href="rewards.html"><b>rewards</b></a>
-            <a href="FAQ.html"><b>FAQs</b></a>
+            <a href="login.php"><b>Login</b></a>|
+            <a href="register.php"><b>Register</b></a>
+            <a href="locateUs.php"><b>Locate Us</b></a>
+            <a href="rewards.php"><b>rewards</b></a>
+            <a href="FAQ.php"><b>FAQs</b></a>
         </section>
         
     </section>
