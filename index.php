@@ -10,7 +10,7 @@
 <body>
 
     <section class="nav">
-        <a href="/" class="recircle" style="float: left;"><b>ReCircle</b></a>
+        <a href="/" class="recircle" style="float: left;"><b>ReCircle</b></a>|
         <section class="protectedSection">
             <a href="/cart"><b>Cart</b></a>|
             <a href="/orderHistory"><b>Order History</b></a>|
