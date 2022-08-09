@@ -63,3 +63,5 @@ else{
     header("Location: ../Register.php"); //if user didnt come from 'submit', return to sign up
     exit();
 }
+
+?>
