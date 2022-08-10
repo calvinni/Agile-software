@@ -18,8 +18,8 @@
             <a class="logout"><b>Logout</b></a>
         </section>
         <section class="unprotectedSection">
-            <a href="login.php"><b>Login</b></a>|
-            <a href="register.php"><b>Register</b></a>
+            <a href="Login.php"><b>Login</b></a>|
+            <a href="Register.php"><b>Register</b></a>
             <a href="locateUs.php"><b>Locate Us</b></a>
             <a href="rewards.php"><b>rewards</b></a>
             <a href="FAQ.php"><b>FAQs</b></a>
