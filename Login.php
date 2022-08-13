@@ -37,10 +37,10 @@
         <!-- Login Form -->
         <form id="form_login" name="form_login" method="post" action="checklogin.php">
             <label for="mobile">Mobile:</label>
-            <input type="number" type="Mobile" id="LoginMobile" name="Mobile" placeholder="Phone Number">
+            <input type="number" type="Mobile" id="LoginMobile" name="LoginMobile" placeholder="Phone Number">
             <br>
             <label for="password">Password:</label>
-            <input type="password" type="password" id="loginPass" name="password" placeholder="Password">
+            <input type="password" type="password" id="loginPass" name="loginPass" placeholder="Password">
             <br>
             <button type="submit" name="login_submit">Sign in</button>
         </form>
