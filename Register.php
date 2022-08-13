@@ -43,7 +43,7 @@
     <!-- End Of Nav Bar -->
     <section>
         <br>
-     <h1>Register</h1>
+     <h1>Register 2.1</h1>
         <form method="post" action="checkregister.php">
             <label for="name">Username:</label>
             <input type="text" name="username" id = "username" required>
