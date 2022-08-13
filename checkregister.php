@@ -18,7 +18,7 @@ if(isset($_POST["signup_submit"])) //checking if came here from click submit
     }
     else //initialize db statement / select db values
     {
-        $sql = "SELECT * FROM users WHERE Username=";  //prepare for every new SQL statement (?) here it's SELECT
+        $sql = " SELECT * FROM users WHERE Username= '' ";  //prepare for every new SQL statement (?) here it's SELECT
         $stmt = mysqli_stmt_init($conn);                //prepare statement; prepping the database $conn (stmnt = statement)
         if(!mysqli_stmt_prepare($stmt, $sql))
         {
@@ -38,7 +38,7 @@ if(isset($_POST["signup_submit"])) //checking if came here from click submit
             }
             else //if no duplicate email above, we insert the new info into database
             {
-                $sql = "INSERT INTO users (Username, Mobile, Password) VALUES (?, ?, ?)"; //new SQL statement INSERT
+                $sql = " INSERT INTO users (Username, Mobile, Password) VALUES (?, ?, ?) "; //new SQL statement INSERT
                 $stmt = mysqli_stmt_init($conn);
                 if(!mysqli_stmt_prepare($stmt, $sql))
                 {
