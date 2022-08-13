@@ -4,8 +4,8 @@ if(isset($_POST['login_submit'])) //checking if user got here from submit button
 {
     require 'dbh.php';
 
-    $mobile = $_POST['Mobile'];
-    $password = $_POST['Password'];
+    $mobile = $_POST['LoginMobile'];
+    $password = $_POST['loginPass'];
 
     if(empty($mobile) || empty($password))
     {
