@@ -18,7 +18,7 @@ if(isset($_POST["signup_submit"])) //checking if came here from click submit
     }
     else //initialize db statement / select db values
     {
-        $sql = " SELECT * FROM users WHERE Username= '' ";  //prepare for every new SQL statement (?) here it's SELECT
+        $sql = " SELECT * FROM users ";  //prepare for every new SQL statement (?) here it's SELECT
         $stmt = mysqli_stmt_init($conn);                //prepare statement; prepping the database $conn (stmnt = statement)
         if(!mysqli_stmt_prepare($stmt, $sql))
         {
