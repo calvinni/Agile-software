@@ -1,7 +1,7 @@
 <?php
 /*validates user input, checks if mobile already exists, inserts new input info into db*/
 
-if(isset($_POST["signup_submit"])) //checking if came here from click submit
+if (isset($_POST["signup_submit"])) //checking if came here from click submit
 {
     require 'dbh.php';  //using the $conn variable
 
@@ -11,16 +11,16 @@ if(isset($_POST["signup_submit"])) //checking if came here from click submit
     $password = $_POST['password'];
     $passwordRepeat = $_POST['confpw'];
 
-    if($password !== $passwordRepeat) //checks if password valid
+    if ($password !== $passwordRepeat) //checks if password valid
     {
         header("Location: ../Register.php?error=passwordinvalid); 
         exit();
     }
     else //initialize db statement / select db values
     {
-        $sql = " SELECT * FROM 'users' where Username = '?' ";  
+        $sql = " SELECT * FROM users where Username=?; ";  //prepare for every new SQL statement (?) here it's SELECT
         $stmt = mysqli_stmt_init($conn);                //prepare statement; prepping the database $conn (stmnt = statement)
-        if(!mysqli_stmt_prepare($stmt, $sql))
+        if (!mysqli_stmt_prepare($stmt, $sql))
         {
             header("Location: ../Register?error=sqlerror"); //checks if statement prepare failed
             exit();
@@ -59,7 +59,8 @@ if(isset($_POST["signup_submit"])) //checking if came here from click submit
     mysqli_stmt_close($stmt); //closing statement
     mysqli_close($conn); //closing db connection
 }
-else{
+else
+{
     header("Location: ../Register.php"); //if user didnt come from 'submit', return to sign up
     exit();
 }
