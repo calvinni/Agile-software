@@ -13,7 +13,7 @@ if (isset($_POST["signup_submit"])) //checking if came here from click submit
 
     if ($password !== $passwordRepeat) //checks if password valid
     {
-        header("Location: ../Register.php?error=passwordinvalid); 
+        header("Location: ../Register.php?error=passwordinvalid"); 
         exit();
     }
     else //initialize db statement / select db values
