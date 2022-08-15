@@ -1,4 +1,4 @@
-To create the localhost:
+For localhost:
 1) Have a xampp installed, with apache and mysql active
 2) On windows, click "admin" in the xampp control panel for mysql for phpmyadmin
    On Mac, try typing localhost:8080/phpmyadmin in the browser for phpmyadmin
@@ -10,4 +10,11 @@ name: useraccounts
 Collation: utf8mb4_general_ci	
 
 create table SQL:
-CREATE TABLE `useraccounts`.`users` (`ID` INT(255) NOT NULL AUTO_INCREMENT , `Username` VARCHAR(50) NOT NULL , `Password` VARCHAR(255) NOT NULL , `Points` INT(255) NOT NULL DEFAULT '0' , PRIMARY KEY (`ID`)) ENGINE = InnoDB;
+CREATE TABLE `users` (
+  `ID` int(255) NOT NULL,
+  `Role` varchar(255) NOT NULL DEFAULT 'User',
+  `Mobile` int(8) NOT NULL,
+  `Username` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `Points` int(255) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
