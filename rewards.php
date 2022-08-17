@@ -12,6 +12,62 @@ $Id = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($Id); 
 $point = $user['Points'];
 
+if (isset($_POST['voucher_10']))
+        {
+            if ($point > 1000)
+            {
+                $newpoints = $point - 1000;
+                $SQL = "UPDATE users SET Points = '$newpoints' WHERE ID = '$UID'";
+                $result = mysqli_query($conn, $SQL);
+            }
+            else
+            {
+                header("Location: ../rewards.php?insufficent=1000");
+                exit();
+            }
+        }
+        else if (isset($_POST['voucher_25']))
+        {
+            if ($point > 2000)
+            {
+                $newpoints = $point - 2000;
+                $SQL = "UPDATE users SET Points = '$newpoints' WHERE ID = '$UID'";
+                $result = mysqli_query($conn, $SQL);
+            }
+            else
+            {
+                header("Location: ../rewards.php?insufficent=2000");
+                exit();
+            }
+        }
+        else if (isset($_POST['voucher_50']))
+        {
+            if ($point > 3500)
+            {
+                $newpoints = $point - 3500;
+                $SQL = "UPDATE users SET Points = '$newpoints' WHERE ID = '$UID'";
+                $result = mysqli_query($conn, $SQL);
+            }
+            else
+            {
+                header("Location: ../rewards.php?insufficent=3500");
+                exit();
+            }
+        }
+        else if (isset($_POST['voucher_100']))
+        {
+            if ($point > 5000)
+            {
+                $newpoints = $point - 5000;
+                $SQL = "UPDATE users SET Points = '$newpoints' WHERE ID = '$UID'";
+                $result = mysqli_query($conn, $SQL);
+            }
+            else
+            {
+                header("Location: ../rewards.php?insufficent=5000");
+                exit();
+            }
+        }
     ?>
 <head>
     <meta charset="UTF-8">
@@ -81,20 +137,24 @@ $point = $user['Points'];
         echo '<p class="">You have '.$point. 'points</p>';
         if (isset($_POST['voucher_10']))
         {
-            if ($point > 1000)
-            {
-                $newpoints = $point - 1000;
-                $SQL = "UPDATE users SET Points = '$newpoints' WHERE ID = '$UID'";
-                $result = mysqli_query($conn, $SQL);
-                echo '<p class="">You have redeemed a $10 voucher</p>';
-                echo 'Voucher code is: '. rand();
-            }
-            else
-            {
-                header("Location: ../rewards.php?insufficent=1000");
-                exit();
-            }
-    }
+            echo '<p class="">You have redeemed a $10 voucher</p>';
+            echo 'Voucher code is: '. rand(10000000,999999999999);
+        }
+        else if (isset($_POST['voucher_25']))
+        {
+            echo '<p class="">You have redeemed a $25 voucher</p>';
+            echo 'Voucher code is: '. rand(10000000,999999999999);
+        }
+        else if (isset($_POST['voucher_50']))
+        {
+            echo '<p class="">You have redeemed a $50 voucher</p>';
+            echo 'Voucher code is: '. rand(10000000,999999999999);
+        }
+        else if (isset($_POST['voucher_100']))
+        {
+            echo '<p class="">You have redeemed a $100 voucher</p>';
+            echo 'Voucher code is: '. rand(10000000,999999999999);
+        }
     ?>
     
     <form id="form_voucher" name="form_voucher" method="post" action="rewards.php">
