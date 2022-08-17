@@ -77,7 +77,7 @@ $point = $user['Points'];
     <?php 
         echo '<h4>Hi '.$name.'</h4>';
         echo '<p class="">You have '.$point. 'points</p>';
-        if(isset($_POST['voucher_10'])) 
+        if(isset($_POST['reward10'])) 
         {
             echo '<p class="">You have redeemed a $10 voucher</p>
             <p>
