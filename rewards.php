@@ -1,7 +1,16 @@
 <?php session_start(); ?>
 <!doctype html>
 <html lang="en">
+<?php
+require 'dbh.php';
 
+$UID = $_SESSION['userId'];
+$name = $_SESSION['userName'];
+$sql = "SELECT * FROM users WHERE `ID` = '$UID'";
+$Id = mysqli_query($conn, $sql);
+$user = mysqli_fetch_assoc($Id); 
+$point = $user['Points'];
+    ?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -65,6 +74,11 @@
 
     <h1>Rewards</h1>
     <h3> Use your points to redeem vouchers! </h3>
+    <?php 
+        echo '<h3>Hi '.$name.'</h3>';
+        echo '<h3>You have '.$point. 'points</h3>';
+    ?>
+    
     <form id="form_voucher" name="form_voucher" method="post" action="checkvoucher.php">
             <label for="10">1000 points for $10 voucher</label>
             <br>
