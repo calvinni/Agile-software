@@ -18,7 +18,7 @@ if(isset($_POST['login_submit'])) //checking if user got here from submit button
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) //checking if $sql is good to go with $stmt, prepare statement
         { 
-            header("Location: ../home.php?error=sqlerror");
+            header("Location: ../index.php?error=sqlerror");
             exit();
         }
         else //grab info we got from $sql
@@ -48,7 +48,7 @@ if(isset($_POST['login_submit'])) //checking if user got here from submit button
                     $_SESSION['userId'] = $row['ID'];
                     $_SESSION['userName'] = $row['Username'];
 
-                    header("Location: ../home.php?login=success");
+                    header("Location: ../index.php?login=success");
                     exit();
                 }
                 else
