@@ -7,12 +7,12 @@ require 'dbh.php';
 
 $UID = $_SESSION['userId'];
 $name = $_SESSION['userName'];
-$sql = "SELECT * FROM users WHERE `ID` = '$UID'";
+$sql = "SELECT * FROM users WHERE ID = '$UID'";
 $Id = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($Id); 
 $point = $user['Points'];
 
-if (isset($_POST['voucher_10']))
+        if (isset($_POST['voucher_10']))
         {
             if ($point > 1000)
             {
