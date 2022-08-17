@@ -9,7 +9,7 @@ if(isset($_POST['login_submit'])) //checking if user got here from submit button
 
     if(empty($mobile) || empty($password))
     {
-        header("Location: ../Login.php?error=emptyfields");
+        header("Location: ../login.php?error=emptyfields");
         exit();
     }
     else 
@@ -39,7 +39,7 @@ if(isset($_POST['login_submit'])) //checking if user got here from submit button
                     //echo $password; //testing purpose
                     echo $row['Password'];
                     var_dump($row); //show array
-                    //header("Location: ../Login.php?error=wrongpwd");
+                    //header("Location: ../login.php?error=wrongpwd");
                     exit();
                 }
                 else if($pwdCheck == true) //we want lock in user if success login: need session, global variable that has info of user.
@@ -55,20 +55,20 @@ if(isset($_POST['login_submit'])) //checking if user got here from submit button
                 {
                     //echo $mobile;   //testing purpose
                     //echo $password; //testing purpose
-                    //header("Location: ../Login.php?error=wrongpwd");
+                    //header("Location: ../login.php?error=wrongpwd");
                     exit();
                 }
             }
             else //if $result is empty
             {
-                header("Location: ../Login.php?error=emailDNE");
+                header("Location: ../login.php?error=emailDNE");
                 exit();
             }
     }
 }
 }
 else {
-    header("Location: ../Login.php");
+    header("Location: ../login.php");
     exit();
 }
 
