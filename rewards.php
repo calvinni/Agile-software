@@ -11,6 +11,7 @@ $sql = "SELECT * FROM users WHERE `ID` = '$UID'";
 $Id = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($Id); 
 $point = $user['Points'];
+
     ?>
 <head>
     <meta charset="UTF-8">
@@ -78,15 +79,25 @@ $point = $user['Points'];
     <?php 
         echo '<h4>Hi '.$name.'</h4>';
         echo '<p class="">You have '.$point. 'points</p>';
-        if ($_POST = $_SESSION) 
+        if (isset($_POST['voucher_10']))
         {
-            echo '<p class="">You have redeemed a $10 voucher</p>
-            <p>
-            The code is '(rand() . "<br>");
-        }
+            if ($point > 1000)
+            {
+                $newpoints = $point - 1000;
+                $SQL = "UPDATE users SET 'Points' = '$newpoints' WHERE 'ID' = '$UID' ";
+                $result = mysqli_query($conn, $SQL);
+                echo '<p class="">You have redeemed a $10 voucher</p>';
+                echo 'Voucher code is: '. rand();
+            }
+            else
+            {
+                header("Location: ../rewards.php?insufficent=1000");
+                exit();
+            }
+    }
     ?>
     
-    <form id="form_voucher" name="form_voucher" method="post" action="checkvoucher.php">
+    <form id="form_voucher" name="form_voucher" method="post" action="rewards.php">
             <label for="10">1000 points for $10 voucher</label>
             <br>
             <button type="submit" name="voucher_10">Redeem</button>
