@@ -12,7 +12,7 @@ $point = $user['Points'];
       if ($point > 1000)
       {
         $newpoints = $point - 1000
-        $sql_ = "UPDATE users SET `Points` = '$newpoints'";
+        $sql_ = "UPDATE users SET `Points` = '$newpoints' WHERE `ID` = '$UID'";
         $result = mysqli_query($conn, $sql_);
         echo $point;
       }
