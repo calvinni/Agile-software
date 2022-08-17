@@ -1,7 +1,8 @@
-<?php session_start(); ?>
+
 <!doctype html>
 <html lang="en">
 <?php
+session_start();
 require 'dbh.php';
 
 $UID = $_SESSION['userId'];
@@ -77,7 +78,7 @@ $point = $user['Points'];
     <?php 
         echo '<h4>Hi '.$name.'</h4>';
         echo '<p class="">You have '.$point. 'points</p>';
-        if(isset($_POST['reward10'])) 
+        if ($_POST = $_SESSION) 
         {
             echo '<p class="">You have redeemed a $10 voucher</p>
             <p>
