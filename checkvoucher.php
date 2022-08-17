@@ -2,7 +2,7 @@
 require 'dbh.php';
 
 $UID = $_SESSION['userId'];
-$sql = "SELECT * FROM users WHERE `ID` = '$UID'";
+$sql = "SELECT * FROM users WHERE 'ID' = '$UID'";
 $Id = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($Id); 
 $point = $user['Points'];
@@ -11,9 +11,9 @@ $point = $user['Points'];
   {
       if ($point > 1000)
       {
-        $newpoints = $point - 1000
-        $sql_ = "UPDATE users SET `Points` = '$newpoints' WHERE `ID` = '$UID'";
-        $result = mysqli_query($conn, $sql_);
+        $newpoints = $point - 1000;
+        $SQL = "UPDATE users SET 'Points' = '$newpoints' WHERE 'ID' = '$UID' ";
+        $result = mysqli_query($conn, $SQL);
         echo $point;
       }
       else
