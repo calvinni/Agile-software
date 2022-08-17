@@ -75,8 +75,14 @@ $point = $user['Points'];
     <h1>Rewards</h1>
     <h3> Use your points to redeem vouchers! </h3>
     <?php 
-        echo '<h3>Hi '.$name.'</h3>';
-        echo '<h3>You have '.$point. 'points</h3>';
+        echo '<h4>Hi '.$name.'</h4>';
+        echo '<p class="">You have '.$point. 'points</p>';
+        if(isset($_POST['voucher_10'])) 
+        {
+            echo '<p class="">You have redeemed a $10 voucher</p>
+            <p>
+            The code is '(rand() . "<br>");
+        }
     ?>
     
     <form id="form_voucher" name="form_voucher" method="post" action="checkvoucher.php">
