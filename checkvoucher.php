@@ -42,5 +42,5 @@ $point = $user['Points'];
       header("Location: ../rewards.php?wrongbutton");
       exit();
   }
-}
+
 ?>
