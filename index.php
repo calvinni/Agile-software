@@ -34,9 +34,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="./locateUs.php">Locate Us</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./rewards.php">Rewards</a>
-                        </li>
+                        <?php 
+                             if(isset($_SESSION['userId']))
+                             {
+                                echo '<li class="nav-item">
+                                        <a class="nav-link" href="./rewards.php">Rewards</a>
+                                       </li>';
+                             }
+                            ?>
                         <li class="nav-item">
                             <a class="nav-link" href="./faqs.php">FAQs</a>
                         </li>
@@ -45,7 +50,19 @@
                             <i class="fa-solid fa-user"></i>   
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="./login.php">Login</a></li>
+                                <?php 
+                                    if(isset($_SESSION['userId']))
+                                    {
+                                        $name = $_SESSION['userName'];
+                                        echo '<div class="login_message">Hi '.$name.',<br>You are logged in!</div>
+                                        <br>
+                                        <li><a class="dropdown-item" href="./logout.php">logout</a></li>';
+                                    }
+                                    else 
+                                    {
+                                      echo '<li><a class="dropdown-item" href="./login.php">Login</a></li>';
+                                    }
+                                    ?>
                                 <li><a class="dropdown-item" href="./register.php">Register</a></li>
                             </ul>
                             
