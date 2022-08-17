@@ -84,7 +84,7 @@ $point = $user['Points'];
             if ($point > 1000)
             {
                 $newpoints = $point - 1000;
-                $SQL = " UPDATE users SET Points = '$newpoints' WHERE 'ID' = '$UID' ";
+                $SQL = "UPDATE users SET Points = '$newpoints' WHERE ID = '$UID'";
                 $result = mysqli_query($conn, $SQL);
                 echo '<p class="">You have redeemed a $10 voucher</p>';
                 echo 'Voucher code is: '. rand();
