@@ -14,7 +14,12 @@ $point = $user['Points'];
         $newpoints = $point - 1000;
         $SQL = "UPDATE users SET 'Points' = '$newpoints' WHERE 'ID' = '$UID' ";
         $result = mysqli_query($conn, $SQL);
-        echo $point;
+        
+        session_start();
+        $_SESSION = $_POST;
+        session_write_close();
+        header("Location: ../rewards.php");
+        exit();
       }
       else
       {
