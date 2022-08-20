@@ -49,7 +49,7 @@
                             <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-user"></i>   
                             </a>
-                            <ul class="dropdown-menu"> hhahaha
+                            <ul class="dropdown-menu">
                                 <?php 
                                     if(isset($_SESSION['userId']))
                                     {
