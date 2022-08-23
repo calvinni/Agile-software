@@ -73,14 +73,14 @@
                                             <div class="nav-link">Hi '.$name.',<br>You are logged in!</div>
                                           </li>
                                           <li class="nav-link">
-                                            <li><a class="nav-link active" href="./profile.php">View Profile</a></li>
+                                            <li><a class="nav-link" href="./profile.php">View Profile</a></li>
                                           </li>';
                                 }
                         ?>
                     
                         </li>
                     </ul>
-                    
+
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>

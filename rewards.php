@@ -105,7 +105,7 @@ $point = $user['Points'];
                              if(isset($_SESSION['userId']))
                              {
                                 echo '<li class="nav-item">
-                                        <a class="nav-link active" href="./rewards.php">Rewards</a>
+                                        <a class="nav-link" href="./rewards.php">Rewards</a>
                                        </li>';
                              }
                         ?>

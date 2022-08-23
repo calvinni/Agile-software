@@ -76,7 +76,7 @@
                                       echo '<li><a class="dropdown-item" href="./login.php">Login</a></li>';
                                     }
                                     ?>
-                                <li><a class="dropdown-item active" href="./register.php">Register</a></li>
+                                <li><a class="dropdown-item" href="./register.php">Register</a></li>
                             </ul>
                         </li>  
                         
