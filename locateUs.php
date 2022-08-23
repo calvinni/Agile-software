@@ -1,6 +1,5 @@
 <?php session_start(); ?>
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
 
 <head>
     <meta charset="UTF-8">
@@ -35,9 +34,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="./locateUs.php">Locate Us</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./rewards.php">Rewards</a>
-                        </li>
+                        <?php 
+                             if(isset($_SESSION['userId']))
+                             {
+                                echo '<li class="nav-item">
+                                        <a class="nav-link" href="./rewards.php">Rewards</a>
+                                       </li>';
+                             }
+                        ?>
                         <li class="nav-item">
                             <a class="nav-link" href="./faqs.php">FAQs</a>
                         </li>
@@ -45,14 +49,31 @@
                             <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-user"></i>   
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="./login.php">Login</a></li>
+                            <ul class="dropdown-menu"> hhahaha
+                                <?php 
+                                    if(isset($_SESSION['userId']))
+                                    {
+                                      echo '<li><a class="dropdown-item" href="./logout.php">logout</a></li>';
+                                    }
+                                    else 
+                                    {
+                                      echo '<li><a class="dropdown-item" href="./login.php">Login</a></li>';
+                                    }
+                                    ?>
                                 <li><a class="dropdown-item" href="./register.php">Register</a></li>
                             </ul>
                             
                         </li>
+                        <?php 
+                                if(isset($_SESSION['userId']))
+                                {
+                                    $name = $_SESSION['userName'];
+                                    echo '<li class="nav-item">
+                                            <div class="login_message">Hi '.$name.',<br>You are logged in!</div>
+                                          </li>';
+                                }
+                        ?>
 
-                        
                     </ul>
 
                     <form class="d-flex" role="search">
@@ -63,10 +84,11 @@
             </div>
         </nav>
     </div>
-    <!-- end of nav bar -->
+
     <h1>Locate Us Page</h1>
-    <p>collection point addresses</p>
+    <p>collection addresses</p>
     
 </body>
-
+<!-- bootstrap js link-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </html>

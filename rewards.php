@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <?php
@@ -102,9 +101,14 @@ $point = $user['Points'];
                         <li class="nav-item">
                             <a class="nav-link" href="./locateUs.php">Locate Us</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./rewards.php">Rewards</a>
-                        </li>
+                        <?php 
+                             if(isset($_SESSION['userId']))
+                             {
+                                echo '<li class="nav-item">
+                                        <a class="nav-link" href="./rewards.php">Rewards</a>
+                                       </li>';
+                             }
+                        ?>
                         <li class="nav-item">
                             <a class="nav-link" href="./faqs.php">FAQs</a>
                         </li>
@@ -112,15 +116,33 @@ $point = $user['Points'];
                             <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-user"></i>   
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="./login.php">Login</a></li>
+                            <ul class="dropdown-menu"> hhahaha
+                                <?php 
+                                    if(isset($_SESSION['userId']))
+                                    {
+                                      echo '<li><a class="dropdown-item" href="./logout.php">logout</a></li>';
+                                    }
+                                    else 
+                                    {
+                                      echo '<li><a class="dropdown-item" href="./login.php">Login</a></li>';
+                                    }
+                                    ?>
                                 <li><a class="dropdown-item" href="./register.php">Register</a></li>
                             </ul>
                             
                         </li>
-    
+                        <?php 
+                                if(isset($_SESSION['userId']))
+                                {
+                                    $name = $_SESSION['userName'];
+                                    echo '<li class="nav-item">
+                                            <div class="login_message">Hi '.$name.',<br>You are logged in!</div>
+                                          </li>';
+                                }
+                        ?>
+
                     </ul>
-    <!-- end of nav bar -->
+
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
@@ -129,6 +151,7 @@ $point = $user['Points'];
             </div>
         </nav>
     </div>
+    <!-- end of nav bar -->
 
     <h1>Rewards</h1>
     <h3> Use your points to redeem vouchers! </h3>
