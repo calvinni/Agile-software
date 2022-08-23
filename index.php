@@ -63,17 +63,26 @@
                                 <li><a class="dropdown-item" href="./register.php">Register</a></li>
                             </ul>
                             
-                        </li>
+                        </li class="nav-item">
                         <?php 
                                 if(isset($_SESSION['userId']))
                                 {
                                     $name = $_SESSION['userName'];
                                     echo '<li class="nav-item">
-                                            <div class="login_message">Hi '.$name.',<br>You are logged in!</div>
+                                            <div class="nav-link">Hi '.$name.',<br>You are logged in!</div>
                                           </li>';
                                 }
                         ?>
-                    </ul>
+                        </ul>
+                        </li class="nav-item">
+                        <?php 
+                                {
+                                    echo '<li class="nav-link">
+                                            <li><a class="nav-link" href="./profile.php">View Profile</a></li>
+                                        </li>';
+                                }
+                        ?>
+                        </ul>
 
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

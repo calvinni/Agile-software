@@ -29,10 +29,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
+                            <a class="nav-link" aria-current="page" href="./index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./locateUs.php">Locate Us</a>
+                            <a class="nav-link active" href="./locateUs.php">Locate Us</a>
                         </li>
                         <?php 
                              if(isset($_SESSION['userId']))
@@ -63,18 +63,26 @@
                                 <li><a class="dropdown-item" href="./register.php">Register</a></li>
                             </ul>
                             
-                        </li>
+                        </li class="nav-item">
                         <?php 
                                 if(isset($_SESSION['userId']))
                                 {
                                     $name = $_SESSION['userName'];
                                     echo '<li class="nav-item">
-                                            <div class="login_message">Hi '.$name.',<br>You are logged in!</div>
+                                            <div class="nav-link">Hi '.$name.',<br>You are logged in!</div>
                                           </li>';
                                 }
                         ?>
-
-                    </ul>
+                        </ul>
+                        </li class="nav-item">
+                        <?php 
+                                {
+                                    echo '<li class="nav-link">
+                                            <li><a class="nav-link" href="./profile.php">View Profile</a></li>
+                                        </li>';
+                                }
+                        ?>
+                        </ul>
 
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
