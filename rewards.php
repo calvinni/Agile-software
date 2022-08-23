@@ -106,6 +106,9 @@ $point = $user['Points'];
                              {
                                 echo '<li class="nav-item">
                                         <a class="nav-link" href="./rewards.php">Rewards</a>
+                                       </li>
+                                       <li class="nav-link">
+                                        <li><a class="nav-link" href="./profile.php">View Profile</a></li>
                                        </li>';
                              }
                         ?>
@@ -137,9 +140,6 @@ $point = $user['Points'];
                                     $name = $_SESSION['userName'];
                                     echo '<li class="nav-item">
                                             <div class="nav-link">Hi '.$name.',<br>You are logged in!</div>
-                                          </li>
-                                          <li class="nav-link">
-                                            <li><a class="nav-link" href="./profile.php">View Profile</a></li>
                                           </li>';
                                 }
                         ?>
