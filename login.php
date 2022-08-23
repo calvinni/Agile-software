@@ -45,7 +45,7 @@
                             <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-user"></i>   
                             </a>
-                            <ul class="dropdown-menu"> hhahaha
+                            <ul class="dropdown-menu">
                                 <?php 
                                     if(isset($_SESSION['userId']))
                                     {
@@ -58,28 +58,22 @@
                                     ?>
                                 <li><a class="dropdown-item" href="./register.php">Register</a></li>
                             </ul>
-                            
-                            </li class="nav-item">
+                        </li>  
+                        
                         <?php 
                                 if(isset($_SESSION['userId']))
                                 {
                                     $name = $_SESSION['userName'];
                                     echo '<li class="nav-item">
                                             <div class="nav-link">Hi '.$name.',<br>You are logged in!</div>
+                                          </li>
+                                          <li class="nav-link">
+                                            <li><a class="nav-link" href="./profile.php">View Profile</a></li>
                                           </li>';
                                 }
                         ?>
-                        </ul>
-                        </li class="nav-item">
-                        <?php 
-                                {
-                                    echo '<li class="nav-link">
-                                            <li><a class="nav-link" href="./profile.php">View Profile</a></li>
-                                        </li>';
-                                }
-                        ?>
-                        </ul>
-
+                        
+                    </li>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
@@ -88,7 +82,7 @@
             </div>
         </nav>
     </div>
-    <!-- End Of Nav Bar -->
+    <!-- end of nav bar -->
 
     <section>
         <h1>Login to ReCircle</h1>
