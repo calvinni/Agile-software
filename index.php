@@ -149,9 +149,9 @@
         <p>Glass</p>
       </div>
     </div>
-    </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="catcarouselCaptions" data-bs-slide="prev">
+
+  <!-- <button class="carousel-control-prev" type="button" data-bs-target="catcarouselCaptions" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
@@ -159,7 +159,7 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-</div>
+</div> -->
 
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-white text-muted">
