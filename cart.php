@@ -120,7 +120,7 @@ $user = mysqli_fetch_assoc($Id);
                 //echo $row['cleardb_username'] . "<br>";
                 echo $ordername . "<br>";
                 echo $ordernumber . "<br>";
-                $resultCheck - 1 = $resultCheck
+                $resultCheck - 1 = $resultCheck;
             }
         }
         else
