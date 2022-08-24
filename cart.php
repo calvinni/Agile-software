@@ -101,7 +101,7 @@ $user = mysqli_fetch_assoc($Id);
     <h1>Cart</h1>
     <?php
         $SQL = "SELECT * from cart as C 
-                left join users as U 
+                join users as U 
                     on C.cart_id = U.ID 
                 where C.cart_id = '$UID';";
 
@@ -113,8 +113,8 @@ $user = mysqli_fetch_assoc($Id);
         {
             While ( $CART_DETAILS = mysqli_fetch_assoc($Query) ) 
             { 
-                 echo $cart_result['OrderName'];
-                 echo $cart_result['OrderQuantity'];
+                 echo $CART_DETAILS['OrderName'];
+                 echo $CART_DETAILS['OrderQuantity'];
             } 
         }
         else
