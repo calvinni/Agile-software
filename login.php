@@ -1,12 +1,7 @@
 <?php session_start(); ?>
 <!doctype html>
 <html lang="en">
-<?php
-          if(isset($_GET['error']) && $_GET['error'] == 'wrongpwd') 
-            echo '<p class="">Incorrect password</br>Please try again</p>';
-          else if(isset($_GET['error']) && $_GET['error'] == 'emailDNE')
-            echo '<p class="">Unregistered mobile</br>Please try again</p>';
-          ?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -113,6 +108,12 @@
             <button type="submit" name="login_submit">Sign in</button>
         </form>
         <!-- End Of Login Form -->
+        <?php
+          if(isset($_GET['error']) && $_GET['error'] == 'wrongpwd') 
+            echo '<p class="">Incorrect password</br>Please try again</p>';
+          else if(isset($_GET['error']) && $_GET['error'] == 'emailDNE')
+            echo '<p class="">Unregistered mobile</br>Please try again</p>';
+        ?>
     </section>
 
 </body>

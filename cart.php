@@ -98,20 +98,20 @@
     <!-- end of nav bar -->
     <h1>Cart</h1>
     <?php
-    $sql = "SELECT * FROM users;";
-    $result = mysqli_query($conn,$sql);
-    $resultCheck = mysqli_num_rows($result);
+        $sql = "SELECT * FROM users;";
+        $result = mysqli_query($conn,$sql);
+        $resultCheck = mysqli_num_rows($result);
 
-    if ($resultCheck > 0 )
-    {
-        while($row = mysqli_fetch_assoc($result))
+        if ($resultCheck > 0 )
         {
-            echo $row['cleardb_username'] . "<br>";
-            echo $row['OrderName'] . "<br>";
-            echo $row['OrderQuantity'] . "<br>";
+            while($row = mysqli_fetch_assoc($result))
+            {
+                echo $row['cleardb_username'] . "<br>";
+                echo $row['OrderName'] . "<br>";
+                echo $row['OrderQuantity'] . "<br>";
+            }
         }
-    }
-?>
+    ?>
 
 </body>
 </html>

@@ -1,10 +1,7 @@
 <?php session_start(); ?>
 <!doctype html>
 <html lang="en">
-<?php
-          if(isset($_GET['order']) && $_GET['success'] == 'success') 
-            echo '<p class="">successfully added</p>';
-          ?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -105,13 +102,17 @@
         <form action="order.inc.php" method="POST">
             <p>Key in the recycle items name that need to be added.</p>
             <input id="OrderName" name="OrderName" placeholder="OrderName" type="text" required>
-            </br>
+            <p>
             <p>Key in the quantity in KG that need to be added.</p>
             <input id="OrderQuantity" name="OrderQuantity" placeholder="OrderQuantity" type="text" required>
-            </br>
+            <p>
             <input type="submit">
         </form>
         <!-- End Of sql -->
+        <?php
+          if(isset($_GET['order']) == 'success') 
+            echo '<p class="">successfully added to cart</p>';
+          ?>
     </section>
 
 </body>

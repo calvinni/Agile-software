@@ -1,22 +1,7 @@
 <?php session_start(); ?>
 <!doctype html>
 <html lang="en">
-<?php
-    if(isset($_GET['error'])) //<!-- Checking the error that we wrote in URL -->
-            { 
-                if($_GET['error'] == 'usertaken')
-                    echo '<p class="">Mobile already registered. Please change your mobile Number.</p>';
-                else if($_GET['error'] == 'passwordinvalid')
-                    echo '<p class="">Password and Confirm Password does not match. Please try again.</p>';
-                else if($_GET['error'] == 'sqlerror')
-                    echo '<p class="">Unable to register, Please check your connection and try again</p>';
-                else if($_GET['error'] == 'sqlerror2')
-                    echo '<p class="">Unable to register, Please check your connection and try again</p>';
-            }
-            else if(isset($_GET['signup']))
-                if($_GET['signup'] == "success")
-                    echo '<p class="">Sign up successfull! Click <a href="Login.php">here</a> to login.</p>';
-?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -123,6 +108,22 @@
             <br>
             <button role="submit" name="signup_submit">Create Account</button>
         </form>
+        <?php
+        if(isset($_GET['error'])) //<!-- Checking the error that we wrote in URL -->
+            { 
+                if($_GET['error'] == 'usertaken')
+                    echo '<p class="">Mobile already registered. Please change your mobile Number.</p>';
+                else if($_GET['error'] == 'passwordinvalid')
+                    echo '<p class="">Password and Confirm Password does not match. Please try again.</p>';
+                else if($_GET['error'] == 'sqlerror')
+                    echo '<p class="">Unable to register, Please check your connection and try again</p>';
+                else if($_GET['error'] == 'sqlerror2')
+                    echo '<p class="">Unable to register, Please check your connection and try again</p>';
+            }
+            else if(isset($_GET['signup']))
+                if($_GET['signup'] == "success")
+                    echo '<p class="">Sign up successfull! Click <a href="Login.php">here</a> to login.</p>';
+        ?>
     </section>
 </body>
 
