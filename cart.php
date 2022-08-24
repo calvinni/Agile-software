@@ -100,10 +100,8 @@ $user = mysqli_fetch_assoc($Id);
     <!-- end of nav bar -->
     <h1>Cart</h1>
     <?php
-        $SQL = "SELECT * from cart as C 
-                join users as U 
-                    on C.cart_id = U.ID 
-                where C.cart_id = '$UID';";
+        echo $UID;
+        $SQL = "SELECT * from cart as C join users as U on C.cart_id = U.ID where C.cart_id = '$UID';";
 
         $Query = mysqli_query($conn, $SQL);
         $resultCheck = mysqli_num_rows($Query);
