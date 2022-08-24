@@ -141,7 +141,6 @@ if (isset($_POST['Ordering']))
 if ($resultCheck > 0)
 {
 ?>
-    <h4>Cart</h4>
     <table border="1" style="width:100%">
         <tr>
             <th>Recyclable</th>
@@ -154,9 +153,10 @@ if ($resultCheck > 0)
             <td><?php echo $CART_DETAILS['OrderName']; ?></td>
             <td><?php echo $CART_DETAILS['OrderQuantity']; ?></td>
         </tr>
-    </table>
     <?php } 
-} 
+} ?>
+</table>
+<?php
 else
 {
     echo '<p class="">The cart is empty</br>Please go to order and add some recycleables</p>';
