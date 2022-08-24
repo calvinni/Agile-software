@@ -105,14 +105,14 @@
             <p>
             <p>Key in the quantity in KG that need to be added.</p>
             <input id="OrderQuantity" name="OrderQuantity" placeholder="OrderQuantity" type="text" required>
-            <p>
+            <p></p>
             <input type="submit">
         </form>
         <!-- End Of sql -->
         <?php
           if(isset($_GET['order']) == 'success') 
             echo '<p class="">successfully added to cart</p>';
-          ?>
+        ?>
     </section>
 
 </body>
