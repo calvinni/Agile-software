@@ -108,25 +108,30 @@ $user = mysqli_fetch_assoc($Id);
         $Query = mysqli_query($conn, $SQL);
         $resultCheck = mysqli_num_rows($Query);
         $cart_result = mysqli_fetch_assoc($Query);
-        $ordername = $cart_result['OrderName'];
-        $ordernumber = $cart_result['OrderQuantity'];
         
-        echo $resultCheck;
+    ?>
+    <table border="1" style="width:100%">
+            <?php 
         if ($resultCheck > 0)
         {
-            while ($resultCheck > 0)
-            {
-                $resultCheck - 1 == $resultCheck;
-                //echo $row['cleardb_username'] . "<br>";
-                echo $ordername . "<br>";
-                echo $ordernumber . "<br>";
-            }
+            While ( $CART_DETAILS = mysqli_fetch_assoc($details)  ) 
+            { ?>  
+            <tr>
+                <th>Recyclable</th>
+                <th>Quantity</th>
+            </tr>
+            <tr>
+                <td><?php echo $cart_result['OrderName']; ?></td>
+                <td><?php echo $cart_result['OrderQuantity']; ?></td>
+            </tr>
+        <?php } 
         }
         else
         {
             echo '<p class="">The cart is empty</br>Please go to order and add some recycleables</p>'; 
         }
-    ?>
+        ?>
+</table>
 
 </body>
 </html>
