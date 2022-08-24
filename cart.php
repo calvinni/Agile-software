@@ -120,7 +120,25 @@ $user = mysqli_fetch_assoc($Id);
             echo '<p class="">The cart is empty</br>Please go to order and add some recycleables</p>'; 
         }
         ?>
-</table>
+    <table border="1" style="width:100%">
+        <?php 
+        if ($resultCheck > 0)
+        {
+            ?>
+                <tr>
+                    <th>Recyclable</th>
+                    <th>Quantity</th>
+                </tr>
+                <?php 
+                While ( $CART_DETAILS = mysqli_fetch_assoc($Query)  ) 
+                { ?>  
+                <tr>
+                    <td><?php echo $CART_DETAILS['OrderName']; ?></td>
+                    <td><?php echo $CART_DETAILS['OrderQuantity']; ?></td>
+                </tr>
+            <?php } 
+            }    ?>
+    </table>
 
 </body>
 </html>
