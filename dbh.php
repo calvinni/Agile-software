@@ -19,7 +19,7 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 // Connect to DB
-$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db, $OrderName, $OrderQuantity);
+$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
 if(!$conn)
 {
