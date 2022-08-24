@@ -116,7 +116,7 @@ $user = mysqli_fetch_assoc($Id);
         {
             while ($resultCheck > 0)
             {
-                $resultCheck - 1 = $resultCheck;
+                $resultCheck - 1 == $resultCheck;
                 //echo $row['cleardb_username'] . "<br>";
                 echo $ordername . "<br>";
                 echo $ordernumber . "<br>";
