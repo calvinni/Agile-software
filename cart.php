@@ -105,7 +105,7 @@ $user = mysqli_fetch_assoc($Id);
 
         $Query = mysqli_query($conn, $SQL);
         $resultCheck = mysqli_num_rows($Query);
-        $cart_result = mysqli_fetch_assoc($Query);
+        //$cart_result = mysqli_fetch_assoc($Query);
             
         // if ($resultCheck > 0)
         // {
