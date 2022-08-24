@@ -6,9 +6,10 @@ require 'dbh.php';
 
 if (isset($_POST['Ordering']))
 {
+    $UID = $_SESSION['userId'];
     $OrderName = $_POST['OrderName'];
     $OrderQuantity = $_POST['OrderQuantity'];
-    $sql = "INSERT INTO cart (OrderName, OrderQuantity) VALUES ('$OrderName', '$OrderQuantity');";
+    $sql = "INSERT INTO cart (cart_id, OrderName, OrderQuantity) VALUES ('$UID', '$OrderName', '$OrderQuantity');";
     mysqli_query($conn, $sql);
 }
 ?>
