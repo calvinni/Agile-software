@@ -115,11 +115,12 @@ $user = mysqli_fetch_assoc($Id);
         echo $resultCheck;
         if ($resultCheck > 0)
         {
-            while ($row = $cart_result)
+            while ($resultCheck > 0)
             {
                 //echo $row['cleardb_username'] . "<br>";
                 echo $ordername . "<br>";
                 echo $ordernumber . "<br>";
+                $resultCheck - 1 = $resultCheck
             }
         }
         else
