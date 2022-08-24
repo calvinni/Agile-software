@@ -110,9 +110,9 @@ $user = mysqli_fetch_assoc($Id);
         $cart_result = mysqli_fetch_assoc($Query);
         $ordername = $cart_result['OrderName'];
         $ordernumber = $cart_result['OrderQuantity'];
-        echo $row
-        echo $cart_result
-        echo $resultCheck
+        echo $row;
+        echo $cart_result;
+        echo $resultCheck;
         if ($resultCheck > 0)
         {
             while ($row = $cart_result)
