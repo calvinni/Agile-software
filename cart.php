@@ -100,25 +100,25 @@ $user = mysqli_fetch_assoc($Id);
     <!-- end of nav bar -->
     <h1>Cart</h1>
     <?php
-        echo $UID;
+        // echo $UID;
         $SQL = "SELECT * from cart as C join users as U on C.cart_id = U.ID where C.cart_id = '$UID';";
 
         $Query = mysqli_query($conn, $SQL);
         $resultCheck = mysqli_num_rows($Query);
         $cart_result = mysqli_fetch_assoc($Query);
             
-        if ($resultCheck > 0)
-        {
-            While ( $CART_DETAILS = mysqli_fetch_assoc($Query) ) 
-            { 
-                 echo $CART_DETAILS['OrderName'];
-                 echo $CART_DETAILS['OrderQuantity'];
-            } 
-        }
-        else
-        {
-            echo '<p class="">The cart is empty</br>Please go to order and add some recycleables</p>'; 
-        }
+        // if ($resultCheck > 0)
+        // {
+        //     While ( $CART_DETAILS = mysqli_fetch_assoc($Query) ) 
+        //     { 
+        //          echo $CART_DETAILS['OrderName'];
+        //          echo $CART_DETAILS['OrderQuantity'];
+        //     } 
+        // }
+        // else
+        // {
+        //     echo '<p class="">The cart is empty</br>Please go to order and add some recycleables</p>'; 
+        // }
         ?>
     <table border="1" style="width:100%">
         <?php 
