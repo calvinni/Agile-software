@@ -2,10 +2,8 @@
 <!doctype html>
 <html lang="en">
 <?php
-          if(isset($_GET['error']) && $_GET['error'] == 'wrongpwd') 
-            echo '<p class="">Incorrect password</br>Please try again</p>';
-          else if(isset($_GET['error']) && $_GET['error'] == 'emailDNE')
-            echo '<p class="">Unregistered mobile</br>Please try again</p>';
+          if(isset($_GET['order']) && $_GET['success'] == 'success') 
+            echo '<p class="">successfully added</p>';
           ?>
 <head>
     <meta charset="UTF-8">
@@ -104,7 +102,7 @@
     <section>
         <h1>Order your recyclables here</h1>
         <!-- pull the data from sql -->
-        <form action="includes/dbh.php" method="POST">
+        <form action="order.inc.php" method="POST">
             <p>Key in the recycle items name that need to be added.</p>
             <input id="OrderName" name="OrderName" placeholder="OrderName" type="text" required>
             </br>

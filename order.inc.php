@@ -7,5 +7,5 @@
     $sql = "INSERT INTO users (OrderName, OrderQuantity) VALUES ('$OrderName', '$OrderQuantity');";
     mysqli_query($conn, $sql);
 
-    header("Location: ../index.php?order=success");
+    header("Location: ../order.php?order=success");
 ?>
