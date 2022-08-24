@@ -4,16 +4,11 @@
 <?php 
 require 'dbh.php';
 
-$UID = $_SESSION['userId'];
-$sql = "SELECT * FROM users WHERE ID = '$UID'";
-$Id = mysqli_query($conn, $sql);
-$user = mysqli_fetch_assoc($Id); 
-
 if (isset($_POST['Ordering']))
 {
     $OrderName = $_POST['OrderName'];
     $OrderQuantity = $_POST['OrderQuantity'];
-    $sql = "UPDATE users SET OrderName = '$OrderName', OrderQuantity = '$OrderQuantity' WHERE ID = '$UID';";
+    $sql = "INSERT INTO cart (OrderName, OrderQuantity) VALUES ('$OrderName', '$OrderQuantity');";
     mysqli_query($conn, $sql);
 }
 ?>
@@ -116,12 +111,12 @@ if (isset($_POST['Ordering']))
         <!-- pull the data from sql -->
         <form action="order.php" method="POST">
             <p>Key in the recycle items name that need to be added.</p>
-            <input id="OrderName" name="OrderName" placeholder="OrderName" type="text" required>
+            <input id="OrderName" name="OrderName" placeholder="Type of recyclable" type="text" required>
             <p>
             <p>Key in the quantity in KG that need to be added.</p>
-            <input id="OrderQuantity" name="OrderQuantity" placeholder="OrderQuantity" type="text" required>
+            <input id="OrderQuantity" name="OrderQuantity" placeholder="Quantity in KG" type="number" required>
             <p></p>
-            <button type="submit" name="Ordering">Submit</button>
+            <button type="submit" name="Ordering">Add to cart</button>
         </form>
         <!-- End Of sql -->
         <?php

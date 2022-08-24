@@ -2,11 +2,13 @@
 <!doctype html>
 <html lang="en">
 <?php
-          if(isset($_GET['error']) && $_GET['error'] == 'wrongpwd') 
-            echo '<p class="">Incorrect password</br>Please try again</p>';
-          else if(isset($_GET['error']) && $_GET['error'] == 'emailDNE')
-            echo '<p class="">Unregistered mobile</br>Please try again</p>';
-          ?>
+require 'dbh.php';
+
+$UID = $_SESSION['userId'];
+$sql = "SELECT * FROM users WHERE ID = '$UID'";
+$Id = mysqli_query($conn, $sql);
+$user = mysqli_fetch_assoc($Id); 
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -98,15 +100,19 @@
     <!-- end of nav bar -->
     <h1>Cart</h1>
     <?php
-        $sql = "SELECT * FROM users;";
-        $result = mysqli_query($conn,$sql);
-        $resultCheck = mysqli_num_rows($result);
+        $SQL = "SELECT * from cart as C 
+                join users as U 
+                    on C.cart_id = U.ID 
+                where U.ID = '$UID';";
 
-        if ($resultCheck > 0 )
+        $Query = mysqli_query($conn, $SQL);
+        $resultCheck = mysqli_num_rows($Query);
+
+        if ($resultCheck > 0)
         {
             while($row = mysqli_fetch_assoc($result))
             {
-                echo $row['cleardb_username'] . "<br>";
+                //echo $row['cleardb_username'] . "<br>";
                 echo $row['OrderName'] . "<br>";
                 echo $row['OrderQuantity'] . "<br>";
             }
