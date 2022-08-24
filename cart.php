@@ -108,9 +108,6 @@ $user = mysqli_fetch_assoc($Id);
         $Query = mysqli_query($conn, $SQL);
         $resultCheck = mysqli_num_rows($Query);
         $cart_result = mysqli_fetch_assoc($Query);
-        
-    
-    <!-- <table border="1" style="width:100%"> -->
             
         if ($resultCheck > 0)
         {
