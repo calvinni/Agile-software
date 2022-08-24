@@ -111,11 +111,10 @@ $user = mysqli_fetch_assoc($Id);
             
         if ($resultCheck > 0)
         {
-            While ( $CART_DETAILS = mysqli_fetch_assoc($details)  ) 
+            While ( $CART_DETAILS = $cart_result  ) 
             { 
                  echo $cart_result['OrderName'];
                  echo $cart_result['OrderQuantity'];
-            
             } 
         }
         else
