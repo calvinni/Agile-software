@@ -13,7 +13,7 @@ if (isset($_POST['Ordering']))
 {
     $OrderName = $_POST['OrderName'];
     $OrderQuantity = $_POST['OrderQuantity'];
-    $sql = "INSERT INTO users (OrderName, OrderQuantity) VALUES ('$OrderName', '$OrderQuantity') WHERE ID = '$UID';";
+    $sql = "UPDATE users SET OrderName = '$OrderName', OrderQuantity = '$OrderQuantity' WHERE ID = '$UID';";
     mysqli_query($conn, $sql);
 }
 ?>
