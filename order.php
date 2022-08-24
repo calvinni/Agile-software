@@ -4,9 +4,9 @@
 <?php 
 
 require 'dbh.php';
-
-$SQL = "SELECT * from cart as C join users as U on C.cart_id = U.ID where C.cart_id = '$UID';";
-$Query = mysqli_query($conn, $SQL);
+$UID = $_SESSION['userId'];
+$CART = "SELECT * from cart as C join users as U on C.cart_id = U.ID where C.cart_id = '$UID';";
+$Query = mysqli_query($conn, $CART);
 $resultCheck = mysqli_num_rows($Query);
 
 if (isset($_POST['Ordering']))
