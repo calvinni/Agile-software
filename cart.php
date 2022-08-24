@@ -110,18 +110,17 @@ $user = mysqli_fetch_assoc($Id);
         $cart_result = mysqli_fetch_assoc($Query);
         $ordername = $cart_result['OrderName'];
         $ordernumber = $cart_result['OrderQuantity'];
-        echo $row;
-        echo $cart_result;
+        
         echo $resultCheck;
         if ($resultCheck > 0)
         {
-            // while ($resultCheck > 0)
-            // {
-            //     //echo $row['cleardb_username'] . "<br>";
-            //     echo $ordername . "<br>";
-            //     echo $ordernumber . "<br>";
-            //     $resultCheck - 1 = $resultCheck;
-            // }
+            while ($resultCheck > 0)
+            {
+                $resultCheck - 1 = $resultCheck;
+                //echo $row['cleardb_username'] . "<br>";
+                echo $ordername . "<br>";
+                echo $ordernumber . "<br>";
+            }
         }
         else
         {
