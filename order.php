@@ -1,7 +1,22 @@
 <?php session_start(); ?>
 <!doctype html>
 <html lang="en">
+<?php 
+require 'dbh.php';
 
+$UID = $_SESSION['userId'];
+$sql = "SELECT * FROM users WHERE ID = '$UID'";
+$Id = mysqli_query($conn, $sql);
+$user = mysqli_fetch_assoc($Id); 
+
+if (isset($_POST['Ordering']))
+{
+    $OrderName = $_POST['OrderName'];
+    $OrderQuantity = $_POST['OrderQuantity'];
+    $sql = "INSERT INTO users (OrderName, OrderQuantity) VALUES ('$OrderName', '$OrderQuantity') WHERE ID = '$UID';";
+    mysqli_query($conn, $sql);
+}
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -99,19 +114,21 @@
     <section>
         <h1>Order your recyclables here</h1>
         <!-- pull the data from sql -->
-        <form action="order.inc.php" method="POST">
+        <form action="order.php" method="POST">
             <p>Key in the recycle items name that need to be added.</p>
             <input id="OrderName" name="OrderName" placeholder="OrderName" type="text" required>
             <p>
             <p>Key in the quantity in KG that need to be added.</p>
             <input id="OrderQuantity" name="OrderQuantity" placeholder="OrderQuantity" type="text" required>
             <p></p>
-            <input type="submit">
+            <button type="submit" name="Ordering">Submit</button>
         </form>
         <!-- End Of sql -->
         <?php
-          if(isset($_GET['order']) == 'success') 
+          if (isset($_POST['Ordering'])) 
+          {
             echo '<p class="">successfully added to cart</p>';
+          }
         ?>
     </section>
 
