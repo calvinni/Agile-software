@@ -101,21 +101,30 @@ $user = mysqli_fetch_assoc($Id);
     <h1>Cart</h1>
     <?php
         $SQL = "SELECT * from cart as C 
-                join users as U 
+                left join users as U 
                     on C.cart_id = U.ID 
-                where U.ID = '$UID';";
+                where C.cart_id = '$UID';";
 
         $Query = mysqli_query($conn, $SQL);
         $resultCheck = mysqli_num_rows($Query);
-
+        $cart_result = mysqli_fetch_assoc($Query);
+        $ordername = $cart_result['OrderName'];
+        $ordernumber = $cart_result['OrderQuantity'];
+        echo $row
+        echo $cart_result
+        echo $resultCheck
         if ($resultCheck > 0)
         {
-            while($row = mysqli_fetch_assoc($result))
+            while ($row = $cart_result)
             {
                 //echo $row['cleardb_username'] . "<br>";
-                echo $row['OrderName'] . "<br>";
-                echo $row['OrderQuantity'] . "<br>";
+                echo $ordername . "<br>";
+                echo $ordernumber . "<br>";
             }
+        }
+        else
+        {
+            echo '<p class="">The cart is empty</br>Please go to order and add some recycleables</p>'; 
         }
     ?>
 
