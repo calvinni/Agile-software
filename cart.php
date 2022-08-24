@@ -109,22 +109,17 @@ $user = mysqli_fetch_assoc($Id);
         $resultCheck = mysqli_num_rows($Query);
         $cart_result = mysqli_fetch_assoc($Query);
         
-    ?>
-    <table border="1" style="width:100%">
-            <?php 
+    
+    <!-- <table border="1" style="width:100%"> -->
+            
         if ($resultCheck > 0)
         {
             While ( $CART_DETAILS = mysqli_fetch_assoc($details)  ) 
-            { ?>  
-            <tr>
-                <th>Recyclable</th>
-                <th>Quantity</th>
-            </tr>
-            <tr>
-                <td><?php echo $cart_result['OrderName']; ?></td>
-                <td><?php echo $cart_result['OrderQuantity']; ?></td>
-            </tr>
-        <?php } 
+            { 
+                 echo $cart_result['OrderName'];
+                 echo $cart_result['OrderQuantity'];
+            
+            } 
         }
         else
         {
