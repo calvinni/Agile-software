@@ -154,14 +154,13 @@ if ($resultCheck > 0)
             <td><?php echo $CART_DETAILS['OrderQuantity']; ?></td>
         </tr>
     <?php } 
-} ?>
-</table>
-<?php
+} 
 else
 {
     echo '<p class="">The cart is empty</br>Please go to order and add some recycleables</p>';
 }
 ?>
+</table>
 
 </body>
 
