@@ -8,18 +8,8 @@
             echo '<p class="">Unregistered mobile</br>Please try again</p>';
           ?>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recircle Team 81 profile</title>
-    <!--bootstrap css link-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <!-- font awesome link-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" 
-    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
 <body>
@@ -35,7 +25,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="./index.php">Home</a>
+                            <a class="nav-link" href="./index.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./locateUs.php">Locate Us</a>
@@ -86,14 +76,15 @@
                                           </li>';
                                 }
                         ?>
-                        
-                        </li>
+                      
+                      </li>
                     </ul>
 
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
+                    
                 </div>
             </div>
         </nav>
@@ -102,17 +93,17 @@
 
     <section>
         <h1>Login to ReCircle</h1>
-        <!-- Login Form -->
-        <form id="form_login" name="form_login" method="post" action="checklogin.php">
-            <label for="mobile">Mobile:</label>
-            <input type="number" type="Mobile" id="LoginMobile" name="LoginMobile" placeholder="Phone Number">
-            <br>
-            <label for="password">Password:</label>
-            <input type="password" type="password" id="loginPass" name="loginPass" placeholder="Password">
-            <br>
-            <button type="submit" name="login_submit">Sign in</button>
+        <!-- pull the data from sql -->
+        <form action="includes/dbh.php" method="POST">
+            <p>Key in the recycle items name that need to be added.</p>
+            <input id="OrderName" name="OrderName" placeholder="OrderName" type="text" required>
+            </br>
+            <p>Key in the quantity in KG that need to be added.</p>
+            <input id="OrderQuantity" name="OrderQuantity" placeholder="OrderQuantity" type="text" required>
+            </br>
+            <input type="submit">
         </form>
-        <!-- End Of Login Form -->
+        <!-- End Of sql -->
     </section>
 
 </body>

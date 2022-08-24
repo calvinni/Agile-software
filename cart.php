@@ -8,18 +8,8 @@
             echo '<p class="">Unregistered mobile</br>Please try again</p>';
           ?>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recircle Team 81 profile</title>
-    <!--bootstrap css link-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <!-- font awesome link-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" 
-    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
 <body>
@@ -35,12 +25,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="./index.php">Home</a>
+                            <a class="nav-link" href="./index.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./locateUs.php">Locate Us</a>
                         </li>
-                        <!-- hidden links -->
                         <?php 
                              if(isset($_SESSION['userId']))
                              {
@@ -49,9 +38,6 @@
                                        </li>
                                        <li class="nav-link">
                                         <li><a class="nav-link" href="./profile.php">View Profile</a></li>
-                                       </li>
-                                       <li class="nav-link">
-                                        <li><a class="nav-link" href="./cart.php">Cart</a></li>
                                        </li>';
                              }
                         ?>
@@ -86,35 +72,36 @@
                                           </li>';
                                 }
                         ?>
-                        
-                        </li>
+                      
+                      </li>
                     </ul>
 
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
+                    
                 </div>
             </div>
         </nav>
     </div>
     <!-- end of nav bar -->
+    <h1>Login to ReCircle</h1>
+    <?php
+    $sql = "SELECT * FROM users;";
+    $result = mysqli_query($conn,$sql);
+    $resultCheck = mysqli_num_rows($result);
 
-    <section>
-        <h1>Login to ReCircle</h1>
-        <!-- Login Form -->
-        <form id="form_login" name="form_login" method="post" action="checklogin.php">
-            <label for="mobile">Mobile:</label>
-            <input type="number" type="Mobile" id="LoginMobile" name="LoginMobile" placeholder="Phone Number">
-            <br>
-            <label for="password">Password:</label>
-            <input type="password" type="password" id="loginPass" name="loginPass" placeholder="Password">
-            <br>
-            <button type="submit" name="login_submit">Sign in</button>
-        </form>
-        <!-- End Of Login Form -->
-    </section>
+    if ($resultCheck > 0 )
+    {
+        while($row = mysqli_fetch_assoc($result))
+        {
+            echo $row['cleardb_username'] . "<br>";
+            echo $row['OrderName'] . "<br>";
+            echo $row['OrderQuantity'] . "<br>";
+        }
+    }
+?>
 
 </body>
-
 </html>
