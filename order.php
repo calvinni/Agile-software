@@ -2,7 +2,12 @@
 <!doctype html>
 <html lang="en">
 <?php 
+
 require 'dbh.php';
+
+$SQL = "SELECT * from cart as C join users as U on C.cart_id = U.ID where C.cart_id = '$UID';";
+$Query = mysqli_query($conn, $SQL);
+$resultCheck = mysqli_num_rows($Query);
 
 if (isset($_POST['Ordering']))
 {
@@ -130,6 +135,33 @@ if (isset($_POST['Ordering']))
           }
         ?>
     </section>
+<p>
+<h4>Cart</h4>
+<?php 
+if ($resultCheck > 0)
+{
+?>
+    <h4>Cart</h4>
+    <table border="1" style="width:100%">
+        <tr>
+            <th>Recyclable</th>
+            <th>Quantity</th>
+        </tr>
+<?php 
+    While ( $CART_DETAILS = mysqli_fetch_assoc($Query)  ) 
+    { ?>  
+        <tr>
+            <td><?php echo $CART_DETAILS['OrderName']; ?></td>
+            <td><?php echo $CART_DETAILS['OrderQuantity']; ?></td>
+        </tr>
+    </table>
+    <?php } 
+} 
+else
+{
+    echo '<p class="">The cart is empty</br>Please go to order and add some recycleables</p>';
+}
+?>
 
 </body>
 
