@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recircle Team 81</title>
+    <title>Locate Us</title>
     <!--bootstrap css link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -14,8 +14,73 @@
     integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
+   <style>
+            .center {
+                text-align: center;
+                width: 100%;
+            }
+            h1{
+                text-align: center;
+                padding:50px;
+                font-size: 35px;
+            }
+            h3{
+                text-align: center;
+                padding: 20px;
+                font-size: 80px;
+            }
+            p{
+                text-align: center;
+                font-size: 20px;
+            }
+            .dropbtn {
+            background-color: #006633;
+            width:100%;
+            color: white;
+            padding: 16px;
+            font-size: 20px;
+            text-align: left;
+            border: none;
+            cursor: pointer;
+            }
+
+            .dropbtn:hover, .dropbtn:focus {
+            background-color: #00994C;
+            }
+
+
+            .dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            padding: 2px;
+            }
+
+            .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            }
+
+            .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            }
+
+            .dropdown a:hover {background-color: #ddd;}
+
+            .show {display: block;}
+    </style>
 </head>
-<!-- this page includes about us, how to recycle using our website, what we collect -->
+
+
+<!-- This page includes our addresses, contact information and social media handles -->
 <body>
     <!-- nav bar -->
     <div class = "container-nav">
@@ -56,7 +121,7 @@
                             <a class="nav-link" href="./faqs.php">FAQs</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-user"></i>   
                             </a>
                             <ul class="dropdown-menu">
@@ -97,8 +162,163 @@
         </nav>
     </div>
     <!-- end of nav bar -->
-    <h1>Locate Us Page</h1>
-    <p>collection addresses</p>
+
+    <!-- Main sign -->
+    <div class="container-main">
+        <div class="row">
+        <h3>LOCATE US</h3>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm" style= "padding:50px" >
+            
+                <!-- LOCATIONS -->
+                <i class="fa-solid fa-location-dot fa-8x center"></i>
+                <br>
+                <h1> Locations </h1>
+
+                    <!-- dropdown list of addresses by region  -->
+                    <!-- North -->
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn">North</button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href="#home"><b>BISHAN SPORTS CENTRE </b><br> 
+                                            5 Bishan Street 14, Singapore 579783 <br>
+                                            Sport Centre Drop Off Lobby</a>
+                            <a href="#about"> <b>HOUGANG SPORTS CENTRE </b> <br>
+                                            100 Hougang Avenue 2, Singapore 538856 <br>
+                                            At entrance to Stadium</a>
+                            <a href="#contact"> <b> JUNCTION 8 </b> <br>  
+                                                9 Bishan Pl, Singapore 579837 <br>
+                                                L1 External Walkway facing Library</a>
+                            <a href="#contact"><b>SENGKANG SPORTS CENTRE</b> <br>
+                                                    57 Anchorvale Rd, Singapore 544964 <br>
+                                                    L1 (facing Anchorvale Road)</a>
+                        </div>
+                    </div>
+
+                    <br>
+                    
+                    <!-- South -->
+                    <div class="dropdown">
+                        <button onclick="myFunction2()" class="dropbtn">South</button>
+                        <div id="myDropdown2" class="dropdown-content">
+                            <a href="#contact"><b>RESORTS WORLD SENTOSA</b> <br>  
+                                                    8 Sentosa Gateway, Singapore 098269 <br>
+                                                    Universal Circle Level 1, outside Garrett's Popcorn</a>
+                            <a href="#contact"><b>SENTOSA COVE VILLAGE</b> <br>
+                                                    1 Cove Ave, Sentosa Arrival Plaza, Singapore 098537 <br>
+                                                Near Cold Storage Sentosa Cove Village trolley return bay)</a>
+                            <a href="#contact"><b>VIVOCITY</b> <br>
+                                                    1 HarbourFront Walk, Singapore 098585 <br>
+                                                    B1, near Fairprice xTRA</a>
+
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <!-- East -->
+                    <div class="dropdown">
+                        <button onclick="myFunction3()" class="dropbtn">East</button>
+                        <div id="myDropdown3" class="dropdown-content">
+                            <a href="#home"><b>GEYLANG BAHRU BLK 68 </b><br> 
+                                                Blk 68 Geylang Bahru Singapore 330068<br>
+                                                Void deck next to 7-11 Store</a>
+                            <a href="#about"> <b>HOUGANG SPORTS CENTRE </b> <br>
+                                                100 Hougang Avenue 2, Singapore 538856 <br>
+                                                At entrance to Stadium</a>
+                            <a href="#contact"> <b> GEYLANG EAST SWIMMING COMPLEX </b> <br>  
+                                                    601 Aljunied Ave 1, Singapore 389862 <br>
+                                                    At entrance to swimming complex</a>
+                            <a href="#contact"><b>HEARTBEAT @ BEDOK</b> <br>
+                                                11 Bedok North Street 1 Singapore 469662 <br>
+                                                Level 1 beside Lift Lobby B</a>
+                            <a href="#contact"><b>TAMPINES BLK 478</b> <br>
+                                                Blk 478 Tampines St 44, Singapore 520478 <br>
+                                                Public walkway between Koufu (#01-221) and myCK Dept Store (#01-119)</a>
+                        </div>
+                    </div>
+                    
+                    <br>
+
+                    <!-- West -->
+                    <div class="dropdown">
+                        <button onclick="myFunction4()" class="dropbtn">West</button>
+                        <div id="myDropdown4" class="dropdown-content">
+                            <a href="#home"> <b>ASCENT</b> <br> 
+                            2 SCIENCE PARK DRIVE 118222<br>
+                            Level 1 Retail Lift Lobby</a>
+                            <a href="#about"> <b>BUKIT GOMBAK SPORTS CENTRE </b> <br>
+                            810 Bukit Batok West Ave 5, Singapore 659088 <br>
+                            L1 near Staircase A</a>
+                            <a href="#contact"> <b> GALAXIS </b> <br>  
+                            1 Fusionopolis Place, Singapore 138522 <br>
+                            Level 1 Retail Walkway near escalator</a>
+                            <a href="#contact"><b>HONG KAH NORTH COMMUNITY CLUB</b> <br>
+                            30 Bukit Batok Street 31, Singapore 659440 <br>
+                            Level 1 beside Lift Lobby B</a>
+                            <a href="#contact"><b>TAMPINES BLK 478</b> <br>
+                            Blk 478 Tampines St 44, Singapore 520478 <br>
+                            Public walkway between Koufu (#01-221) and myCK Dept Store (#01-119)</a>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    /* When the user clicks on the button, 
+                    toggle between hiding and showing the dropdown content */
+                    function myFunction() {
+                    document.getElementById("myDropdown").classList.toggle("show");
+                    }
+                    function myFunction2() {
+                    document.getElementById("myDropdown2").classList.toggle("show");
+                    }
+                    function myFunction3() {
+                    document.getElementById("myDropdown3").classList.toggle("show");
+                    }
+                    function myFunction4() {
+                    document.getElementById("myDropdown4").classList.toggle("show");
+                    }
+
+                    // Close the dropdown if the user clicks somewehere else
+                    window.onclick = function(event) {
+                        if (!event.target.matches('.dropbtn')) {
+                            var dropdowns = document.getElementsByClassName("dropdown-content");
+                            var i;
+                            for (i = 0; i < dropdowns.length; i++) {
+                            var openDropdown = dropdowns[i];
+                            if (openDropdown.classList.contains('show')) {
+                                openDropdown.classList.remove('show');
+                            }
+                            }
+                        }
+                    }
+                </script>
+            </div>
+
+            <!-- CONTACT US -->
+            <div class="col-sm" style= "padding:50px">
+                <i class="fa-solid fa-phone fa-8x center"></i>
+                <br>
+                <h1> Contact Us </h1>
+                <p style="text-align: center"> Tel: +653344229</p> <br>
+                <p style="text-align: center"> Fax: +653221452</p> <br>
+                <p style="text-align: center"> Email: recirclesg@gmail.com</p> 
+            </div>
+
+            <!-- LETS CONNECT -->
+            <div class="col-sm" style = "padding:50px">
+                <i class="fa-brands fa-instagram fa-8x center"></i>
+                <br>
+                <h1> Let's Connect! </h1>
+                <p style="text-align: center"> Instagram: @recircleteamsg </p>
+            </div>
+        </div>
+    </div>
     
 </body>
 <!-- bootstrap js link-->

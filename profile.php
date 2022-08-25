@@ -53,6 +53,7 @@ $user = mysqli_fetch_assoc($Id);
                         <li class="nav-item">
                             <a class="nav-link" href="./locateUs.php">Locate Us</a>
                         </li>
+                        <!-- hidden links -->
                         <?php 
                              if(isset($_SESSION['userId']))
                              {
@@ -61,6 +62,12 @@ $user = mysqli_fetch_assoc($Id);
                                        </li>
                                        <li class="nav-link">
                                         <li><a class="nav-link" href="./profile.php">View Profile</a></li>
+                                       </li>
+                                       <li class="nav-link">
+                                        <li><a class="nav-link" href="./order.php">Order</a></li>
+                                       </li>
+                                       <li class="nav-link">
+                                        <li><a class="nav-link" href="./cart.php">Cart</a></li>
                                        </li>';
                              }
                         ?>
@@ -68,7 +75,7 @@ $user = mysqli_fetch_assoc($Id);
                             <a class="nav-link" href="./faqs.php">FAQs</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-user"></i>   
                             </a>
                             <ul class="dropdown-menu">
@@ -153,8 +160,6 @@ $user = mysqli_fetch_assoc($Id);
         <tr>                                      
             <td>
                 <b> Phone Number: </b>
-
-        <b> Phone Number: </b>
             </td>
 
             <td>

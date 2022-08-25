@@ -123,7 +123,7 @@ $point = $user['Points'];
                             <a class="nav-link" href="./faqs.php">FAQs</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-user"></i>   
                             </a>
                             <ul class="dropdown-menu">
