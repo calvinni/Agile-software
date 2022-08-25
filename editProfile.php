@@ -49,7 +49,7 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
                 else
                 {
                     $hashedPwd = password_hash($password, PASSWORD_DEFAULT);              //hasing password (security: if hacker gets in db he'll see all the pw)
-                    mysqli_stmt_bind_param($stmt, "sss", $username, $mobile, $hashedPwd, $UserID); //variables inserting
+                    mysqli_stmt_bind_param($stmt, "sssd", $username, $mobile, $hashedPwd, $UserID); //variables inserting
                     mysqli_stmt_execute($stmt);
                     header("Location: ../profile.php?edit=success");
                     exit();
