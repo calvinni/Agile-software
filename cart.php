@@ -1,12 +1,19 @@
 <?php session_start(); ?>
 <!doctype html>
 <html lang="en">
+<?php
+require 'dbh.php';
 
+$UID = $_SESSION['userId'];
+$sql = "SELECT * FROM users WHERE ID = '$UID'";
+$Id = mysqli_query($conn, $sql);
+$user = mysqli_fetch_assoc($Id); 
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recircle Team 81 profile</title>
+    <title>Recircle Team 81</title>
     <!--bootstrap css link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -98,28 +105,33 @@
         </nav>
     </div>
     <!-- end of nav bar -->
+    <h1>Cart</h1>
+    <?php
+        // echo $UID;
+        $SQL = "SELECT * from cart as C join users as U on C.cart_id = U.ID where C.cart_id = '$UID';";
 
-    <section>
-        <h1>Login to ReCircle</h1>
-        <!-- Login Form -->
-        <form id="form_login" name="form_login" method="post" action="checklogin.php">
-            <label for="mobile">Mobile:</label>
-            <input type="number" type="Mobile" id="LoginMobile" name="LoginMobile" placeholder="Phone Number">
-            <br>
-            <label for="password">Password:</label>
-            <input type="password" type="password" id="loginPass" name="loginPass" placeholder="Password">
-            <br>
-            <button type="submit" name="login_submit">Sign in</button>
-        </form>
-        <!-- End Of Login Form -->
-        <?php
-          if(isset($_GET['error']) && $_GET['error'] == 'wrongpwd') 
-            echo '<p class="">Incorrect password</br>Please try again</p>';
-          else if(isset($_GET['error']) && $_GET['error'] == 'emailDNE')
-            echo '<p class="">Unregistered mobile</br>Please try again</p>';
+        $Query = mysqli_query($conn, $SQL);
+        $resultCheck = mysqli_num_rows($Query);
         ?>
-    </section>
+    <table border="1" style="width:100%">
+        <?php 
+        if ($resultCheck > 0)
+        {
+            ?>
+                <tr>
+                    <th>Recyclable</th>
+                    <th>Quantity</th>
+                </tr>
+                <?php 
+                While ( $CART_DETAILS = mysqli_fetch_assoc($Query)  ) 
+                { ?>  
+                <tr>
+                    <td><?php echo $CART_DETAILS['OrderName']; ?></td>
+                    <td><?php echo $CART_DETAILS['OrderQuantity']; ?></td>
+                </tr>
+            <?php } 
+            }    ?>
+    </table>
 
 </body>
-
 </html>

@@ -34,6 +34,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="./locateUs.php">Locate Us</a>
                         </li>
+                        <!-- hidden links -->
                         <?php 
                              if(isset($_SESSION['userId']))
                              {
@@ -42,6 +43,12 @@
                                        </li>
                                        <li class="nav-link">
                                         <li><a class="nav-link" href="./profile.php">View Profile</a></li>
+                                       </li>
+                                       <li class="nav-link">
+                                        <li><a class="nav-link" href="./order.php">Order</a></li>
+                                       </li>
+                                       <li class="nav-link">
+                                        <li><a class="nav-link" href="./cart.php">Cart</a></li>
                                        </li>';
                              }
                         ?>
@@ -151,7 +158,7 @@
     </div>
   </div>
 
-  <!-- <button class="carousel-control-prev" type="button" data-bs-target="catcarouselCaptions" data-bs-slide="prev">
+  <button class="carousel-control-prev" type="button" data-bs-target="catcarouselCaptions" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
@@ -159,7 +166,7 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-</div> -->
+</div>
 
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-white text-muted">

@@ -1,12 +1,28 @@
 <?php session_start(); ?>
 <!doctype html>
 <html lang="en">
+<?php 
 
+require 'dbh.php';
+$UID = $_SESSION['userId'];
+$CART = "SELECT * from cart as C join users as U on C.cart_id = U.ID where C.cart_id = '$UID';";
+$Query = mysqli_query($conn, $CART);
+$resultCheck = mysqli_num_rows($Query);
+
+if (isset($_POST['Ordering']))
+{
+    $UID = $_SESSION['userId'];
+    $OrderName = $_POST['OrderName'];
+    $OrderQuantity = $_POST['OrderQuantity'];
+    $sql = "INSERT INTO cart (cart_id, OrderName, OrderQuantity) VALUES ('$UID', '$OrderName', '$OrderQuantity');";
+    mysqli_query($conn, $sql);
+}
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recircle Team 81 profile</title>
+    <title>Recircle Team 81</title>
     <!--bootstrap css link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -100,25 +116,51 @@
     <!-- end of nav bar -->
 
     <section>
-        <h1>Login to ReCircle</h1>
-        <!-- Login Form -->
-        <form id="form_login" name="form_login" method="post" action="checklogin.php">
-            <label for="mobile">Mobile:</label>
-            <input type="number" type="Mobile" id="LoginMobile" name="LoginMobile" placeholder="Phone Number">
-            <br>
-            <label for="password">Password:</label>
-            <input type="password" type="password" id="loginPass" name="loginPass" placeholder="Password">
-            <br>
-            <button type="submit" name="login_submit">Sign in</button>
+        <h1>Order your recyclables here</h1>
+        <!-- pull the data from sql -->
+        <form action="order.php" method="POST">
+            <p>Key in the recycle items name that need to be added.</p>
+            <input id="OrderName" name="OrderName" placeholder="Type of recyclable" type="text" required>
+            <p>
+            <p>Key in the quantity in KG that need to be added.</p>
+            <input id="OrderQuantity" name="OrderQuantity" placeholder="Quantity in KG" type="number" required>
+            <p></p>
+            <button type="submit" name="Ordering">Add to cart</button>
         </form>
-        <!-- End Of Login Form -->
+        <!-- End Of sql -->
         <?php
-          if(isset($_GET['error']) && $_GET['error'] == 'wrongpwd') 
-            echo '<p class="">Incorrect password</br>Please try again</p>';
-          else if(isset($_GET['error']) && $_GET['error'] == 'emailDNE')
-            echo '<p class="">Unregistered mobile</br>Please try again</p>';
+          if (isset($_POST['Ordering'])) 
+          {
+            echo '<p class="">successfully added to cart</p>';
+          }
         ?>
     </section>
+<p>
+<h4>Cart</h4>
+<?php 
+if ($resultCheck > 0)
+{
+?>
+    <table border="1" style="width:100%">
+        <tr>
+            <th>Recyclable</th>
+            <th>Quantity</th>
+        </tr>
+<?php 
+    While ( $CART_DETAILS = mysqli_fetch_assoc($Query)  ) 
+    { ?>  
+        <tr>
+            <td><?php echo $CART_DETAILS['OrderName']; ?></td>
+            <td><?php echo $CART_DETAILS['OrderQuantity']; ?></td>
+        </tr>
+    <?php } 
+} 
+else
+{
+    echo '<p class="">The cart is empty</br>Please go to order and add some recycleables</p>';
+}
+?>
+</table>
 
 </body>
 

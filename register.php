@@ -1,22 +1,7 @@
 <?php session_start(); ?>
 <!doctype html>
 <html lang="en">
-<?php
-    if(isset($_GET['error'])) //<!-- Checking the error that we wrote in URL -->
-            { 
-                if($_GET['error'] == 'usertaken')
-                    echo '<p class="">Mobile already registered. Please change your mobile Number.</p>';
-                else if($_GET['error'] == 'passwordinvalid')
-                    echo '<p class="">Password and Confirm Password does not match. Please try again.</p>';
-                else if($_GET['error'] == 'sqlerror')
-                    echo '<p class="">Unable to register, Please check your connection and try again</p>';
-                else if($_GET['error'] == 'sqlerror2')
-                    echo '<p class="">Unable to register, Please check your connection and try again</p>';
-            }
-            else if(isset($_GET['signup']))
-                if($_GET['signup'] == "success")
-                    echo '<p class="">Sign up successfull! Click <a href="Login.php">here</a> to login.</p>';
-?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,11 +30,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="./index.php">Home</a>
+                            <a class="nav-link" href="./index.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./locateUs.php">Locate Us</a>
                         </li>
+                        <!-- hidden links -->
                         <?php 
                              if(isset($_SESSION['userId']))
                              {
@@ -58,6 +44,12 @@
                                        </li>
                                        <li class="nav-link">
                                         <li><a class="nav-link" href="./profile.php">View Profile</a></li>
+                                       </li>
+                                       <li class="nav-link">
+                                        <li><a class="nav-link" href="./order.php">Order</a></li>
+                                       </li>
+                                       <li class="nav-link">
+                                        <li><a class="nav-link" href="./cart.php">Cart</a></li>
                                        </li>';
                              }
                         ?>
@@ -79,7 +71,7 @@
                                       echo '<li><a class="dropdown-item" href="./login.php">Login</a></li>';
                                     }
                                     ?>
-                                <li><a class="dropdown-item" href="./register.php">Register</a></li>
+                                <!-- <li><a class="dropdown-item" href="./register.php">Register</a></li> -->
                             </ul>
                         </li>  
                         
@@ -92,14 +84,15 @@
                                           </li>';
                                 }
                         ?>
-                        
-                        </li>
+                      
+                      </li>
                     </ul>
 
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
+                    
                 </div>
             </div>
         </nav>
@@ -123,6 +116,22 @@
             <br>
             <button role="submit" name="signup_submit">Create Account</button>
         </form>
+        <?php
+        if(isset($_GET['error'])) //<!-- Checking the error that we wrote in URL -->
+            { 
+                if($_GET['error'] == 'usertaken')
+                    echo '<p class="">Mobile already registered. Please change your mobile Number.</p>';
+                else if($_GET['error'] == 'passwordinvalid')
+                    echo '<p class="">Password and Confirm Password does not match. Please try again.</p>';
+                else if($_GET['error'] == 'sqlerror')
+                    echo '<p class="">Unable to register, Please check your connection and try again</p>';
+                else if($_GET['error'] == 'sqlerror2')
+                    echo '<p class="">Unable to register, Please check your connection and try again</p>';
+            }
+            else if(isset($_GET['signup']))
+                if($_GET['signup'] == "success")
+                    echo '<p class="">Sign up successfull! Click <a href="Login.php">here</a> to login.</p>';
+        ?>
     </section>
 </body>
 
