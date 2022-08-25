@@ -57,7 +57,8 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
                     mysqli_stmt_execute($stmt); 
                     $result = mysqli_stmt_get_result($stmt); 
                     $row = mysqli_fetch_assoc($result)
-
+                    
+                    session_destroy();
                     session_start();
                     $_SESSION['userId'] = $row['ID'];
                     $_SESSION['userName'] = $row['Username'];
