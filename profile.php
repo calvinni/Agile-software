@@ -1,6 +1,17 @@
-<?php session_start(); ?>
+
 <!doctype html>
 <html lang="en">
+<?php
+session_start();
+require 'dbh.php';
+
+$UID = $_SESSION['userId'];
+$name = $_SESSION['userName'];
+$sql = "SELECT * FROM users WHERE ID = '$UID'";
+$Id = mysqli_query($conn, $sql);
+$user = mysqli_fetch_assoc($Id); 
+
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -15,10 +26,16 @@
     integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
+   <style type ="text/css">
+       .wrapper 
+       {
+           width: 400px;
+           margin: 0 auto;
+       }
+    </style>
 </head>
     
 <body>
-<!-- nav bar -->
 <!-- nav bar -->
 <div class = "container-nav">
         <nav class="navbar navbar-expand-lg bg-light">
@@ -31,12 +48,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="./index.php">Home</a>
+                            <a class="nav-link" aria-current="page" href="./index.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./locateUs.php">Locate Us</a>
                         </li>
-                        <!-- hidden links -->
                         <?php 
                              if(isset($_SESSION['userId']))
                              {
@@ -45,12 +61,6 @@
                                        </li>
                                        <li class="nav-link">
                                         <li><a class="nav-link" href="./profile.php">View Profile</a></li>
-                                       </li>
-                                       <li class="nav-link">
-                                        <li><a class="nav-link" href="./order.php">Order</a></li>
-                                       </li>
-                                       <li class="nav-link">
-                                        <li><a class="nav-link" href="./cart.php">Cart</a></li>
                                        </li>';
                              }
                         ?>
@@ -85,15 +95,14 @@
                                           </li>';
                                 }
                         ?>
-                      
-                      </li>
+                    
+                        </li>
                     </ul>
 
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
-                    
                 </div>
             </div>
         </nav>
@@ -102,79 +111,93 @@
     
     <h1>Profile</h1>
 <div class="container">
-     <form action="" method="post">
-<button class = "btn btn-default" style="float:right; width:70px" name = "submit1">Edit</button>
 
+    <div class="wrapper">
+        <h2 style="text-align: center;">My Profile</h2>
+        <?php
+        // echo "<div style='text-align: center'>                  
+        //         <img class='img-circle profile-img' height=110 width=120 src='images/".$_SESSION['pic']."'> 
+        //       </div>";                                                                                          //Show the profile picture
+        ?>
 
+        <div>
+            <b style="text-align: center;">Welcome, </b>
+        <h4>
+        <?php echo $name; ?>
+        </h4>
+        </div>
+        
+        <b>
+        <table class='table table-bordered'>
 
+        <tr>
+            <td>
+                <b> Name: </b>
+            </td>
 
-</form>
+            <td>
+            <?php echo $user['Username']; ?>
+            </td>
+        </tr>
 
-<div class="wrapper">
-    <?php 
-$q=mysqli_query($db,"SELECT * FROM student where username='$_SESSION[login_user]' ; ")
+        <tr>                                      
+            <td>
+                <b> Points: </b>
+            </td>
 
+            <td>
+            <?php echo $user['Points']; ?>
+            </td>
+        </tr>
 
-?>
-<h2 style="text-align: center;">My Profile</h2>
-<?php
-    $row=mysqli_fetch_assoc($q);
+        <tr>                                      
+            <td>
+                <b> Phone Number: </b>
+            </td>
 
-    echo "<div style='text-align: center'>
+            <td>
+            <?php echo $user['Mobile']; ?>
+            </td>
+        </tr>
+        </table>
 
-    <img class='img-circle profile-img' height=110 width=120 src='images/".$_SESSION['pic']."'></div>";
+        <p></P>
 
-    ?>
-
-    <div><b style="text-align: center;">Welcome, </b>
-    <h4>
-
-
-    <?php echo $_SESSION['login_user']; ?>
-    </h4>
+        <b style="text-align: center;">Edit your profile here: </b>
+        <form action="editProfile.php" method="POST">
+        <label for="name">Username:</label>
+            <input type="text" name="username" id = "username" required>
+            <br>
+            <label for="contact">Mobile Number:</label>
+            <input type="number" id="contact" name="contact" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <label for="password">Confirm password:</label>
+            <input type="password" id="confpw" name="confpw" required>
+            <br>
+            <input type="hidden" id="UID" name="UID" value="<?php echo $UID ?>">
+            <button role="submit" name="Edit_submit">Edit</button>
+        </form>
+        <?php
+        if(isset($_GET['error'])) //<!-- Checking the error that we wrote in URL -->
+            { 
+                if($_GET['error'] == 'usertaken')
+                    echo '<p class="">Mobile already registered. Please change your mobile Number.</p>';
+                else if($_GET['error'] == 'passwordinvalid')
+                    echo '<p class="">Password and Confirm Password does not match. Please try again.</p>';
+                else if($_GET['error'] == 'sqlerror')
+                    echo '<p class="">Unable to edit, Please check your connection and try again</p>';
+                else if($_GET['error'] == 'sqlerror2')
+                    echo '<p class="">Unable to edit, Please check your connection and try again</p>';
+            }
+            else if(isset($_GET['signup']))
+                if($_GET['edit'] == "success")
+                    echo '<p class="">Edit successfull!</p>';
+        ?>
     </div>
-<?php
-echo "<b>"
-echo "<table class='table table-bordered'>";
-
-echo "<tr>";                                          //according to the number of rows we have in our database
-      echo"<td>"
-           echo "<b> Name: </b>"
-      echo"</td>"
-
-      echo "<td>";
-        echo $row['first'];
-      echo "</td>";
-echo "</tr>";
-
-
-echo "<tr>";                                          
-      echo"<td>"
-           echo "<b> Points: </b>"
-      echo"</td>"
-
-      echo "<td>";
-        echo $row['points'];
-      echo "</td>";
-echo "</tr>";
-
-echo "<tr>";                                          
-      echo"<td>"
-           echo "<b> Phone Number: </b>"
-      echo"</td>"
-
-      echo "<td>";
-        echo $row['phno'];
-      echo "</td>";
-echo "</tr>";
-
-echo "</tr>";
-
-
-echo "</table>";
-    ?>
 </div>
-    </div>
 
 </body>
 

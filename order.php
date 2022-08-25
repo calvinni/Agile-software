@@ -120,10 +120,10 @@ if (isset($_POST['Ordering']))
         <!-- pull the data from sql -->
         <form action="order.php" method="POST">
             <p>Key in the recycle items name that need to be added.</p>
-            <input id="OrderName" name="OrderName" placeholder="Type of recyclable" type="text" required>
+                <input id="OrderName" name="OrderName" placeholder="Type of recyclable" type="text" required>
             <p>
             <p>Key in the quantity in KG that need to be added.</p>
-            <input id="OrderQuantity" name="OrderQuantity" placeholder="Quantity in KG" type="number" required>
+                <input id="OrderQuantity" name="OrderQuantity" placeholder="Quantity in KG" type="number" required>
             <p></p>
             <button type="submit" name="Ordering">Add to cart</button>
         </form>
