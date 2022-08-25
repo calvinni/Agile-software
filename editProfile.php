@@ -39,7 +39,7 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
             }
             else //if no duplicate email above, we insert the new info into database
             {
-                $sql = "UPDATE users SET Username = '?', Mobile = '?', Password = '?' WHERE ID = '?' "; //new SQL statement UPDATE
+                $sql = "UPDATE users SET Username = ?, Mobile = ?, Password = ? WHERE ID = ? "; //new SQL statement UPDATE
                 $stmt = mysqli_stmt_init($conn);
                 if(!mysqli_stmt_prepare($stmt, $sql))
                 {
