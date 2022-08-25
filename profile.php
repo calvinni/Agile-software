@@ -130,7 +130,7 @@ $user = mysqli_fetch_assoc($Id);
             <b style="text-align: center;">Welcome, 
         </b>
         <h4>
-        <?php echo $name; ?>
+        <?php $user['Username']; ?>
         </h4>
         </div>
         

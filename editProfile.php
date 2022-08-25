@@ -51,6 +51,17 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
                     $hashedPwd = password_hash($password, PASSWORD_DEFAULT);              //hasing password (security: if hacker gets in db he'll see all the pw)
                     mysqli_stmt_bind_param($stmt, "sssd", $username, $mobile, $hashedPwd, $UserID); //variables inserting
                     mysqli_stmt_execute($stmt);
+
+                    $sql = "SELECT * FROM users WHERE ID=?";            // Starting a new session with new username
+                    mysqli_stmt_bind_param($stmt, "d", $UserID);
+                    mysqli_stmt_execute($stmt); 
+                    $result = mysqli_stmt_get_result($stmt); 
+                    $row = mysqli_fetch_assoc($result)
+
+                    session_start();
+                    $_SESSION['userId'] = $row['ID'];
+                    $_SESSION['userName'] = $row['Username'];
+
                     header("Location: ../profile.php?edit=success");
                     exit();
                 }
