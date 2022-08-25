@@ -201,9 +201,10 @@ else
 }
 ?>
 <?php
-    if(isset($_GET['checkout'] == "success"))
+    if(isset($_GET['checkout']))
     {
-        echo '<p class="">Order recived, we will see you soon!</p>';
+        if($_GET['checkout'] == "success")
+            echo '<p class="">Order recived, we will see you soon!</p>';
     }
 ?>
 <p></p>
