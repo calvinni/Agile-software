@@ -11,7 +11,6 @@ $resultCheck = mysqli_num_rows($Query);
 
 if (isset($_POST['Ordering']))
 {
-    $UID = $_SESSION['userId'];
     $OrderName = $_POST['OrderName'];
     $OrderQuantity = $_POST['OrderQuantity'];
     $sql = "INSERT INTO cart (cart_id, OrderName, OrderQuantity) VALUES ('$UID', '$OrderName', '$OrderQuantity');";
@@ -120,7 +119,12 @@ if (isset($_POST['Ordering']))
         <!-- pull the data from sql -->
         <form action="order.php" method="POST">
             <p>Key in the recycle items name that need to be added.</p>
-                <input id="OrderName" name="OrderName" placeholder="Type of recyclable" type="text" required>
+            <select name="slot">
+                <option value="paper">Paper</option>
+                <option value="plastic">Plastic</option>
+                <option value="metal">Metal</option>
+                <option value="glass">Glass</option>
+            </select>
             <p>
             <p>Key in the quantity in KG that need to be added.</p>
                 <input id="OrderQuantity" name="OrderQuantity" placeholder="Quantity in KG" type="number" required>
@@ -153,14 +157,55 @@ if ($resultCheck > 0)
             <td><?php echo $CART_DETAILS['OrderName']; ?></td>
             <td><?php echo $CART_DETAILS['OrderQuantity']; ?></td>
         </tr>
-    <?php } 
-} 
+<?php } ?>
+    </table>
+    <!-- RESERVATION FORM -->
+    <h4>Collection booking</h4>
+    <form id="resForm" action="checkout.php" method="POST" target="_self">
+      <label for="res_name">Name</label>
+      <input type="text" required name="name" placeholder="John"/>
+      <br>
+
+      <label for="res_email">Email</label>
+      <input type="email" required name="email" placeholder="john@abc.com"/>
+      <br>
+
+      <label for="res_tel">Mobile Number</label>
+      <input type="number" required name="tel" placeholder="12345678"/>
+      <br>
+
+      <label for="res_notes">Notes (if any)</label>
+      <input type="text" name="notes" value="Testing"/>
+      <br>
+
+      <?php
+       /* @TODO - MINIMUM DATE (TODAY) */
+       //$mindate = date("Y-m-d", strtotime("+2 days"));
+      $mindate = date("Y-m-d");
+      ?>
+      <label>Reservation Date</label>
+      <input type="date" required id="res_date" name="date" min="<?=$mindate?>">
+
+      <label>Booking Slot</label>
+      <select name="slot">
+        <option value="AM">AM</option>
+        <option value="PM">PM</option>
+      </select>
+      <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
+      <button type="submit" name="checkout">Checkout</button>
+    </form>
+<?php } 
 else
 {
     echo '<p class="">The cart is empty</br>Please go to order and add some recycleables</p>';
 }
 ?>
-</table>
+<?php
+    if(isset($_GET['checkout'] == "success"))
+    {
+        echo '<p class="">Order recived, we will see you soon!</p>';
+    }
+?>
 <p></p>
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-white text-muted">

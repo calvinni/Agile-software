@@ -173,10 +173,10 @@ $user = mysqli_fetch_assoc($Id);
         <b style="text-align: center;">Edit your profile here: </b>
         <form action="editProfile.php" method="POST">
         <label for="name">Username:</label>
-            <input type="text" name="username" id = "username" required>
+            <input type="text" name="username" id = "username" value="<?php echo $user['Username']; ?>" required>
             <br>
             <label for="contact">Mobile Number:</label>
-            <input type="number" id="contact" name="contact" required>
+            <input type="number" id="contact" name="contact" value="<?php echo $user['Mobile']; ?>" required>
             <br>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
@@ -184,7 +184,7 @@ $user = mysqli_fetch_assoc($Id);
             <label for="password">Confirm password:</label>
             <input type="password" id="confpw" name="confpw" required>
             <br>
-            <input type="hidden" id="UID" name="UID" value="<?php echo $UID ?>">
+            <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
             <button role="submit" name="Edit_submit">Edit</button>
         </form>
         <?php

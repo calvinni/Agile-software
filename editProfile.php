@@ -57,12 +57,13 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
                     mysqli_stmt_execute($stmt); 
                     $result = mysqli_stmt_get_result($stmt); 
                     $row = mysqli_fetch_assoc($result)
-                    
-                    session_destroy();
-                    session_start();
-                    $_SESSION['userId'] = $row['ID'];
-                    $_SESSION['userName'] = $row['Username'];
 
+                    session_start();
+                    session_destroy();                                  // To restart the session
+                    session_start();                                        
+                    $_SESSION['userId'] = $row['ID'];                   // Update the session user
+                    $_SESSION['userName'] = $row['Username'];
+                    
                     header("Location: ../profile.php?edit=success");
                     exit();
                 }
