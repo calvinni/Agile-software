@@ -15,6 +15,16 @@
     integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
+   <style type ="text/css">
+       .wrapper 
+       {
+           width: 400px;
+           margin: 0 auto;
+           color:white
+           
+        
+       }
+    </style>
 </head>
     
 <body>
@@ -95,10 +105,6 @@
 <div class="container">
      <form action="" method="post">
 <button class = "btn btn-default" style="float:right; width:70px" name = "submit1">Edit</button>
-
-
-
-
 </form>
 
 <div class="wrapper">
@@ -119,8 +125,6 @@ $q=mysqli_query($db,"SELECT * FROM student where username='$_SESSION[login_user]
 
     <div><b style="text-align: center;">Welcome, </b>
     <h4>
-
-
     <?php echo $_SESSION['login_user']; ?>
     </h4>
     </div>
