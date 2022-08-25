@@ -1,6 +1,17 @@
-<?php session_start(); ?>
+
 <!doctype html>
 <html lang="en">
+<?php
+session_start();
+require 'dbh.php';
+
+$UID = $_SESSION['userId'];
+$name = $_SESSION['userName'];
+$sql = "SELECT * FROM users WHERE ID = '$UID'";
+$Id = mysqli_query($conn, $sql);
+$user = mysqli_fetch_assoc($Id); 
+
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -104,72 +115,60 @@
     <h1>Profile</h1>
 <div class="container">
      <form action="" method="post">
-<button class = "btn btn-default" style="float:right; width:70px" name = "submit1">Edit</button>
-</form>
+        <button class = "btn btn-default" style="float:right; width:70px" name = "submit1">Edit</button>
+    </form>
 
-<div class="wrapper">
-    <?php 
-$q=mysqli_query($db,"SELECT * FROM student where username='$_SESSION[login_user]' ; ")
+    <div class="wrapper">
+        <h2 style="text-align: center;">My Profile</h2>
+        <?php
+        // echo "<div style='text-align: center'>                  
+        //         <img class='img-circle profile-img' height=110 width=120 src='images/".$_SESSION['pic']."'> 
+        //       </div>";                                                                                          //Show the profile picture
+        ?>
 
+        <div><b style="text-align: center;">Welcome, </b>
+        <h4>
+        <?php echo $name; ?>
+        </h4>
+        </div>
+        
+        <b>
+        <table class='table table-bordered'>
 
-?>
-<h2 style="text-align: center;">My Profile</h2>
-<?php
-    $row=mysqli_fetch_assoc($q);
+        <tr>
+            <td>
+                <b> Name: </b>
+            </td>
 
-    echo "<div style='text-align: center'>
+            <td>
+            <?php echo $user['Username']; ?>
+            </td>
+        </tr>
 
-    <img class='img-circle profile-img' height=110 width=120 src='images/".$_SESSION['pic']."'></div>";
+        <tr>                                      
+            <td>
+                <b> Points: </b>
+            </td>
 
-    ?>
+            <td>
+            <?php echo $user['Points']; ?>
+            </td>
+        </tr>
 
-    <div><b style="text-align: center;">Welcome, </b>
-    <h4>
-    <?php echo $_SESSION['login_user']; ?>
-    </h4>
+        <tr>                                      
+            <td>
+        <b> Phone Number: </b>
+            </td>
+
+            <td>
+            <?php echo $user['Mobile']; ?>
+            </td>
+        </tr>
+
+        </table>
+            
     </div>
-<?php
-echo "<b>"
-echo "<table class='table table-bordered'>";
-
-echo "<tr>";                                          //according to the number of rows we have in our database
-      echo"<td>"
-           echo "<b> Name: </b>"
-      echo"</td>"
-
-      echo "<td>";
-        echo $row['first'];
-      echo "</td>";
-echo "</tr>";
-
-
-echo "<tr>";                                          
-      echo"<td>"
-           echo "<b> Points: </b>"
-      echo"</td>"
-
-      echo "<td>";
-        echo $row['points'];
-      echo "</td>";
-echo "</tr>";
-
-echo "<tr>";                                          
-      echo"<td>"
-           echo "<b> Phone Number: </b>"
-      echo"</td>"
-
-      echo "<td>";
-        echo $row['phno'];
-      echo "</td>";
-echo "</tr>";
-
-echo "</tr>";
-
-
-echo "</table>";
-    ?>
 </div>
-    </div>
 
 </body>
 
