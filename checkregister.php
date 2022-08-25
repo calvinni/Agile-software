@@ -13,7 +13,7 @@ if (isset($_POST["signup_submit"])) //checking if came here from click submit
 
     if ($password !== $passwordRepeat) //checks if password valid
     {
-        header("Location: ../Register.php?error=passwordinvalid"); 
+        header("Location: ../register.php?error=passwordinvalid"); 
         exit();
     }
     else //initialize db statement / select db values
@@ -22,7 +22,7 @@ if (isset($_POST["signup_submit"])) //checking if came here from click submit
         $stmt = mysqli_stmt_init($conn);                //prepare statement; prepping the database $conn (stmnt = statement)
         if (!mysqli_stmt_prepare($stmt, $sql))
         {
-            header("Location: ../Register?error=sqlerror"); //checks if statement prepare failed
+            header("Location: ../register?error=sqlerror"); //checks if statement prepare failed
             exit();
         }
         else //checking if mobile already exists in database's 'users' table
@@ -33,7 +33,7 @@ if (isset($_POST["signup_submit"])) //checking if came here from click submit
             $resultCheck = mysqli_stmt_num_rows($stmt);    //nb of rows matched, should be 0 or 1
             if($resultCheck > 0) 
             {
-                header("Location: ../Register.php?error=usertaken&mobile=".$mobile); //checks if duplicate mobile number exist
+                header("Location: ../register.php?error=usertaken&mobile=".$mobile); //checks if duplicate mobile number exist
                 exit();
             }
             else //if no duplicate email above, we insert the new info into database
@@ -42,7 +42,7 @@ if (isset($_POST["signup_submit"])) //checking if came here from click submit
                 $stmt = mysqli_stmt_init($conn);
                 if(!mysqli_stmt_prepare($stmt, $sql))
                 {
-                    header("Location: ../Register.php?error=sqlerror2"); //checks if statement prepare failed
+                    header("Location: ../register.php?error=sqlerror2"); //checks if statement prepare failed
                     exit();
                 }
                 else
@@ -50,7 +50,7 @@ if (isset($_POST["signup_submit"])) //checking if came here from click submit
                     $hashedPwd = password_hash($password, PASSWORD_DEFAULT);              //hasing password (security: if hacker gets in db he'll see all the pw)
                     mysqli_stmt_bind_param($stmt, "sds", $username, $mobile, $hashedPwd); //variables inserting
                     mysqli_stmt_execute($stmt);
-                    header("Location: ../Register.php?signup=success");
+                    header("Location: ../register.php?signup=success");
                     exit();
                 }
             }
@@ -61,7 +61,7 @@ if (isset($_POST["signup_submit"])) //checking if came here from click submit
 }
 else
 {
-    header("Location: ../Register.php"); //if user didnt come from 'submit', return to sign up
+    header("Location: ../register.php"); //if user didnt come from 'submit', return to sign up
     exit();
 }
 
