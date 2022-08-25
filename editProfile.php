@@ -28,13 +28,13 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
         }
         else //checking if mobile already exists in database's 'users' table
         {
-            mysqli_stmt_bind_param($stmt, "s", $mobile);  //add s if more than one string; one string because emailUsers=? has one '?'. Binding email to stmt
+            mysqli_stmt_bind_param($stmt, "d", $mobile);  //add s if more than one string; one string because emailUsers=? has one '?'. Binding email to stmt
             mysqli_stmt_execute($stmt);                   //executing statement into database, will run email inside database for a match
             mysqli_stmt_store_result($stmt); //stores the result we got from database in stmt
             $resultCheck = mysqli_stmt_num_rows($stmt);    //nb of rows matched, should be 0 or 1
             if($resultCheck > 0) 
             {
-                header("Location: ../profile.php?error=usertaken&email=".$mobile); //checks if duplicate mobile number exist
+                header("Location: ../profile.php?error=usertaken&mobile=".$mobile); //checks if duplicate mobile number exist
                 exit();
             }
             else //if no duplicate email above, we insert the new info into database

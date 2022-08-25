@@ -194,9 +194,11 @@ $user = mysqli_fetch_assoc($Id);
                 else if($_GET['error'] == 'sqlerror2')
                     echo '<p class="">Unable to edit, Please check your connection and try again</p>';
             }
-            else if(isset($_GET['signup']))
-                if($_GET['edit'] == "success")
+        else if(isset($_GET['edit']))
+        {
+            if($_GET['edit'] == "success")
                     echo '<p class="">Edit successfull!</p>';
+        }
         ?>
         </table>
             

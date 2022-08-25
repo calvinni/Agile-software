@@ -23,7 +23,7 @@ if(isset($_POST['login_submit'])) //checking if user got here from submit button
         }
         else //grab info we got from $sql
         { 
-            mysqli_stmt_bind_param($stmt, "s", $mobile); //include statement that we want to send ($stmt) + tell what kind of data sent + actual data to bind
+            mysqli_stmt_bind_param($stmt, "d", $mobile); //include statement that we want to send ($stmt) + tell what kind of data sent + actual data to bind
     
             mysqli_stmt_execute($stmt); //executing previous params
     
