@@ -92,7 +92,81 @@
     <!-- end of nav bar -->
     
     <h1>Profile</h1>
-    
+<div class="container">
+     <form action="" method="post">
+<button class = "btn btn-default" style="float:right; width:70px" name = "submit1">Edit</button>
+
+
+
+
+</form>
+
+<div class="wrapper">
+    <?php 
+$q=mysqli_query($db,"SELECT * FROM student where username='$_SESSION[login_user]' ; ")
+
+
+?>
+<h2 style="text-align: center;">My Profile</h2>
+<?php
+    $row=mysqli_fetch_assoc($q);
+
+    echo "<div style='text-align: center'>
+
+    <img class='img-circle profile-img' height=110 width=120 src='images/".$_SESSION['pic']."'></div>";
+
+    ?>
+
+    <div><b style="text-align: center;">Welcome, </b>
+    <h4>
+
+
+    <?php echo $_SESSION['login_user']; ?>
+    </h4>
+    </div>
+<?php
+echo "<b>"
+echo "<table class='table table-bordered'>";
+
+echo "<tr>";                                          //according to the number of rows we have in our database
+      echo"<td>"
+           echo "<b> Name: </b>"
+      echo"</td>"
+
+      echo "<td>";
+        echo $row['first'];
+      echo "</td>";
+echo "</tr>";
+
+
+echo "<tr>";                                          
+      echo"<td>"
+           echo "<b> Points: </b>"
+      echo"</td>"
+
+      echo "<td>";
+        echo $row['points'];
+      echo "</td>";
+echo "</tr>";
+
+echo "<tr>";                                          
+      echo"<td>"
+           echo "<b> Phone Number: </b>"
+      echo"</td>"
+
+      echo "<td>";
+        echo $row['phno'];
+      echo "</td>";
+echo "</tr>";
+
+echo "</tr>";
+
+
+echo "</table>";
+    ?>
+</div>
+    </div>
+
 </body>
 
 </html>
