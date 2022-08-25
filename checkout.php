@@ -7,11 +7,11 @@ if (isset($_POST["checkout"])) //checking if came here from click submit
 
     //storing input values from html submit
     $UserID = $_POST['UID'];
-    echo $UserID;
-    $sql = "DELETE FROM cart WHERE cart_id = '$UID'";
+    
+    $sql = "DELETE FROM cart WHERE cart_id = $UID ";
     $result = mysqli_query($conn, $sql);
 
-    //header("Location: ../order.php?checkout=success");
+    header("Location: ../order.php?checkout=success");
 }
 else
 {

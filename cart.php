@@ -106,32 +106,194 @@ $user = mysqli_fetch_assoc($Id);
     </div>
     <!-- end of nav bar -->
     <h1>Cart</h1>
-    <?php
-        // echo $UID;
-        $SQL = "SELECT * from cart as C join users as U on C.cart_id = U.ID where C.cart_id = '$UID';";
-
-        $Query = mysqli_query($conn, $SQL);
-        $resultCheck = mysqli_num_rows($Query);
-        ?>
+<?php 
+if ($resultCheck > 0)
+{
+?>
     <table border="1" style="width:100%">
-        <?php 
-        if ($resultCheck > 0)
-        {
-            ?>
-                <tr>
-                    <th>Recyclable</th>
-                    <th>Quantity</th>
-                </tr>
-                <?php 
-                While ( $CART_DETAILS = mysqli_fetch_assoc($Query)  ) 
-                { ?>  
-                <tr>
-                    <td><?php echo $CART_DETAILS['OrderName']; ?></td>
-                    <td><?php echo $CART_DETAILS['OrderQuantity']; ?></td>
-                </tr>
-            <?php } 
-            }    ?>
+        <tr>
+            <th>Recyclable</th>
+            <th>Quantity</th>
+        </tr>
+<?php 
+    While ( $CART_DETAILS = mysqli_fetch_assoc($Query)  ) 
+    { ?>  
+        <tr>
+            <td><?php echo $CART_DETAILS['OrderName']; ?></td>
+            <td><?php echo $CART_DETAILS['OrderQuantity']; ?></td>
+        </tr>
+<?php } ?>
     </table>
+    <!-- RESERVATION FORM -->
+    <h4>Collection booking</h4>
+    <form id="resForm" action="checkout.php" method="POST" target="_self">
+      <label for="res_name">Name</label>
+      <input type="text" required name="name" placeholder="John"/>
+      <br>
 
+      <label for="res_email">Email</label>
+      <input type="email" required name="email" placeholder="john@abc.com"/>
+      <br>
+
+      <label for="res_tel">Mobile Number</label>
+      <input type="number" required name="tel" placeholder="12345678"/>
+      <br>
+
+      <label for="res_notes">Notes (if any)</label>
+      <input type="text" name="notes" value="Testing"/>
+      <br>
+
+      <?php
+       /* @TODO - MINIMUM DATE (TODAY) */
+       //$mindate = date("Y-m-d", strtotime("+2 days"));
+      $mindate = date("Y-m-d");
+      ?>
+      <label>Reservation Date</label>
+      <input type="date" required id="res_date" name="date" min="<?=$mindate?>">
+
+      <label>Booking Slot</label>
+      <select name="slot">
+        <option value="AM">AM</option>
+        <option value="PM">PM</option>
+      </select>
+      <br>
+      <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
+      <button type="submit" name="checkout">Checkout</button>
+    </form>
+<?php } 
+else
+{
+    echo '<p class="">The cart is empty</br>Please go to order and add some recycleables</p>';
+}
+?>
+<?php
+    if(isset($_GET['checkout']))
+    {
+        if($_GET['checkout'] == "success")
+            echo '<p class="">Order recived, we will see you soon!</p>';
+    }
+?>
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-white text-muted">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Get connected with us on social networks:</span>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 link-grayish">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 link-grayish">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 link-grayish">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 link-grayish">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+          <i class="fa-solid fa-recycle"></i>ReCircle
+          </h6>
+          <p>
+            Let's start Recycle!
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Recycle
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Bottles</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Can</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Glass</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Paper</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Useful links
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">FAQs</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Rewards</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Register</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Help</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3 text-grayish"></i> ABC 123 Road Singapore 123456 Singapore</p>
+          <p>
+            <i class="fas fa-envelope me-3 text-grayish"></i>
+            recirclesg@example.com
+          </p>
+          <p><i class="fas fa-phone me-3 text-grayish"></i> + 65 1234 5678</p>
+          <p><i class="fas fa-print me-3 text-grayish"></i> + 65 1234 5678</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+    © 2022 Copyright:
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">ReCircle.com.sg</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+   
+
+
+    <!-- bootstrap js link-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+      
+    </script>
 </body>
 </html>
