@@ -3,8 +3,11 @@
 <html lang="en">
 <?php
 require 'dbh.php';
-
 $UID = $_SESSION['userId'];
+$CART = "SELECT * from cart as C join users as U on C.cart_id = U.ID where C.cart_id = '$UID';";
+$Query = mysqli_query($conn, $CART);
+$resultCheck = mysqli_num_rows($Query);
+
 $sql = "SELECT * FROM users WHERE ID = '$UID'";
 $Id = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($Id); 
