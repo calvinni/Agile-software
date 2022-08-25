@@ -31,9 +31,6 @@ $user = mysqli_fetch_assoc($Id);
        {
            width: 400px;
            margin: 0 auto;
-           color:white
-           
-        
        }
     </style>
 </head>
