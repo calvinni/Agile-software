@@ -111,7 +111,6 @@ $user = mysqli_fetch_assoc($Id);
     
     <h1>Profile</h1>
 <div class="container">
-
     <div class="wrapper">
         <h2 style="text-align: center;">My Profile</h2>
         <?php
@@ -121,7 +120,8 @@ $user = mysqli_fetch_assoc($Id);
         ?>
 
         <div>
-            <b style="text-align: center;">Welcome, </b>
+            <b style="text-align: center;">Welcome, 
+        </b>
         <h4>
         <?php echo $name; ?>
         </h4>
@@ -153,6 +153,8 @@ $user = mysqli_fetch_assoc($Id);
         <tr>                                      
             <td>
                 <b> Phone Number: </b>
+
+        <b> Phone Number: </b>
             </td>
 
             <td>
@@ -196,6 +198,8 @@ $user = mysqli_fetch_assoc($Id);
                 if($_GET['edit'] == "success")
                     echo '<p class="">Edit successfull!</p>';
         ?>
+        </table>
+            
     </div>
 </div>
 
