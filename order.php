@@ -119,7 +119,7 @@ if (isset($_POST['Ordering']))
         <!-- pull the data from sql -->
         <form action="order.php" method="POST">
             <p>Key in the recycle items name that need to be added.</p>
-            <select name="slot">
+            <select id="OrderName" name="OrderName">
                 <option value="paper">Paper</option>
                 <option value="plastic">Plastic</option>
                 <option value="metal">Metal</option>
@@ -191,6 +191,7 @@ if ($resultCheck > 0)
         <option value="AM">AM</option>
         <option value="PM">PM</option>
       </select>
+      <br>
       <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
       <button type="submit" name="checkout">Checkout</button>
     </form>
