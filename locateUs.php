@@ -99,27 +99,27 @@
                         <li class="nav-item">
                             <a class="nav-link" href="./locateUs.php">Locate Us</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./faqs.php">FAQs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./rewards.php">Rewards</a>
+                        </li>
                         <!-- hidden links -->
                         <?php 
                              if(isset($_SESSION['userId']))
                              {
-                                echo '<li class="nav-item">
-                                        <a class="nav-link" href="./rewards.php">Rewards</a>
-                                       </li>
-                                       <li class="nav-link">
+                                echo '<li class="nav-link">
                                         <li><a class="nav-link" href="./profile.php">View Profile</a></li>
-                                       </li>
-                                       <li class="nav-link">
+                                      </li>
+                                      <li class="nav-link">
                                         <li><a class="nav-link" href="./order.php">Order</a></li>
-                                       </li>
-                                       <li class="nav-link">
+                                      </li>
+                                      <li class="nav-link">
                                         <li><a class="nav-link" href="./cart.php">Cart</a></li>
-                                       </li>';
+                                      </li>';
                              }
                         ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./faqs.php">FAQs</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-user"></i>   
