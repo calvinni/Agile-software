@@ -113,10 +113,13 @@ $user = mysqli_fetch_assoc($Id);
 if ($resultCheck > 0)
 {
 ?>
-    <table border="1" style="width:100%">
+  <div class="table_box">
+    <div class = "container">
+        <h3>Your cart</h3>
+        <table class ='table table-bordered'>
         <tr>
             <th>Recyclable</th>
-            <th>Quantity</th>
+            <th>Quantity(In kg)</th>
         </tr>
 <?php 
     While ( $CART_DETAILS = mysqli_fetch_assoc($Query)  ) 
@@ -127,55 +130,63 @@ if ($resultCheck > 0)
         </tr>
 <?php } ?>
     </table>
+    <br>
     <!-- RESERVATION FORM -->
-    <h4>Collection booking</h4>
-    <form id="resForm" action="checkout.php" method="POST" target="_self">
-      <label for="res_name">Name</label>
-      <input type="text" required name="name" placeholder="John"/>
-      <br>
+    <table class='table table-bordered'>
+      <h4>Collection booking</h4>
+      <form id="resForm" action="checkout.php" method="POST" target="_self">
+        <tr>
+          <td><label for="res_name">Name</label></td>
+          <td><input type="text" required name="name" placeholder="John"/></td>
+        </tr>
+        <tr>
+          <td><label for="res_email">Email</label></td>
+          <td><input type="email" required name="email" placeholder="john@abc.com"/></td>
+        </tr>
+        <tr>
+          <td><label for="res_tel">Mobile Number</label></td>
+          <td><input type="number" required name="tel" placeholder="12345678"/></td>
+        </tr>
+        <tr>
+          <td><label for="res_notes">Notes (if any)</label></td>
+          <td><input type="text" name="notes" value="Testing"/></td>
+        </tr>
 
-      <label for="res_email">Email</label>
-      <input type="email" required name="email" placeholder="john@abc.com"/>
-      <br>
-
-      <label for="res_tel">Mobile Number</label>
-      <input type="number" required name="tel" placeholder="12345678"/>
-      <br>
-
-      <label for="res_notes">Notes (if any)</label>
-      <input type="text" name="notes" value="Testing"/>
-      <br>
-
-      <?php
-       /* @TODO - MINIMUM DATE (TODAY) */
-       //$mindate = date("Y-m-d", strtotime("+2 days"));
-      $mindate = date("Y-m-d");
-      ?>
-      <label>Reservation Date</label>
-      <input type="date" required id="res_date" name="date" min="<?=$mindate?>">
-
-      <label>Booking Slot</label>
-      <select name="slot">
-        <option value="AM">AM</option>
-        <option value="PM">PM</option>
-      </select>
-      <br>
-      <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
-      <button type="submit" name="checkout">Checkout</button>
-    </form>
-<?php } 
-else
-{
-    echo '<p class="">The cart is empty</br>Please go to order and add some recycleables</p>';
-}
-?>
-<?php
-    if(isset($_GET['checkout']))
-    {
-        if($_GET['checkout'] == "success")
-            echo '<p class="">Order recived, we will see you soon!</p>';
-    }
-?>
+          <?php
+          /* @TODO - MINIMUM DATE (TODAY) */
+          //$mindate = date("Y-m-d", strtotime("+2 days"));
+          $mindate = date("Y-m-d");
+          ?>
+        <tr>
+          <td><label>Reservation Date</label></td>
+          <td><input type="date" required id="res_date" name="date" min="<?=$mindate?>"></td>
+        </tr>
+        <tr>
+          <td><label>Booking Slot</label></td>
+          <td><select name="slot">
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+          </select></td>
+        </tr>  
+      </table>
+          <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
+          <button type="submit" name="checkout">Checkout</button>
+        </form>
+        <?php } 
+        else
+        {
+            echo '<p class="">The cart is empty</br>Please go to order and add some recycleables</p>';
+        }
+        ?>
+        <?php
+            if(isset($_GET['checkout']))
+            {
+                if($_GET['checkout'] == "success")
+                    echo '<p class="">Order recived, we will see you soon!</p>';
+            }
+        ?>
+    </div>
+  </div>
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-white text-muted">
   <!-- Section: Social media -->
