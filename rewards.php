@@ -170,11 +170,6 @@ $point = $user['Points'];
     <?php 
         if ($_SESSION['loggedin'] == true)
         {
-          echo '<h4>Please login to access this feature</h4>';
-        }
-        else
-        {
-          echo '<h4>Your session Id is '.session_id().' , end</h4>';
           echo '<h4>Hi '.$name.'</h4>';
           echo '<p class="">You have '.$point.' points</p>';
           if (isset($_POST['voucher_10']))
@@ -198,6 +193,10 @@ $point = $user['Points'];
               echo 'Voucher code is: '. rand(10000000,999999999999);
           }
         }
+        else
+        {
+          echo '<h4>Please login to access this feature</h4>';
+        }
         
     ?>
     
@@ -205,7 +204,12 @@ $point = $user['Points'];
         <p>
             <label for="10">1000 points for $10 voucher</label>
             <br>
-            <button type="submit" name="voucher_10">Redeem</button>
+            <?php 
+            if ($_SESSION['loggedin'] == true)
+            {
+              echo '<button type="submit" name="voucher_10">Redeem</button>';
+            }
+            ?>
         <p>
             <label for="25">2000 points for $25 voucher</label>
             <br>
