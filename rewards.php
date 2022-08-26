@@ -10,7 +10,7 @@ $sql = "SELECT * FROM users WHERE ID = '$UID'";
 $Id = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($Id); 
 $point = $user['Points'];
-
+echo isset($_SESSION ['test']);
         if (isset($_POST['voucher_10']))
         {
             if ($point > 1000)
@@ -210,6 +210,13 @@ $point = $user['Points'];
             <br>
             <button type="submit" name="voucher_100">Redeem</button>
     </form>
+    <?php 
+        if (isset($_GET['insufficent']))
+        {
+            echo '<p class="">You have insufficent points</p>';
+        }
+      ?>
+
     <p></p>
     <!-- Footer -->
 <footer class="text-center text-lg-start bg-white text-muted">
