@@ -4,6 +4,7 @@
 session_start();
 require 'dbh.php';
 
+$SID = session_id();
 $UID = $_SESSION['userId'];
 $name = $_SESSION['userName'];
 $sql = "SELECT * FROM users WHERE ID = '$UID'";
@@ -168,28 +169,37 @@ $point = $user['Points'];
     <h1>Rewards</h1>
     <h3> Use your points to redeem vouchers! </h3>
     <?php 
-        echo '<h4>Hi '.$name.'</h4>';
-        echo '<p class="">You have '.$point.' points</p>';
-        if (isset($_POST['voucher_10']))
+        if ($SID == "")
         {
-            echo '<p class="">You have redeemed a $10 voucher</p>';
-            echo 'Voucher code is: '. rand(10000000,999999999999);
+          echo '<h4>Please login to access this feature</h4>';
         }
-        else if (isset($_POST['voucher_25']))
+        else
         {
-            echo '<p class="">You have redeemed a $25 voucher</p>';
-            echo 'Voucher code is: '. rand(10000000,999999999999);
+          echo '<h4>Your session Id is '.session_id().' , end</h4>';
+          echo '<h4>Hi '.$name.'</h4>';
+          echo '<p class="">You have '.$point.' points</p>';
+          if (isset($_POST['voucher_10']))
+          {
+              echo '<p class="">You have redeemed a $10 voucher</p>';
+              echo 'Voucher code is: '. rand(10000000,999999999999);
+          }
+          else if (isset($_POST['voucher_25']))
+          {
+              echo '<p class="">You have redeemed a $25 voucher</p>';
+              echo 'Voucher code is: '. rand(10000000,999999999999);
+          }
+          else if (isset($_POST['voucher_50']))
+          {
+              echo '<p class="">You have redeemed a $50 voucher</p>';
+              echo 'Voucher code is: '. rand(10000000,999999999999);
+          }
+          else if (isset($_POST['voucher_100']))
+          {
+              echo '<p class="">You have redeemed a $100 voucher</p>';
+              echo 'Voucher code is: '. rand(10000000,999999999999);
+          }
         }
-        else if (isset($_POST['voucher_50']))
-        {
-            echo '<p class="">You have redeemed a $50 voucher</p>';
-            echo 'Voucher code is: '. rand(10000000,999999999999);
-        }
-        else if (isset($_POST['voucher_100']))
-        {
-            echo '<p class="">You have redeemed a $100 voucher</p>';
-            echo 'Voucher code is: '. rand(10000000,999999999999);
-        }
+        
     ?>
     
     <form id="form_voucher" name="form_voucher" method="post" action="rewards.php">
@@ -214,7 +224,6 @@ $point = $user['Points'];
         if (isset($_GET['insufficent']))
         {
             echo '<p class="">You have insufficent points</p>';
-            echo isset($_SESSION ['test']);
         }
       ?>
 
