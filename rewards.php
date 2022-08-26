@@ -164,7 +164,7 @@ $point = $user['Points'];
         </nav>
     </div>
     <!-- end of nav bar -->
-<div class="table_box">
+<div class="table_box table_min table_max">
     <h1>Rewards</h1>
     <h3> Use your points to redeem vouchers! </h3>
     <?php 

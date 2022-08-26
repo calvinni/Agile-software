@@ -15,6 +15,32 @@
     integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
+   <style>
+    h1  
+        {
+            text-align: center;
+            font-size: 20pt;
+            color: green;
+            font-family: "Segoe Script", serif;
+        }
+
+
+    .background
+    {
+      margin : auto;
+      position : relative; 
+
+      background : Aquamarine ;
+      width : 400px ; 
+      height : 200px;
+      padding : 15px 10px 10px 10px  ;
+      border : solid MediumSeaGreen ;
+      font-size : 13pt;
+      text-align: center;
+      margin-bottom: 100px;
+    }
+
+   </style>
 </head>
 
 <body>
@@ -98,28 +124,33 @@
         </nav>
     </div>
     <!-- end of nav bar -->
-
-    <section>
+    <div class="container table_box">
+      <br>
         <h1>Login to ReCircle</h1>
-        <!-- Login Form -->
-        <form id="form_login" name="form_login" method="post" action="checklogin.php">
-            <label for="mobile">Mobile:</label>
-            <input type="number" type="Mobile" id="LoginMobile" name="LoginMobile" placeholder="Phone Number">
-            <br>
-            <label for="password">Password:</label>
-            <input type="password" type="password" id="loginPass" name="loginPass" placeholder="Password">
-            <br>
-            <button type="submit" name="login_submit">Sign in</button>
-        </form>
-        <!-- End Of Login Form -->
-        <?php
-          if(isset($_GET['error']) && $_GET['error'] == 'wrongpwd') 
-            echo '<p class="">Incorrect password</br>Please try again</p>';
-          else if(isset($_GET['error']) && $_GET['error'] == 'emailDNE')
-            echo '<p class="">Unregistered mobile</br>Please try again</p>';
-        ?>
-    </section>
-
+        <div class="wrapper background">
+            <table class='table table-bordered'>
+            <!-- Login Form -->
+            <form id="form_login" name="form_login" method="post" action="checklogin.php">
+            <tr>
+                <td><label for="mobile">Mobile:</label></td>
+                <td><input type="number" type="Mobile" id="LoginMobile" name="LoginMobile" placeholder="Phone Number"></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password:</label></td>
+                <td><input type="password" type="password" id="loginPass" name="loginPass" placeholder="Password"></td>
+            </tr>
+        </table>
+                <button class="button button_min" type="submit" name="login_submit">Sign in</button>
+            </form>
+            <!-- End Of Login Form -->
+            <?php
+              if(isset($_GET['error']) && $_GET['error'] == 'wrongpwd') 
+                echo '<p class="">Incorrect password</br>Please try again</p>';
+              else if(isset($_GET['error']) && $_GET['error'] == 'emailDNE')
+                echo '<p class="">Unregistered mobile</br>Please try again</p>';
+            ?>
+        </div>
+    </div>
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-white text-muted">
   <!-- Section: Social media -->

@@ -112,7 +112,7 @@ $user = mysqli_fetch_assoc($Id);
     
     <h1>Profile</h1>
 <div class="container">
-    <div class="table_box">
+    <div class="table_box table_min table_max">
         <h3 style="text-align: center;">Welcome, <?php echo $user['Username']; ?></h3>
         <p></p>
         
@@ -148,7 +148,7 @@ $user = mysqli_fetch_assoc($Id);
         </tr>
         </table>
 
-        <p></P>
+        <br>
         
         <table class='table table-bordered'>
         <form action="editProfile.php" method="POST">
@@ -172,7 +172,7 @@ $user = mysqli_fetch_assoc($Id);
             <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
 
         </table>
-            <button class="button" role="submit" name="Edit_submit">Edit</button>
+            <button class="button button_min" role="submit" name="Edit_submit">Edit</button>
         </form>
         <?php
         if(isset($_GET['error'])) //<!-- Checking the error that we wrote in URL -->

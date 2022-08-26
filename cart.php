@@ -113,7 +113,7 @@ $user = mysqli_fetch_assoc($Id);
 if ($resultCheck > 0)
 {
 ?>
-  <div class="table_box">
+  <div class="table_box table_min table_max">
     <div class = "container">
         <h3>Your cart</h3>
         <table class ='table table-bordered'>
@@ -170,7 +170,7 @@ if ($resultCheck > 0)
         </tr>  
       </table>
           <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
-          <button type="submit" name="checkout">Checkout</button>
+          <button class="button button_min" type="submit" name="checkout">Checkout</button>
         </form>
         <?php } 
         else
