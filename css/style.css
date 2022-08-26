@@ -10,3 +10,13 @@
         width: 60%;
         margin: 0 auto;
     }
+td
+    {
+        padding: 10px 10px 10px 10px;
+        width: 200px;
+    }
+.button
+    {
+        align-content: center;
+        width: 20%;
+    }

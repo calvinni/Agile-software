@@ -202,6 +202,8 @@ $point = $user['Points'];
   <table class ='table table-bordered'>
     <form id="form_voucher" name="form_voucher" method="post" action="rewards.php">
         <p>
+          <tr>
+            <td>
             <label for="10">1000 points for $10 voucher</label>
             <br>
             <?php 
@@ -210,7 +212,9 @@ $point = $user['Points'];
               echo '<button type="submit" name="voucher_10">Redeem</button>';
             }
             ?>
+            </td>
         <p>
+            <td>
             <label for="25">2000 points for $25 voucher</label>
             <br>
             <?php 
@@ -219,7 +223,11 @@ $point = $user['Points'];
               echo '<button type="submit" name="voucher_25">Redeem</button>';
             }
             ?>
+            </td>
+          </tr>
        <p>
+          <tr>
+            <td>
             <label for="50">3500 points for $50 voucher</label>
             <br>
             <?php 
@@ -228,7 +236,9 @@ $point = $user['Points'];
               echo '<button type="submit" name="voucher_50">Redeem</button>';
             }
             ?>
+            </td>
        <p>
+            <td>
             <label for="100">5000 points for $100 voucher</label>
             <br>
             <?php 
@@ -237,6 +247,7 @@ $point = $user['Points'];
               echo '<button type="submit" name="voucher_100">Redeem</button>';
             }
             ?>
+            </td>
     </form>
   </table>
     <?php 
