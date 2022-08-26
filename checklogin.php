@@ -38,8 +38,8 @@ if(isset($_POST['login_submit'])) //checking if user got here from submit button
                     //echo $mobile;   //testing purpose
                     //echo $password; //testing purpose
                     //echo $row['Password']; //testing purpose
-                    var_dump($row); //testing purpose
-                    //header("Location: ../login.php?error=wrongpwd");
+                    //var_dump($row); //testing purpose
+                    header("Location: ../login.php?error=wrongpwd");
                     exit();
                 }
                 else if($pwdCheck == true) //we want lock in user if success login: need session, global variable that has info of user.
