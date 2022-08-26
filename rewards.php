@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <?php
-session_start();
+//session_start();
 require 'dbh.php';
 
 $SID = session_id();
