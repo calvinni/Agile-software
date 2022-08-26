@@ -119,7 +119,7 @@
         <?php
         if(isset($_GET['error'])) //<!-- Checking the error that we wrote in URL -->
             { 
-                if($_GET['error'] == 'usertaken')
+                if($_GET['error'] == 'mobile')
                     echo '<p class="">Mobile already registered. Please change your mobile Number.</p>';
                 else if($_GET['error'] == 'passwordinvalid')
                     echo '<p class="">Password and Confirm Password does not match. Please try again.</p>';
