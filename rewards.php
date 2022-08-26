@@ -1,10 +1,9 @@
 <!doctype html>
 <html lang="en">
 <?php
-//session_start();
+session_start();
 require 'dbh.php';
 
-$SID = session_id();
 $UID = $_SESSION['userId'];
 $name = $_SESSION['userName'];
 $sql = "SELECT * FROM users WHERE ID = '$UID'";
@@ -169,7 +168,7 @@ $point = $user['Points'];
     <h1>Rewards</h1>
     <h3> Use your points to redeem vouchers! </h3>
     <?php 
-        if ($SID == "")
+        if ($_SESSION['loggedin'] == true)
         {
           echo '<h4>Please login to access this feature</h4>';
         }
