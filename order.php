@@ -115,7 +115,9 @@ if (isset($_POST['Ordering']))
     <!-- end of nav bar -->
 
     <section>
-        <h1>Order your recyclables here</h1>
+    <h1>Order</h1>
+    <div class="wrapper">
+        <h2>Order your recyclables here</h2>
         <!-- pull the data from sql -->
         <form action="order.php" method="POST">
             <p>Key in the recycle items name that need to be added.</p>
@@ -139,6 +141,7 @@ if (isset($_POST['Ordering']))
           }
         ?>
     </section>
+  </div>
 <p></p>
 <p></p>
 <!-- Footer -->

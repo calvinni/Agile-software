@@ -112,25 +112,11 @@ $user = mysqli_fetch_assoc($Id);
     
     <h1>Profile</h1>
 <div class="container">
-    <div class="wrapper">
-        <h2 style="text-align: center;">My Profile</h2>
-        <?php
-        // echo "<div style='text-align: center'>                  
-        //         <img class='img-circle profile-img' height=110 width=120 src='images/".$_SESSION['pic']."'> 
-        //       </div>";                                                                                          //Show the profile picture
-        ?>
-
-        <div>
-            <b style="text-align: center;">Welcome, 
-        </b>
-        <h4>
-        <?php echo $user['Username']; ?>
-        </h4>
-        </div>
+    <div class="table_box">
+        <h3 style="text-align: center;">Welcome, <?php echo $user['Username']; ?></h3>
+        <p></p>
         
-        <b>
         <table class='table table-bordered'>
-
         <tr>
             <td>
                 <b> Name: </b>
@@ -163,23 +149,30 @@ $user = mysqli_fetch_assoc($Id);
         </table>
 
         <p></P>
-
-        <b style="text-align: center;">Edit your profile here: </b>
+        
+        <table class='table table-bordered'>
         <form action="editProfile.php" method="POST">
-        <label for="name">Username:</label>
-            <input type="text" name="username" id = "username" value="<?php echo $user['Username']; ?>" required>
-            <br>
-            <label for="contact">Mobile Number:</label>
-            <input type="number" id="contact" name="contact" value="<?php echo $user['Mobile']; ?>" required>
-            <br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <br>
-            <label for="password">Confirm password:</label>
-            <input type="password" id="confpw" name="confpw" required>
-            <br>
+          <h4>Edit your profile here: </h4>
+          <tr>
+            <td><label for="name">Username:</label></td>
+            <td><input type="text" name="username" id = "username" value="<?php echo $user['Username']; ?>" required></td>
+          </tr>
+          <tr>
+            <td><label for="contact">Mobile Number:</label></td>
+            <td><input type="number" id="contact" name="contact" value="<?php echo $user['Mobile']; ?>" required></td>
+          </tr>
+          <tr>
+            <td><label for="password">Password:</label></td>
+            <td><input type="password" id="password" name="password" required></td>
+          </tr>
+          <tr>  
+            <td><label for="password">Confirm password:</label></td>
+            <td><input type="password" id="confpw" name="confpw" required></td>
+          </tr> 
             <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
-            <button role="submit" name="Edit_submit">Edit</button>
+
+        </table>
+            <button class="button" role="submit" name="Edit_submit">Edit</button>
         </form>
         <?php
         if(isset($_GET['error'])) //<!-- Checking the error that we wrote in URL -->
@@ -199,7 +192,6 @@ $user = mysqli_fetch_assoc($Id);
                     echo '<p class="">Edit successfull!</p>';
         }
         ?>
-        </table>
             
     </div>
 </div>
