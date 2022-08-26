@@ -130,7 +130,7 @@
             }
             else if(isset($_GET['signup']))
                 if($_GET['signup'] == "success")
-                    echo '<p class="">Sign up successfull! Click <a href="Login.php">here</a> to login.</p>';
+                    echo '<p class="">Sign up successfull! Click <a href="login.php">here</a> to login.</p>';
         ?>
     </section>
     <p></p>
