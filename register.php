@@ -15,6 +15,23 @@
     integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
+   <style>
+    .background
+    {
+      margin : auto;
+      position : relative; 
+
+      background : Aquamarine ;
+      width : 400px ; 
+      height : 350px;
+      padding : 15px 10px 10px 10px  ;
+      border : solid MediumSeaGreen ;
+      font-size : 13pt;
+      text-align: center;
+      margin-bottom: 100px;
+    }
+
+   </style>
 </head>
 <!-- this page includes about us, how to recycle using our website, what we collect -->
 <body>
@@ -98,22 +115,30 @@
         </nav>
     </div>
     <!-- end of nav bar -->
-    <section>
-        <br>
-     <h1>Register</h1>
+<div class="container table_box">
+  <br>
+  <h1>Register</h1>
+  <div class="wrapper background">
+      <table class='table table-bordered'>
         <form method="post" action="checkregister.php">
-            <label for="name">Username:</label>
-            <input type="text" name="username" id = "username" required>
-            <br>
-            <label for="contact">Mobile Number:</label>
-            <input type="number" id="contact" name="contact" required>
-            <br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <br>
-            <label for="password">Confirm password:</label>
-            <input type="password" id="confpw" name="confpw" required>
-            <br>
+        <tr>
+            <td><label for="name">Username:</label></td>
+            <td><input type="text" name="username" id = "username" required></td>
+        </tr>
+        <tr>
+            <td><label for="contact">Mobile Number:</label></td>
+            <td><input type="number" id="contact" name="contact" required></td>
+        </tr>
+        <tr>
+            <td><label for="password">Password:</label></td>
+            <td><input type="password" id="password" name="password" required></td>
+        </tr>
+        <tr>
+            <td><label for="password">Confirm password:</label></td>
+            <td><input type="password" id="confpw" name="confpw" required></td>
+        </tr>
+        
+      </table>
             <button role="submit" name="signup_submit">Create Account</button>
         </form>
         <?php
@@ -132,7 +157,8 @@
                 if($_GET['signup'] == "success")
                     echo '<p class="">Sign up successfull! Click <a href="login.php">here</a> to login.</p>';
         ?>
-    </section>
+    </div>
+</div>
     <p></p>
     <!-- Footer -->
 <footer class="text-center text-lg-start bg-white text-muted">

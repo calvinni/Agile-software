@@ -32,7 +32,7 @@
 
       background : Aquamarine ;
       width : 400px ; 
-      height : 200px;
+      height : 250px;
       padding : 15px 10px 10px 10px  ;
       border : solid MediumSeaGreen ;
       font-size : 13pt;
