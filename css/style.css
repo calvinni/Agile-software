@@ -1,0 +1,13 @@
+.table_box 
+    {
+        text-align: center;
+        min-width: 500px;
+        width: 60%;
+        margin: 0 auto;
+    }
+
+.wrapper 
+    {
+        width: 60%;
+        margin: 0 auto;
+    }

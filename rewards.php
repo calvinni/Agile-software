@@ -164,7 +164,7 @@ $point = $user['Points'];
         </nav>
     </div>
     <!-- end of nav bar -->
-
+<div class="table_box">
     <h1>Rewards</h1>
     <h3> Use your points to redeem vouchers! </h3>
     <?php 
@@ -199,7 +199,7 @@ $point = $user['Points'];
         }
         
     ?>
-    
+  <table class ='table table-bordered'>
     <form id="form_voucher" name="form_voucher" method="post" action="rewards.php">
         <p>
             <label for="10">1000 points for $10 voucher</label>
@@ -238,13 +238,14 @@ $point = $user['Points'];
             }
             ?>
     </form>
+  </table>
     <?php 
         if (isset($_GET['insufficent']))
         {
             echo '<p class="">You have insufficent points</p>';
         }
       ?>
-
+</div>
     <p></p>
     <!-- Footer -->
 <footer class="text-center text-lg-start bg-white text-muted">
