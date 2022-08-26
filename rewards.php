@@ -213,15 +213,30 @@ $point = $user['Points'];
         <p>
             <label for="25">2000 points for $25 voucher</label>
             <br>
-            <button type="submit" name="voucher_25">Redeem</button>
+            <?php 
+            if ($_SESSION['loggedin'] == true)
+            {
+              echo '<button type="submit" name="voucher_25">Redeem</button>';
+            }
+            ?>
        <p>
             <label for="50">3500 points for $50 voucher</label>
             <br>
-            <button type="submit" name="voucher_50">Redeem</button>
+            <?php 
+            if ($_SESSION['loggedin'] == true)
+            {
+              echo '<button type="submit" name="voucher_50">Redeem</button>';
+            }
+            ?>
        <p>
             <label for="100">5000 points for $100 voucher</label>
             <br>
-            <button type="submit" name="voucher_100">Redeem</button>
+            <?php 
+            if ($_SESSION['loggedin'] == true)
+            {
+              echo '<button type="submit" name="voucher_100">Redeem</button>';
+            }
+            ?>
     </form>
     <?php 
         if (isset($_GET['insufficent']))
