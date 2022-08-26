@@ -140,13 +140,13 @@
                         </li>  
                         
                         <?php 
-                                if(isset($_SESSION['userId']))
-                                {
-                                    $name = $_SESSION['userName'];
-                                    echo '<li class="nav-item">
-                                            <div class="nav-link">Hi '.$name.',<br>You are logged in!</div>
-                                          </li>';
-                                }
+                                // if(isset($_SESSION['userId']))
+                                // {
+                                //     $name = $_SESSION['userName'];
+                                //     echo '<li class="nav-item">
+                                //             <div class="nav-link">Hi '.$name.',<br>You are logged in!</div>
+                                //           </li>';
+                                // }
                         ?>
                       
                       </li>
