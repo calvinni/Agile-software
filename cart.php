@@ -131,10 +131,10 @@ if ($resultCheck > 0)
             <td><?php echo $CART_DETAILS['OrderName']; ?></td>
             <td><?php echo $CART_DETAILS['OrderQuantity']; ?></td>
             <td>
-                <button class="button button_min" type="submit" name="edit">Edit</button>
+                <button class="button button_max" type="submit" name="edit">Edit</button>
             </td>
             <td>
-                <button class="button button_min" type="submit" name="delete">Delete</button>
+                <button class="button button_max" type="submit" name="delete">Delete</button>
             </td>
                 <input type="hidden" id="OrderName" name="OrderName" value="<?php echo $CART_DETAILS['OrderName']; ?>">
                 <input type="hidden" id="OrderQuantity" name="OrderQuantity" value="<?php echo $CART_DETAILS['OrderQuantity']; ?>">
