@@ -122,13 +122,13 @@ https://www.w3schools.com/howto/howto_css_dropdown.asp -->
                              if(isset($_SESSION['userId']))
                              {
                                 echo '<li class="nav-link">
-                                        <li><a class="nav-link" href="./profile.php">View Profile</a></li>
+                                          <a class="nav-link" href="./profile.php">View Profile</a>
                                       </li>
                                       <li class="nav-link">
-                                        <li><a class="nav-link" href="./order.php">Order</a></li>
+                                          <a class="nav-link" href="./order.php">Order</a>
                                       </li>
                                       <li class="nav-link">
-                                        <li><a class="nav-link" href="./cart.php">Cart</a></li>
+                                          <a class="nav-link" href="./cart.php">Cart</a>
                                       </li>';
                              }
                         ?>
