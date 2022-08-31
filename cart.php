@@ -120,6 +120,8 @@ if ($resultCheck > 0)
         <tr>
             <th>Recyclable</th>
             <th>Quantity(In kg)</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
 <?php 
     While ( $CART_DETAILS = mysqli_fetch_assoc($Query)  ) 
@@ -127,6 +129,16 @@ if ($resultCheck > 0)
         <tr>
             <td><?php echo $CART_DETAILS['OrderName']; ?></td>
             <td><?php echo $CART_DETAILS['OrderQuantity']; ?></td>
+            <td>
+              <form id="editForm" action="test.php" method="POST" target="_self">
+                <button class="button button_min" type="submit" name="edit">Edit</button>
+              </form>
+            </td>
+            <td>
+              <form id="deleteForm" action="test.php" method="POST" target="_self">
+                <button class="button button_min" type="submit" name="delete">Delete</button>
+              </form>
+            </td>
         </tr>
 <?php } ?>
     </table>
@@ -172,7 +184,7 @@ if ($resultCheck > 0)
           <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
           <button class="button button_min" type="submit" name="checkout">Checkout</button>
         </form>
-        <?php } 
+  <?php } 
         else
         {
             echo '<p class="">The cart is empty</br>Please go to order and add some recycleables</p>';
