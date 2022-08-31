@@ -95,7 +95,7 @@ if (isset($_POST['Ordering']))
                                 {
                                     $name = $_SESSION['userName'];
                                     echo '<li class="nav-item">
-                                            <div class="nav-link">Hi '.$name.',<br>You are logged in!</div>
+                                            <div class="nav-link">Hi '.$name.'</div>
                                           </li>';
                                 }
                         ?>

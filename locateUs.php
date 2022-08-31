@@ -1,3 +1,8 @@
+<!-- References 
+https://recyclensave.sg/locations/?term=east&type= 
+https://www.w3schools.com/howto/howto_css_dropdown.asp -->
+
+
 <?php session_start(); ?>
 <!DOCTYPE html>
 
@@ -12,6 +17,8 @@
     <!-- font awesome link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" 
     integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- font -->
+   <link href= "https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel='stylesheet' type='text/css'>
     <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
    <style>
@@ -23,31 +30,34 @@
                 text-align: center;
                 padding:50px;
                 font-size: 35px;
+                font-family: "Quicksand", sans-serif;
             }
             h3{
                 text-align: center;
                 padding: 20px;
                 font-size: 80px;
+                font-family: "Quicksand", sans-serif;
             }
             p{
                 text-align: center;
                 font-size: 20px;
+                font-family: "Quicksand", sans-serif;
             }
             .dropbtn {
             background-color: #006633;
             width:100%;
             color: white;
             padding: 16px;
-            font-size: 20px;
+            font-size: 30px;
             text-align: left;
             border: none;
             cursor: pointer;
+            font-family: "Quicksand", sans-serif;
             }
 
             .dropbtn:hover, .dropbtn:focus {
             background-color: #00994C;
             }
-
 
             .dropdown {
             position: relative;
@@ -64,6 +74,8 @@
             overflow: auto;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
+            font-family: "Quicksand", sans-serif;
+            font-size: 25px;
             }
 
             .dropdown-content a {
@@ -144,7 +156,7 @@
                                 {
                                     $name = $_SESSION['userName'];
                                     echo '<li class="nav-item">
-                                            <div class="nav-link">Hi '.$name.',<br>You are logged in!</div>
+                                            <div class="nav-link">Hi '.$name.'</div>
                                           </li>';
                                 }
                         ?>
@@ -166,14 +178,14 @@
     <!-- Main sign -->
     <div class="container-main">
         <div class="row">
-        <h3>LOCATE US</h3>
+        <h3><b>Our Recycling Machines</b></h3>
         </div>
     </div>
 
 
     <div class="container">
         <div class="row">
-            <div class="col-sm" style= "padding:50px" >
+            <div class="col-sm" >
             
                 <!-- LOCATIONS -->
                 <i class="fa-solid fa-location-dot fa-8x center"></i>
@@ -183,7 +195,7 @@
                     <!-- dropdown list of addresses by region  -->
                     <!-- North -->
                     <div class="dropdown">
-                        <button onclick="myFunction()" class="dropbtn">North</button>
+                        <button onclick="myFunction()" class="dropbtn"><b>North</b></button>
                         <div id="myDropdown" class="dropdown-content">
                             <a href="#home"><b>BISHAN SPORTS CENTRE </b><br> 
                                             5 Bishan Street 14, Singapore 579783 <br>
@@ -204,7 +216,7 @@
                     
                     <!-- South -->
                     <div class="dropdown">
-                        <button onclick="myFunction2()" class="dropbtn">South</button>
+                        <button onclick="myFunction2()" class="dropbtn"><b>South</b></button>
                         <div id="myDropdown2" class="dropdown-content">
                             <a href="#contact"><b>RESORTS WORLD SENTOSA</b> <br>  
                                                     8 Sentosa Gateway, Singapore 098269 <br>
@@ -223,7 +235,7 @@
 
                     <!-- East -->
                     <div class="dropdown">
-                        <button onclick="myFunction3()" class="dropbtn">East</button>
+                        <button onclick="myFunction3()" class="dropbtn"><b>East</b></button>
                         <div id="myDropdown3" class="dropdown-content">
                             <a href="#home"><b>GEYLANG BAHRU BLK 68 </b><br> 
                                                 Blk 68 Geylang Bahru Singapore 330068<br>
@@ -247,7 +259,7 @@
 
                     <!-- West -->
                     <div class="dropdown">
-                        <button onclick="myFunction4()" class="dropbtn">West</button>
+                        <button onclick="myFunction4()" class="dropbtn"><b>West</b></button>
                         <div id="myDropdown4" class="dropdown-content">
                             <a href="#home"> <b>ASCENT</b> <br> 
                             2 SCIENCE PARK DRIVE 118222<br>
@@ -298,24 +310,6 @@
                         }
                     }
                 </script>
-            </div>
-
-            <!-- CONTACT US -->
-            <div class="col-sm" style= "padding:50px">
-                <i class="fa-solid fa-phone fa-8x center"></i>
-                <br>
-                <h1> Contact Us </h1>
-                <p style="text-align: center"> Tel: +653344229</p> <br>
-                <p style="text-align: center"> Fax: +653221452</p> <br>
-                <p style="text-align: center"> Email: recirclesg@gmail.com</p> 
-            </div>
-
-            <!-- LETS CONNECT -->
-            <div class="col-sm" style = "padding:50px">
-                <i class="fa-brands fa-instagram fa-8x center"></i>
-                <br>
-                <h1> Let's Connect! </h1>
-                <p style="text-align: center"> Instagram: @recircleteamsg </p>
             </div>
         </div>
     </div>
@@ -429,7 +423,7 @@
   <!-- Copyright -->
 </footer>
 <!-- Footer -->
-
+    
 </body>
 <!-- bootstrap js link-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
