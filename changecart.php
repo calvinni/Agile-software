@@ -3,6 +3,7 @@ require 'dbh.php';  //using the $conn variable
 $Order_Name = $_POST['OrderName'];
 $Order_Quantity = $_POST['OrderQuantity'];
 $_ID = $_POST['I_D'];
+echo $_ID;
 ?>
 
 <?php
@@ -14,7 +15,7 @@ if (isset($_POST["edit"])) //checking if came here from click submit
     <div class="wrapper">
         <h2>Edit your order here</h2>
         <!-- pull the data from sql -->
-        <form action="changecart.php" method="POST">
+        <form action="editcart.php" method="POST">
             <p>Key in the recycle items name that need to be added.</p>
             <select id="OrderName" name="OrderName">
                 <option value="paper" <?php if ($Order_Name = 'Paper') {echo 'selected';}?>>Paper</option>
@@ -25,16 +26,11 @@ if (isset($_POST["edit"])) //checking if came here from click submit
             <p>
             <p>Key in the quantity in KG that need to be added.</p>
                 <input id="OrderQuantity" name="OrderQuantity" type="number" value="<?php echo $Order_Quantity; ?>" required>
+                <input type="hidden" id="userID" name="userID" value="<?php echo $_ID; ?>">
             <p></p>
             <button type="submit" name="Editing">Edit</button>
         </form>
         <!-- End Of sql -->
-        <?php
-          if (isset($_POST['Editing'])) 
-          {
-            echo '<p class="">successfully edited</p>'; //temp
-          }
-        ?>
     </section>
   </div>
 <?php
@@ -43,9 +39,16 @@ else if (isset($_POST["delete"]))
 {
     $Query = "DELETE FROM cart WHERE ID='$_ID'";
     $result = mysqli_query($conn, $Query);
-
-    header("Location: ../cart.php?delete=success");
-    exit();
+    if (mysqli_affected_rows($conn) > 0)
+    {
+        header("Location: ../cart.php?delete=success");
+        exit();
+    }
+    else
+    {
+        header("Location: ../cart.php?delete=failure");
+        exit();
+    }
 }
 else
 {

@@ -194,9 +194,34 @@ if ($resultCheck > 0)
         <?php
             if(isset($_GET['checkout']))
             {
-                if($_GET['checkout'] == "success")
-                    echo '<p class="">Order recived, we will see you soon!</p>';
+              if($_GET['checkout'] == "success")
+              {
+                echo '<p class="">Order recived, we will see you soon!</p>';
+              }
             }
+            else if(isset($_GET['editing']))
+            {
+              if($_GET['editing'] == "success")
+              {
+                echo '<p class="">Edit recived</p>';
+              }
+              else if($_GET['editing'] == "failure")
+              {
+                echo '<p class="">Editing failed, Please try again</p>';
+              }
+            }
+            else if(isset($_GET['delete']))
+            {
+              if($_GET['delete'] == "success")
+              {
+                echo '<p class="">Delete successful!</p>';
+              }
+              else if($_GET['delete'] == "failure")
+              {
+                echo '<p class="">Deleting failed, Please try again</p>';
+              }
+            }
+            
         ?>
     </div>
   </div>
