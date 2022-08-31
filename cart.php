@@ -127,18 +127,19 @@ if ($resultCheck > 0)
     While ( $CART_DETAILS = mysqli_fetch_assoc($Query)  ) 
     { ?>  
         <tr>
+          <form id="editForm" action="changecart.php" method="POST" target="_self">
             <td><?php echo $CART_DETAILS['OrderName']; ?></td>
             <td><?php echo $CART_DETAILS['OrderQuantity']; ?></td>
             <td>
-              <form id="editForm" action="test.php" method="POST" target="_self">
                 <button class="button button_min" type="submit" name="edit">Edit</button>
-              </form>
             </td>
             <td>
-              <form id="deleteForm" action="test.php" method="POST" target="_self">
                 <button class="button button_min" type="submit" name="delete">Delete</button>
-              </form>
             </td>
+                <input type="hidden" id="OrderName" name="OrderName" value="<?php echo $CART_DETAILS['OrderName']; ?>">
+                <input type="hidden" id="OrderQuantity" name="OrderQuantity" value="<?php echo $CART_DETAILS['OrderQuantity']; ?>">
+                <input type="hidden" id="I_D" name="I_D" value="<?php echo $CART_DETAILS['ID']; ?>">
+          </form>
         </tr>
 <?php } ?>
     </table>
