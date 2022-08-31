@@ -99,7 +99,8 @@
     <!-- end of nav bar -->
 
 <!-- about us slider -->
-<p>
+
+</div>
    <div id="carouselAboutus" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -116,7 +117,10 @@
    </div>
 
 <!-- how to recycle slider -->
-
+</div>
+   <div id="htr">
+      <img src="./images/index-htr.png" width="100%"  >
+   </div>
 
 
 <!-- categories slider -->
@@ -125,39 +129,34 @@
     <button type="button" data-bs-target="#catcarouselCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#catcarouselCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#catcarouselCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    <button type="button" data-bs-target="#catcarouselCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="./images/index-wwc1.png" width="100%" alt="plastic bottle">
       <div class="carousel-caption d-none d-md-block">
         <h5>What we collect</h5>
-        <p>Plastic bottles</p>
+        
       </div>
     </div>
     <div class="carousel-item">
       <img src="./images/index-wwc2.png" width="100%" alt="paper">
       <div class="carousel-caption d-none d-md-block">
         <h5>What we collect</h5>
-        <p>Recycle papers</p>
+        
       </div>
     </div>
     <div class="carousel-item">
       <img src="./images/index-wwc3.png" width="100%" alt="can">
       <div class="carousel-caption d-none d-md-block">
         <h5>What we collect</h5>
-        <p>Can</p>
+        
       </div>
     </div>
-    <div class="carousel-item">
-      <img src="./images/index-wwc4.png" width="100%" alt="glasses">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>What we collect</h5>
-        <p>Glass</p>
-      </div>
+    
+    </div>
     </div>
   </div>
-
   <button class="carousel-control-prev" type="button" data-bs-target="catcarouselCaptions" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
@@ -180,16 +179,16 @@
 
     <!-- Right -->
     <div>
-      <a href="" class="me-4 link-grayish">
+      <a href="https://www.facebook.com/" class="me-4 link-grayish">
         <i class="fab fa-facebook-f"></i>
       </a>
-      <a href="" class="me-4 link-grayish">
+      <a href="https://twitter.com/" class="me-4 link-grayish">
         <i class="fab fa-twitter"></i>
       </a>
-      <a href="" class="me-4 link-grayish">
+      <a href="https://www.instagram.com/" class="me-4 link-grayish">
         <i class="fab fa-instagram"></i>
       </a>
-      <a href="" class="me-4 link-grayish">
+      <a href="https://github.com/YangTing-work/ReCircle" class="me-4 link-grayish">
         <i class="fab fa-github"></i>
       </a>
     </div>
@@ -226,9 +225,7 @@
           <p>
             <a href="#!" class="text-reset">Can</a>
           </p>
-          <p>
-            <a href="#!" class="text-reset">Glass</a>
-          </p>
+          
           <p>
             <a href="#!" class="text-reset">Paper</a>
           </p>
@@ -242,16 +239,13 @@
             Useful links
           </h6>
           <p>
-            <a href="#!" class="text-reset">FAQs</a>
+            <a href="./faqs.php" class="text-reset">FAQs</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Rewards</a>
+            <a href="./rewards.php" class="text-reset">Rewards</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Register</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Help</a>
+            <a href="./register.php" class="text-reset">Register</a>
           </p>
         </div>
         <!-- Grid column -->
@@ -283,12 +277,8 @@
   <!-- Copyright -->
 </footer>
 <!-- Footer -->
-   
-
 
     <!-- bootstrap js link-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
-      
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 </html>
