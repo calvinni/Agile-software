@@ -163,16 +163,16 @@
 
     <!-- Right -->
     <div>
-      <a href="" class="me-4 link-grayish">
+      <a href="https://www.facebook.com/" class="me-4 link-grayish">
         <i class="fab fa-facebook-f"></i>
       </a>
-      <a href="" class="me-4 link-grayish">
+      <a href="https://twitter.com/" class="me-4 link-grayish">
         <i class="fab fa-twitter"></i>
       </a>
-      <a href="" class="me-4 link-grayish">
+      <a href="https://www.instagram.com/" class="me-4 link-grayish">
         <i class="fab fa-instagram"></i>
       </a>
-      <a href="" class="me-4 link-grayish">
+      <a href="https://github.com/YangTing-work/ReCircle" class="me-4 link-grayish">
         <i class="fab fa-github"></i>
       </a>
     </div>
@@ -209,9 +209,7 @@
           <p>
             <a href="#!" class="text-reset">Can</a>
           </p>
-          <p>
-            <a href="#!" class="text-reset">Glass</a>
-          </p>
+          
           <p>
             <a href="#!" class="text-reset">Paper</a>
           </p>
@@ -225,16 +223,13 @@
             Useful links
           </h6>
           <p>
-            <a href="#!" class="text-reset">FAQs</a>
+            <a href="./faqs.php" class="text-reset">FAQs</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Rewards</a>
+            <a href="./rewards.php" class="text-reset">Rewards</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Register</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Help</a>
+            <a href="./register.php" class="text-reset">Register</a>
           </p>
         </div>
         <!-- Grid column -->
@@ -266,13 +261,8 @@
   <!-- Copyright -->
 </footer>
 <!-- Footer -->
-   
-
 
     <!-- bootstrap js link-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
-      
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
-
 </html>
