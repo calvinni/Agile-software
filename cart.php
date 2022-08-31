@@ -187,18 +187,21 @@ if ($resultCheck > 0)
   <?php } 
         else
         {
-            echo '<p class="">The cart is empty</br>Please go to order and add some recycleables</p>';
-        }
-        ?>
-        <?php
-            if(isset($_GET['checkout']))
+          if(isset($_GET['checkout']))
             {
               if($_GET['checkout'] == "success")
               {
-                echo '<p class="">Order recived, we will see you soon!</p>';
+                echo '<h3 style="text-align: center;">Order recived, we will see you soon!</h3>';
               }
             }
-            else if(isset($_GET['editing']))
+            else
+            {
+              echo '<h3 style="text-align: center;">The cart is empty</br>Please go to order and add some recycleables</h3>';
+            }
+        }
+        ?>
+        <?php
+            if(isset($_GET['editing']))
             {
               if($_GET['editing'] == "success")
               {

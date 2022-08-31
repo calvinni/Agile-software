@@ -39,7 +39,7 @@ if(isset($_POST["checkout"])) //checking if came here from click submit
         }
         $Query = "INSERT INTO orderlist (order_id, name, email, mobile, notes, date, time) 
                     VALUES 
-                    ('$UserID', '$OrderName', '$Order_email', '$Order_phone', '$Order_notes', '$Order_date', '$Order_time');";  // Insert into table orderlist the booking variables
+                    ('$UserID', '$Order_name', '$Order_email', '$Order_phone', '$Order_notes', '$Order_date', '$Order_time');";  // Insert into table orderlist the booking variables
         mysqli_query($conn, $Query);
         if (mysqli_affected_rows($conn) < 1)    // if insert fail, return to cart
         {
