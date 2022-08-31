@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recircle Team 81</title>
+    <title>FAQs</title>
     <!--bootstrap css link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -13,9 +13,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" 
     integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/styling.css">
 </head>
-<!-- this page includes about us, how to recycle using our website, what we collect -->
+
+<!-- This is the FAQ page -->
 <body>
     <!-- nav bar -->
     <div class = "container-nav">
@@ -98,10 +99,92 @@
     </div>
     <!-- end of nav bar -->
 
-    <h1>FAQ</h1>
-   
+<!-- Main Content -->
+<section class="faqsection"> 
+    <h2 class="title">FAQs</h2>  
 
-<!-- Footer -->
+    <!-- First Question   -->
+    <div class ="faq">
+        <div class="qns"> 
+            <h3> What does our application do? </h3>
+            <svg width="15" height="10" viewbox=" 0 0 42 25">
+                <!-- path d: arrow shape -->
+                <path d="M3 3L20 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <div class="ans">
+            <p> ReCircle is a web application for the residents of Singapore to redeem supermarket vouchers 
+            for recycling and apply for recyclable pick up services by our Recircle volunteers. </p>
+        </div>
+    </div>
+
+    <!-- Second Question   -->
+    <div class ="faq">
+        <div class="qns"> 
+            <h3> How can I redeem the vouchers? </h3>
+            <svg width="15" height="10" viewbox=" 0 0 42 25">
+                <!-- path d: arrow shape -->
+                <path d="M3 3L20 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <div class="ans">
+            <p>After logging in, select the type of recyclables and the quantity you will be recycling. 
+            Check that the correct items have been added to your cart under the Cart page and fill out the form before checking out. 
+            Points will be updated once the recyclables have been collected and recycled into the recyling machine successfully. 
+            Vouchers can be redeemed if you have accumulated enough points. Click here to <a href= "login.php">Login<a>.
+            If you do not have an account yet, <a href="register.php">sign up now!</a></p>
+        </div>
+    </div>
+    
+
+    <!-- Third Question   -->
+    <div class ="faq">
+        <div class="qns"> 
+            <h3> Can vouchers be exchanged for cash? </h3>
+            <svg width="15" height="10" viewbox=" 0 0 42 25">
+                <!-- path d: arrow shape -->
+                <path d="M3 3L20 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <div class="ans">
+            <p>
+                This voucher is not refundable or exchangeable for cash and any unused balance will not be refunded. <br>
+                This voucher is not legal tender and cannot be deposited into any bank account. <br>
+            </p>
+        </div>
+    </div>
+
+    <!-- Fourth Question   -->
+    <div class ="faq">
+        <div class="qns"> 
+            <h3> I am facing a technical issue. What should I do?</h3>
+            <svg width="15" height="10" viewbox=" 0 0 42 25">
+                <!-- path d: arrow shape -->
+                <path d="M3 3L20 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <div class="ans">
+            <p>Check out the Locate Us page for a detailed list of contact information which includes our 24h hotline. </p>
+        </div>
+    </div>
+
+    <!-- Fifth Question   -->
+    <div class ="faq">
+        <div class="qns"> 
+            <h3>I misplaced my voucher. Can I redeem it again?</h3>
+            <svg width="15" height="10" viewbox=" 0 0 42 25">
+                <!-- path d: arrow shape -->
+                <path d="M3 3L20 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <div class="ans">
+            <p>Do drop us an email and we will get back to you within 2 working days.</p>
+        </div>
+    </div>                                
+</section>
+</body>
+
+<!-- Start of Footer -->
 <footer class="text-center text-lg-start bg-white text-muted">
   <!-- Section: Social media -->
   <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
@@ -110,7 +193,6 @@
       <span>Get connected with us on social networks:</span>
     </div>
     <!-- Left -->
-
     <!-- Right -->
     <div>
       <a href="https://www.facebook.com/" class="me-4 link-grayish">
@@ -129,7 +211,6 @@
     <!-- Right -->
   </section>
   <!-- Section: Social media -->
-
   <!-- Section: Links  -->
   <section class="">
     <div class="container text-center text-md-start mt-5">
@@ -142,11 +223,10 @@
           <i class="fa-solid fa-recycle"></i>ReCircle
           </h6>
           <p>
-            Let's start Recycle!
+            Let's start Recycling!
           </p>
         </div>
         <!-- Grid column -->
-
         <!-- Grid column -->
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
           <!-- Links -->
@@ -165,7 +245,6 @@
           </p>
         </div>
         <!-- Grid column -->
-
         <!-- Grid column -->
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
           <!-- Links -->
@@ -183,7 +262,6 @@
           </p>
         </div>
         <!-- Grid column -->
-
         <!-- Grid column -->
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
           <!-- Links -->
@@ -202,7 +280,6 @@
     </div>
   </section>
   <!-- Section: Links  -->
-
   <!-- Copyright -->
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
     © 2022 Copyright:
@@ -211,8 +288,8 @@
   <!-- Copyright -->
 </footer>
 <!-- Footer -->
-
     <!-- bootstrap js link-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-</body>
+    <script src="faq.js"></script>
+
 </html>
