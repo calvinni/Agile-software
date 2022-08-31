@@ -56,7 +56,7 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
                     mysqli_stmt_bind_param($stmt, "d", $UserID);
                     mysqli_stmt_execute($stmt); 
                     $result = mysqli_stmt_get_result($stmt); 
-                    $row = mysqli_fetch_assoc($result)
+                    $row = mysqli_fetch_assoc($result);
 
                     session_start();
                     session_destroy();                                  // To restart the session

@@ -150,36 +150,35 @@ if ($resultCheck > 0)
       <form id="resForm" action="checkout.php" method="POST" target="_self">
         <tr>
           <td><label for="res_name">Name</label></td>
-          <td><input type="text" required name="name" placeholder="John"/></td>
+          <td><input type="text" required id="name" name="name" placeholder="John"/></td>
         </tr>
         <tr>
           <td><label for="res_email">Email</label></td>
-          <td><input type="email" required name="email" placeholder="john@abc.com"/></td>
+          <td><input type="email" required id="email" name="email" placeholder="john@abc.com"/></td>
         </tr>
         <tr>
           <td><label for="res_tel">Mobile Number</label></td>
-          <td><input type="number" required name="tel" placeholder="12345678"/></td>
+          <td><input type="number" required id="tel" name="tel" placeholder="12345678"/></td>
         </tr>
         <tr>
           <td><label for="res_notes">Notes (if any)</label></td>
-          <td><input type="text" name="notes"/></td>
+          <td><input type="text" id="notes" name="notes"/></td>
         </tr>
 
           <?php
-          /* @TODO - MINIMUM DATE (TODAY) */
-          //$mindate = date("Y-m-d", strtotime("+2 days"));
           $mindate = date("Y-m-d");
           ?>
         <tr>
           <td><label>Reservation Date</label></td>
-          <td><input type="date" required id="res_date" name="date" min="<?=$mindate?>"></td>
+          <td><input type="date" required id="res_date" name="res_date" min="<?=$mindate?>"></td>
         </tr>
         <tr>
           <td><label>Booking Slot</label></td>
-          <td><select name="slot">
-            <option value="AM">AM</option>
-            <option value="PM">PM</option>
-          </select></td>
+          <td><select id="slot" name="slot">
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+              </select>
+          </td>
         </tr>  
       </table>
           <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
@@ -220,6 +219,10 @@ if ($resultCheck > 0)
               {
                 echo '<p class="">Deleting failed, Please try again</p>';
               }
+            }
+            else if(isset($_GET['fail']))
+            {
+              echo '<p class="">Order failed, Please check your internet connection</p>';
             }
             
         ?>
