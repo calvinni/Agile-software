@@ -4,6 +4,7 @@
 <?php
 require 'dbh.php';
 $UID = $_SESSION['userId'];
+$name = $_SESSION['userName'];
 $CART = "SELECT * from cart where cart_id = '$UID';";
 $Query = mysqli_query($conn, $CART);
 $resultCheck = mysqli_num_rows($Query);
@@ -105,14 +106,14 @@ $resultCheck = mysqli_num_rows($Query);
         </nav>
     </div>
     <!-- end of nav bar -->
-    <h1>Cart</h1>
+    <h1>History</h1>
 <?php 
 if ($resultCheck > 0)
 {
 ?>
   <div class="table_box table_min table_max">
     <div class = "container">
-        <h3>Your cart</h3>
+        <h3>Your orders, <?php echo $name; ?></h3>
         <table class ='table table-bordered'>
         <tr>
             <th>Recyclable</th>
@@ -141,46 +142,7 @@ if ($resultCheck > 0)
 <?php } ?>
     </table>
     <br>
-    <!-- RESERVATION FORM -->
-    <table class='table table-bordered'>
-      <h4>Collection booking</h4>
-      <form id="resForm" action="checkout.php" method="POST" target="_self">
-        <tr>
-          <td><label for="res_name">Name</label></td>
-          <td><input type="text" required id="name" name="name" placeholder="John"/></td>
-        </tr>
-        <tr>
-          <td><label for="res_email">Email</label></td>
-          <td><input type="email" required id="email" name="email" placeholder="john@abc.com"/></td>
-        </tr>
-        <tr>
-          <td><label for="res_tel">Mobile Number</label></td>
-          <td><input type="number" required id="tel" name="tel" placeholder="12345678"/></td>
-        </tr>
-        <tr>
-          <td><label for="res_notes">Notes (if any)</label></td>
-          <td><input type="text" id="notes" name="notes"/></td>
-        </tr>
-
-          <?php
-          $mindate = date("Y-m-d");
-          ?>
-        <tr>
-          <td><label>Reservation Date</label></td>
-          <td><input type="date" required id="res_date" name="res_date" min="<?=$mindate?>"></td>
-        </tr>
-        <tr>
-          <td><label>Booking Slot</label></td>
-          <td><select id="slot" name="slot">
-                <option value="AM">AM</option>
-                <option value="PM">PM</option>
-              </select>
-          </td>
-        </tr>  
-      </table>
-          <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
-          <button class="button button_min" type="submit" name="checkout">Checkout</button>
-        </form>
+    
   <?php } 
         else
         {
