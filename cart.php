@@ -4,7 +4,7 @@
 <?php
 require 'dbh.php';
 $UID = $_SESSION['userId'];
-$CART = "SELECT * from cart as C join users as U on C.cart_id = U.ID where C.cart_id = '$UID';";
+$CART = "SELECT * from cart where cart_id = '$UID';";
 $Query = mysqli_query($conn, $CART);
 $resultCheck = mysqli_num_rows($Query);
 
