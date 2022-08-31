@@ -10,7 +10,7 @@ if (isset($_POST["Editing"])) //checking if came here from click submit
     $New_OrderQuantity = $_POST['OrderQuantity'];
     $userID = $_POST['userID'];
 
-    $SQL = "UPDATE users SET OrderName = '$New_OrderName', OrderQuantity = '$New_OrderQuantity' WHERE ID = '$userID'";
+    $SQL = "UPDATE cart SET OrderName = '$New_OrderName', OrderQuantity = '$New_OrderQuantity' WHERE ID = '$userID'";
     $result = mysqli_query($conn, $SQL);
     if (mysqli_affected_rows($conn) > 0)
     {

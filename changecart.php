@@ -3,7 +3,7 @@ require 'dbh.php';  //using the $conn variable
 $Order_Name = $_POST['OrderName'];
 $Order_Quantity = $_POST['OrderQuantity'];
 $_ID = $_POST['I_D'];
-echo $_ID;
+
 ?>
 
 <?php
