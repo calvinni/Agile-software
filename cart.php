@@ -162,7 +162,7 @@ if ($resultCheck > 0)
         </tr>
         <tr>
           <td><label for="res_notes">Notes (if any)</label></td>
-          <td><input type="text" name="notes" value="Testing"/></td>
+          <td><input type="text" name="notes"/></td>
         </tr>
 
           <?php
