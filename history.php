@@ -16,7 +16,7 @@ $sql_orderid = "SELECT * FROM orderlist WHERE cart_id=?"; // finds ID from order
   }
   else
   {
-    mysqli_stmt_bind_param($stmt, "d", $UserID);
+    mysqli_stmt_bind_param($stmt, "d", $UID);
     mysqli_stmt_execute($stmt); 
     $order_list = mysqli_stmt_get_result($stmt); 
     $list = mysqli_fetch_assoc($order_list);
