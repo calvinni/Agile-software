@@ -35,7 +35,7 @@ if(isset($_POST["checkout"])) //checking if came here from click submit
             mysqli_stmt_bind_param($stmt, "d", $UserID);
             mysqli_stmt_execute($stmt); 
             $order_list = mysqli_stmt_get_result($stmt); 
-            $list = mysqli_fetch_assoc($order_list)
+            $list = mysqli_fetch_assoc($order_list);
             $list_id = $list['ID']; 
 
             $sql = "SELECT * FROM cart WHERE cart_id=?"; // Find all in the cart for this user
