@@ -5,9 +5,12 @@
 require 'dbh.php';
 $UID = $_SESSION['userId'];
 $name = $_SESSION['userName'];
-$CART = "SELECT * from cart where cart_id = '$UID';";
-$Query = mysqli_query($conn, $CART);
-$resultCheck = mysqli_num_rows($Query);
+//$role = $_SESSION['userRole'];
+$sql_list = "SELECT * from orderlist where order_id = '$UID';";
+$sql_items = "SELECT * from orderitems where order_id = '$UID';";
+$list = mysqli_query($conn, $sql_list);
+$items = mysqli_query($conn, $sql_items);
+$resultCheck = mysqli_num_rows($list);
 
 ?>
 <head>
@@ -23,6 +26,53 @@ $resultCheck = mysqli_num_rows($Query);
     integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
+   <style>
+          .dropbtn {
+            background-color: #006633;
+            width:100%;
+            color: white;
+            padding: 16px;
+            font-size: 30px;
+            text-align: left;
+            border: none;
+            cursor: pointer;
+            font-family: "Quicksand", sans-serif;
+            }
+
+          .dropbtn:hover, .dropbtn:focus {
+            background-color: #00994C;
+            }
+
+          .dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            padding: 2px;
+            }
+
+          .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            font-family: "Quicksand", sans-serif;
+            font-size: 25px;
+            }
+
+          .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            }
+
+          .dropdown a:hover {background-color: #ddd;}
+
+          .show {display: block;}
+   </style> 
 </head>
 
 <body>
@@ -116,27 +166,52 @@ if ($resultCheck > 0)
         <h3>Your orders, <?php echo $name; ?></h3>
         <table class ='table table-bordered'>
         <tr>
-            <th>Recyclable</th>
-            <th>Quantity(In kg)</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>ID</th>
+            <th>Order_ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Notes</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Status</th>
         </tr>
 <?php 
-    While ( $CART_DETAILS = mysqli_fetch_assoc($Query)  ) 
+    While ( $LIST_DETAILS = mysqli_fetch_assoc($list)  ) 
     { ?>  
+        <br>
         <tr>
-          <form id="editForm" action="changecart.php" method="POST" target="_self">
-            <td><?php echo $CART_DETAILS['OrderName']; ?></td>
-            <td><?php echo $CART_DETAILS['OrderQuantity']; ?></td>
+          <form id="editForm" action="" method="POST" target="_self">
+            <td><?php echo $LIST_DETAILS['ID']; ?></td>
+            <td><?php echo $LIST_DETAILS['order_id']; ?></td>
+            <td><?php echo $LIST_DETAILS['name']; ?></td>
+            <td><?php echo $LIST_DETAILS['email']; ?></td>
+            <td><?php echo $LIST_DETAILS['mobile']; ?></td>
+            <td><?php echo $LIST_DETAILS['notes']; ?></td>
+            <td><?php echo $LIST_DETAILS['date']; ?></td>
+            <td><?php echo $LIST_DETAILS['time']; ?></td>
+            <td><?php echo $LIST_DETAILS['status']; ?></td>
             <td>
-                <button class="button button_max" type="submit" name="edit">Edit</button>
+            <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn"><b>items</b></button>
+                        <div id="myDropdown" class="dropdown-content">
+                        <table>
+                          <tr>
+                            <th>OrderName</th>
+                            <th>OrderQuantity</th>
+                        </tr>
+                        <tr>
+                        <?php 
+                            While ( $ITEMS_DETAILS = mysqli_fetch_assoc($items)  ) 
+                            { ?>
+                              <td><?php echo $ITEMS_DETAILS['OrderName']; ?></td>
+                              <td><?php echo $ITEMS_DETAILS['OrderQuantity']; ?></td>
+                        <?php } ?>
+                        </tr>
+                          </table>
+                        </div>
+                    </div>
             </td>
-            <td>
-                <button class="button button_max" type="submit" name="delete">Delete</button>
-            </td>
-                <input type="hidden" id="OrderName" name="OrderName" value="<?php echo $CART_DETAILS['OrderName']; ?>">
-                <input type="hidden" id="OrderQuantity" name="OrderQuantity" value="<?php echo $CART_DETAILS['OrderQuantity']; ?>">
-                <input type="hidden" id="I_D" name="I_D" value="<?php echo $CART_DETAILS['ID']; ?>">
           </form>
         </tr>
 <?php } ?>
@@ -146,50 +221,28 @@ if ($resultCheck > 0)
   <?php } 
         else
         {
-          if(isset($_GET['checkout']))
-            {
-              if($_GET['checkout'] == "success")
-              {
-                echo '<h3 style="text-align: center;">Order recived, we will see you soon!</h3>';
-              }
-            }
-            else
-            {
-              echo '<h3 style="text-align: center;">The cart is empty</br>Please go to order and add some recycleables</h3>';
-            }
+          echo '<h3 style="text-align: center;">Your history is empty</br>Please go to order and checkout some recycleables!</h3>';
         }
         ?>
         <?php
-            if(isset($_GET['editing']))
-            {
-              if($_GET['editing'] == "success")
-              {
-                echo '<p class="">Edit recived</p>';
-              }
-              else if($_GET['editing'] == "failure")
-              {
-                echo '<p class="">Editing failed, Please try again</p>';
-              }
-            }
-            else if(isset($_GET['delete']))
-            {
-              if($_GET['delete'] == "success")
-              {
-                echo '<p class="">Delete successful!</p>';
-              }
-              else if($_GET['delete'] == "failure")
-              {
-                echo '<p class="">Deleting failed, Please try again</p>';
-              }
-            }
-            else if(isset($_GET['fail']))
-            {
-              echo '<p class="">Order failed, Please check your internet connection</p>';
-            }
-            
+            // if(isset($_GET['editing']))
+            // {
+            //   if($_GET['editing'] == "success")
+            //   {
+            //     echo '<p class="">Edit recived</p>';
+            //   }
+            // }
         ?>
     </div>
   </div>
+  <script>
+      /* When the user clicks on the button, 
+      toggle between hiding and showing the dropdown content */
+      function myFunction() 
+      {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+</script>
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-white text-muted">
   <!-- Section: Social media -->

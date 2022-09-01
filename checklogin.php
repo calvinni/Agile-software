@@ -43,6 +43,7 @@ if(isset($_POST['login_submit'])) //checking if user got here from submit button
                     session_start();
                     $_SESSION['userId'] = $row['ID'];
                     $_SESSION['userName'] = $row['Username'];
+                    $_SESSION['userRole'] = $row['Role'];
                     $_SESSION['loggedin'] = true;
                     header("Location: ../index.php?login=success");
                     exit();
