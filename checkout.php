@@ -55,7 +55,8 @@ if(isset($_POST["checkout"])) //checking if came here from click submit
                 {
                     $Cart_Name = $row['OrderName'];                   
                     $Cart_Quantity = $row['OrderQuantity'];
-                    $sql_item = "INSERT INTO orderitems (order_id, OrderName, OrderQuantity) VALUES ('$list_id', '$Cart_Name', '$Cart_Quantity');";
+                    $new_id = $UserID + 1;
+                    $sql_item = "INSERT INTO orderitems (order_id, cart_id, OrderName, OrderQuantity) VALUES ('$list_id', '$new_id', '$Cart_Name', '$Cart_Quantity');";
                     mysqli_query($conn, $sql_item);
                     if (mysqli_affected_rows($conn) < 1)    // if insert fail, return to cart
                     {
