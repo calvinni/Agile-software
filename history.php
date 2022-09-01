@@ -6,11 +6,30 @@ require 'dbh.php';
 $UID = $_SESSION['userId'];
 $name = $_SESSION['userName'];
 //$role = $_SESSION['userRole'];
-$sql_list = "SELECT * from orderlist where order_id = '$UID';";
-$sql_items = "SELECT * from orderitems where order_id = '$UID';";
-$list = mysqli_query($conn, $sql_list);
-$items = mysqli_query($conn, $sql_items);
-$resultCheck = mysqli_num_rows($list);
+
+$sql_orderid = "SELECT * FROM orderlist WHERE cart_id=?"; // finds ID from orderlist to insert into orderitems
+  $stmt = mysqli_stmt_init($conn);
+  if (!mysqli_stmt_prepare($stmt, $sql_orderid))
+  {
+    header("Location: ../history.php?error=sqlerror"); //checks if statement prepare failed
+    exit();
+  }
+  else
+  {
+    mysqli_stmt_bind_param($stmt, "d", $UserID);
+    mysqli_stmt_execute($stmt); 
+    $order_list = mysqli_stmt_get_result($stmt); 
+    $list = mysqli_fetch_assoc($order_list)
+    $list_id = $list['ID']; 
+    
+    $sql_list = "SELECT * from orderlist where cart_id = '$UID';";
+    $sql_items = "SELECT * from orderitems where order_id = '$list_id';";
+
+    $list = mysqli_query($conn, $sql_list);
+    $items = mysqli_query($conn, $sql_items);
+
+    $resultCheck = mysqli_num_rows($list);
+  }
 
 ?>
 <head>
@@ -183,7 +202,7 @@ if ($resultCheck > 0)
         <tr>
           <form id="editForm" action="" method="POST" target="_self">
             <td><?php echo $LIST_DETAILS['ID']; ?></td>
-            <td><?php echo $LIST_DETAILS['order_id']; ?></td>
+            <td><?php echo $LIST_DETAILS['cart_id']; ?></td>
             <td><?php echo $LIST_DETAILS['name']; ?></td>
             <td><?php echo $LIST_DETAILS['email']; ?></td>
             <td><?php echo $LIST_DETAILS['mobile']; ?></td>
@@ -191,33 +210,30 @@ if ($resultCheck > 0)
             <td><?php echo $LIST_DETAILS['date']; ?></td>
             <td><?php echo $LIST_DETAILS['time']; ?></td>
             <td><?php echo $LIST_DETAILS['status']; ?></td>
-            <td>
-            <div class="dropdown">
-                        <button onclick="myFunction()" class="dropbtn"><b>items</b></button>
-                        <div id="myDropdown" class="dropdown-content">
-                        <table>
-                          <tr>
-                            <th>OrderName</th>
-                            <th>OrderQuantity</th>
-                        </tr>
-                        <tr>
-                        <?php 
-                            While ( $ITEMS_DETAILS = mysqli_fetch_assoc($items)  ) 
-                            { ?>
-                              <td><?php echo $ITEMS_DETAILS['OrderName']; ?></td>
-                              <td><?php echo $ITEMS_DETAILS['OrderQuantity']; ?></td>
-                        <?php } ?>
-                        </tr>
-                          </table>
-                        </div>
-                    </div>
-            </td>
           </form>
         </tr>
 <?php } ?>
     </table>
+
     <br>
-    
+
+    <table class ='table table-bordered'>
+      <tr>
+        <th>Item ID</th>
+        <th>OrderName</th>
+        <th>OrderQuantity</th>
+      </tr>
+      <tr>
+      <?php 
+    While ( $ITEMS_DETAILS = mysqli_fetch_assoc($items)  ) 
+        { ?>
+          <td><?php echo $ITEMS_DETAILS['order_id']; ?></td>
+          <td><?php echo $ITEMS_DETAILS['OrderName']; ?></td>
+          <td><?php echo $ITEMS_DETAILS['OrderQuantity']; ?></td>
+  <?php } ?>
+      </tr>
+    </table>
+
   <?php } 
         else
         {
@@ -225,13 +241,13 @@ if ($resultCheck > 0)
         }
         ?>
         <?php
-            // if(isset($_GET['editing']))
-            // {
-            //   if($_GET['editing'] == "success")
-            //   {
-            //     echo '<p class="">Edit recived</p>';
-            //   }
-            // }
+            if(isset($_GET['error']))
+            {
+              if($_GET['error'] == "sqlerror")
+              {
+                echo '<p class="">Error occured, please try again</p>';
+              }
+            }
         ?>
     </div>
   </div>
