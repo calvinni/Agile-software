@@ -183,11 +183,11 @@ if ($resultCheck > 0)
   <div class="table_box table_min table_max">
     <div class = "container">
         <h3>Your orders, <?php echo $name; ?></h3>
-        <p>This table contains info</p>
+        <p>This table contains info about your past checkouts</p>
+        <p>Below table displays all orders made</p>
         <table class ='table table-bordered'>
         <tr>
-            <th>ID</th>
-            <th>Order_ID</th>
+            <th>Order ID</th>
             <th>Name</th>
             <th>Email</th>
             <th>Mobile</th>
@@ -199,11 +199,9 @@ if ($resultCheck > 0)
 <?php 
     While ( $LIST_DETAILS = mysqli_fetch_assoc($list)  ) 
     { ?>  
-        <br>
         <tr>
           <form id="editForm" action="" method="POST" target="_self">
             <td><?php echo $LIST_DETAILS['ID']; ?></td>
-            <td><?php echo $LIST_DETAILS['cart_id']; ?></td>
             <td><?php echo $LIST_DETAILS['name']; ?></td>
             <td><?php echo $LIST_DETAILS['email']; ?></td>
             <td><?php echo $LIST_DETAILS['mobile']; ?></td>
@@ -217,22 +215,23 @@ if ($resultCheck > 0)
     </table>
 
     <br>
-
+    
+    <p>Below table shows the items allocated to each order, with Item ID linking to Order ID in the table above</p>
     <table class ='table table-bordered'>
       <tr>
         <th>Item ID</th>
         <th>OrderName</th>
         <th>OrderQuantity</th>
       </tr>
-      <tr>
       <?php 
-    While ( $ITEMS_DETAILS = mysqli_fetch_assoc($items)  ) 
+        While ( $ITEMS_DETAILS = mysqli_fetch_assoc($items)  ) 
         { ?>
+        <tr>
           <td><?php echo $ITEMS_DETAILS['order_id']; ?></td>
           <td><?php echo $ITEMS_DETAILS['OrderName']; ?></td>
           <td><?php echo $ITEMS_DETAILS['OrderQuantity']; ?></td>
+        </tr>
   <?php } ?>
-      </tr>
     </table>
 
   <?php } 
