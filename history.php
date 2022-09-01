@@ -6,31 +6,15 @@ require 'dbh.php';
 $UID = $_SESSION['userId'];
 $name = $_SESSION['userName'];
 //$role = $_SESSION['userRole'];
-
-$sql_orderid = "SELECT * FROM orderlist WHERE cart_id=?"; // finds ID from orderlist to insert into orderitems
-  $stmt = mysqli_stmt_init($conn);
-  if (!mysqli_stmt_prepare($stmt, $sql_orderid))
-  {
-    header("Location: ../history.php?error=sqlerror"); //checks if statement prepare failed
-    exit();
-  }
-  else
-  {
-    mysqli_stmt_bind_param($stmt, "d", $UID);
-    mysqli_stmt_execute($stmt); 
-    $order_list = mysqli_stmt_get_result($stmt); 
-    $list = mysqli_fetch_assoc($order_list);
-    $list_id = $list['ID']; 
-    $new_id = $list_id + 1;
+$new_id = $UID + 1;
     
-    $sql_list = "SELECT * from orderlist where cart_id = '$UID';";
-    $sql_items = "SELECT * from orderitems where cart_id = '$new_id';";
+$sql_list = "SELECT * from orderlist where cart_id = '$UID';";
+$sql_items = "SELECT * from orderitems where cart_id = '$new_id';";
 
-    $list = mysqli_query($conn, $sql_list);
-    $items = mysqli_query($conn, $sql_items);
+$list = mysqli_query($conn, $sql_list);
+$items = mysqli_query($conn, $sql_items);
 
-    $resultCheck = mysqli_num_rows($list);
-  }
+$resultCheck = mysqli_num_rows($list);
 
 ?>
 <head>
@@ -205,14 +189,7 @@ if ($resultCheck > 0)
         ?>
     </div>
   </div>
-  <script>
-      /* When the user clicks on the button, 
-      toggle between hiding and showing the dropdown content */
-      function myFunction() 
-      {
-        document.getElementById("myDropdown").classList.toggle("show");
-      }
-</script>
+  
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-white text-muted">
   <!-- Section: Social media -->
