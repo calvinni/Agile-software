@@ -112,6 +112,9 @@ https://www.w3schools.com/howto/howto_css_dropdown.asp -->
                             <a class="nav-link" href="./locateUs.php">Locate Us</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="./startRecycle.php">Start Recycle!</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="./faqs.php">FAQs</a>
                         </li>
                         <li class="nav-item">
@@ -129,6 +132,9 @@ https://www.w3schools.com/howto/howto_css_dropdown.asp -->
                                       </li>
                                       <li class="nav-item">
                                           <a class="nav-link" href="./cart.php">Cart</a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a class="nav-link" href="./history.php">History</a>
                                       </li>';
                              }
                         ?>

@@ -35,6 +35,9 @@
                             <a class="nav-link" href="./locateUs.php">Locate Us</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="./startRecycle.php">Start Recycle!</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="./faqs.php">FAQs</a>
                         </li>
                         <li class="nav-item">

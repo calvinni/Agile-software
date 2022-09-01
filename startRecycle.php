@@ -1,14 +1,5 @@
-<?php session_start(); ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<?php
-require 'dbh.php';
-$UID = $_SESSION['userId'];
-$CART = "SELECT * from cart where cart_id = '$UID';";
-$Query = mysqli_query($conn, $CART);
-$resultCheck = mysqli_num_rows($Query);
-
-?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,7 +14,7 @@ $resultCheck = mysqli_num_rows($Query);
     <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
 </head>
-
+<!-- this page includes about us, how to recycle using our website, what we collect -->
 <body>
     <!-- nav bar -->
     <div class = "container-nav">
@@ -111,129 +102,55 @@ $resultCheck = mysqli_num_rows($Query);
         </nav>
     </div>
     <!-- end of nav bar -->
-    <h1>Cart</h1>
-<?php 
-if ($resultCheck > 0)
-{
-?>
-  <div class="table_box table_min table_max">
-    <div class = "container">
-        <h3>Your cart</h3>
-        <table class ='table table-bordered'>
-        <tr>
-            <th>Recyclable</th>
-            <th>Quantity(In kg)</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-<?php 
-    While ( $CART_DETAILS = mysqli_fetch_assoc($Query)  ) 
-    { ?>  
-        <tr>
-          <form id="editForm" action="changecart.php" method="POST" target="_self">
-            <td><?php echo $CART_DETAILS['OrderName']; ?></td>
-            <td><?php echo $CART_DETAILS['OrderQuantity']; ?></td>
-            <td>
-                <button class="button button_max" type="submit" name="edit">Edit</button>
-            </td>
-            <td>
-                <button class="button button_max" type="submit" name="delete">Delete</button>
-            </td>
-                <input type="hidden" id="OrderName" name="OrderName" value="<?php echo $CART_DETAILS['OrderName']; ?>">
-                <input type="hidden" id="OrderQuantity" name="OrderQuantity" value="<?php echo $CART_DETAILS['OrderQuantity']; ?>">
-                <input type="hidden" id="I_D" name="I_D" value="<?php echo $CART_DETAILS['ID']; ?>">
-          </form>
-        </tr>
-<?php } ?>
-    </table>
-    <br>
-    <!-- RESERVATION FORM -->
-    <table class='table table-bordered'>
-      <h4>Collection booking</h4>
-      <form id="resForm" action="checkout.php" method="POST" target="_self">
-        <tr>
-          <td><label for="res_name">Name</label></td>
-          <td><input type="text" required id="name" name="name" placeholder="John"/></td>
-        </tr>
-        <tr>
-          <td><label for="res_email">Email</label></td>
-          <td><input type="email" required id="email" name="email" placeholder="john@abc.com"/></td>
-        </tr>
-        <tr>
-          <td><label for="res_tel">Mobile Number</label></td>
-          <td><input type="number" required id="tel" name="tel" placeholder="12345678"/></td>
-        </tr>
-        <tr>
-          <td><label for="res_notes">Notes (if any)</label></td>
-          <td><input type="text" id="notes" name="notes"/></td>
-        </tr>
-
-          <?php
-          $mindate = date("Y-m-d");
-          ?>
-        <tr>
-          <td><label>Reservation Date</label></td>
-          <td><input type="date" required id="res_date" name="res_date" min="<?=$mindate?>"></td>
-        </tr>
-        <tr>
-          <td><label>Booking Slot</label></td>
-          <td><select id="slot" name="slot">
-                <option value="AM">AM</option>
-                <option value="PM">PM</option>
-              </select>
-          </td>
-        </tr>  
-      </table>
-          <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
-          <button class="button button_min" type="submit" name="checkout">Checkout</button>
-        </form>
-  <?php } 
-        else
-        {
-          if(isset($_GET['checkout']))
-            {
-              if($_GET['checkout'] == "success")
-              {
-                echo '<h3 style="text-align: center;">Order recived, we will see you soon!</h3>';
-              }
-            }
-            else
-            {
-              echo '<h3 style="text-align: center;">The cart is empty</br>Please go to order and add some recycleables</h3>';
-            }
-        }
-        ?>
-        <?php
-            if(isset($_GET['editing']))
-            {
-              if($_GET['editing'] == "success")
-              {
-                echo '<p class="">Edit recived</p>';
-              }
-              else if($_GET['editing'] == "failure")
-              {
-                echo '<p class="">Editing failed, Please try again</p>';
-              }
-            }
-            else if(isset($_GET['delete']))
-            {
-              if($_GET['delete'] == "success")
-              {
-                echo '<p class="">Delete successful!</p>';
-              }
-              else if($_GET['delete'] == "failure")
-              {
-                echo '<p class="">Deleting failed, Please try again</p>';
-              }
-            }
-            else if(isset($_GET['fail']))
-            {
-              echo '<p class="">Order failed, Please check your internet connection</p>';
-            }
-            
-        ?>
+    <!--recyable items-->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <form action="#" method="post">
+                    <div class="card">
+                        <img src="./images/index-wwc1.png" class="card-img-top" >
+                        <div class="card-body text-center" >
+                            <h5 class="card-title">Plastic bottles</h5>
+                            <p class="card-text">1kg of bottles</p>
+                            <!-- <a href="#" class="btn btn-primary">Go somewher</a> -->
+                            <button type="submit" name="add_to_cart" class="btn btn-info" color="#2D3D61">Add to cart</button>
+                            <input type="hidden" name="Item_name" value="plastic_bottle">
+                            <input type="hidden" name="Weight" value="1">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4">
+                <form action="#" method="post">
+                    <div class="card" >
+                        <img src="./images/index-wwc2.png" class="card-img-top" >
+                        <div class="card-body text-center" >
+                            <h5 class="card-title">Papers</h5>
+                            <p class="card-text">1kg of papers</p>
+                            <button type="submit" name="add_to_cart" class="btn btn-info" color="#2D3D61">Add to cart</button>
+                            <input type="hidden" name="Item_name" value="paper">
+                            <input type="hidden" name="Weight" value="1">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4">
+                <form action="#" method="post">
+                    <div class="card" >
+                        <img src="./images/index-wwc3.png" class="card-img-top" >
+                        <div class="card-body text-center" >
+                            <h5 class="card-title">Cans</h5>
+                            <p class="card-text">1kg of cans</p>
+                            <button type="submit" name="add_to_cart" class="btn btn-info" color="#2D3D61">Add to cart</button>
+                            <input type="hidden" name="Item_name" value="can">
+                            <input type="hidden" name="Weight" value="1">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
+</body>
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-white text-muted">
   <!-- Section: Social media -->
@@ -243,7 +160,6 @@ if ($resultCheck > 0)
       <span>Get connected with us on social networks:</span>
     </div>
     <!-- Left -->
-
     <!-- Right -->
     <div>
       <a href="https://www.facebook.com/" class="me-4 link-grayish">
@@ -262,7 +178,6 @@ if ($resultCheck > 0)
     <!-- Right -->
   </section>
   <!-- Section: Social media -->
-
   <!-- Section: Links  -->
   <section class="">
     <div class="container text-center text-md-start mt-5">
@@ -279,7 +194,6 @@ if ($resultCheck > 0)
           </p>
         </div>
         <!-- Grid column -->
-
         <!-- Grid column -->
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
           <!-- Links -->
@@ -298,7 +212,6 @@ if ($resultCheck > 0)
           </p>
         </div>
         <!-- Grid column -->
-
         <!-- Grid column -->
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
           <!-- Links -->
@@ -316,7 +229,6 @@ if ($resultCheck > 0)
           </p>
         </div>
         <!-- Grid column -->
-
         <!-- Grid column -->
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
           <!-- Links -->
@@ -335,7 +247,6 @@ if ($resultCheck > 0)
     </div>
   </section>
   <!-- Section: Links  -->
-
   <!-- Copyright -->
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
     © 2022 Copyright:
@@ -344,7 +255,7 @@ if ($resultCheck > 0)
   <!-- Copyright -->
 </footer>
 <!-- Footer -->
-
+   
     <!-- bootstrap js link-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
