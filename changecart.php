@@ -126,9 +126,6 @@ if (isset($_POST["edit"])) //checking if came here from click submit
                 <input id="OrderQuantity" name="OrderQuantity" type="number" value="<?php echo $Order_Quantity; ?>" required>
                 <input type="hidden" id="userID" name="userID" value="<?php echo $_ID; ?>">
             <p></p>
-            <form action="cart.php">
-                <button type="submit">Back</button>
-            </form>
             <button type="submit" name="Editing">Edit</button>
         </form>
         <!-- End Of Edit form -->
