@@ -19,7 +19,7 @@ $sql_orderid = "SELECT * FROM orderlist WHERE cart_id=?"; // finds ID from order
     mysqli_stmt_bind_param($stmt, "d", $UserID);
     mysqli_stmt_execute($stmt); 
     $order_list = mysqli_stmt_get_result($stmt); 
-    $list = mysqli_fetch_assoc($order_list)
+    $list = mysqli_fetch_assoc($order_list);
     $list_id = $list['ID']; 
     
     $sql_list = "SELECT * from orderlist where cart_id = '$UID';";
@@ -183,6 +183,7 @@ if ($resultCheck > 0)
   <div class="table_box table_min table_max">
     <div class = "container">
         <h3>Your orders, <?php echo $name; ?></h3>
+        <p>This table contains info</p>
         <table class ='table table-bordered'>
         <tr>
             <th>ID</th>
