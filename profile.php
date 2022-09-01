@@ -56,13 +56,13 @@ $user = mysqli_fetch_assoc($Id);
                         <?php 
                              if(isset($_SESSION['userId']))
                              {
-                                echo '<li class="nav-link">
+                                echo '<li class="nav-item">
                                           <a class="nav-link" href="./profile.php">View Profile</a>
                                       </li>
-                                      <li class="nav-link">
+                                      <li class="nav-item">
                                           <a class="nav-link" href="./order.php">Order</a>
                                       </li>
-                                      <li class="nav-link">
+                                      <li class="nav-item">
                                           <a class="nav-link" href="./cart.php">Cart</a>
                                       </li>';
                              }
