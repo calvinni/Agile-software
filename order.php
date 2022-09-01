@@ -5,7 +5,7 @@
 
 require 'dbh.php';
 $UID = $_SESSION['userId'];
-$CART = "SELECT * from cart as C join users as U on C.cart_id = U.ID where C.cart_id = '$UID';";
+$CART = "SELECT * from cart where cart_id = '$UID';";
 $Query = mysqli_query($conn, $CART);
 $resultCheck = mysqli_num_rows($Query);
 
@@ -128,7 +128,8 @@ if (isset($_POST['Ordering']))
                 <option value="glass">Glass</option>
             </select>
             <p>
-            <p>Key in the quantity in KG that need to be added.</p>
+            <p>Key in the quantity in KG that need to be added</p>
+            <p>(Any order below 1kg, please round up to 1kg)</p>
                 <input id="OrderQuantity" name="OrderQuantity" placeholder="Quantity in KG" type="number" required>
             <p></p>
             <button type="submit" name="Ordering">Add to cart</button>

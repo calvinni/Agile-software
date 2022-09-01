@@ -21,9 +21,10 @@ $sql_orderid = "SELECT * FROM orderlist WHERE cart_id=?"; // finds ID from order
     $order_list = mysqli_stmt_get_result($stmt); 
     $list = mysqli_fetch_assoc($order_list);
     $list_id = $list['ID']; 
+    $new_id = $list_id + 1;
     
     $sql_list = "SELECT * from orderlist where cart_id = '$UID';";
-    $sql_items = "SELECT * from orderitems where order_id = '$list_id';";
+    $sql_items = "SELECT * from orderitems where cart_id = '$new_id';";
 
     $list = mysqli_query($conn, $sql_list);
     $items = mysqli_query($conn, $sql_items);
@@ -45,53 +46,6 @@ $sql_orderid = "SELECT * FROM orderlist WHERE cart_id=?"; // finds ID from order
     integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
-   <style>
-          .dropbtn {
-            background-color: #006633;
-            width:100%;
-            color: white;
-            padding: 16px;
-            font-size: 30px;
-            text-align: left;
-            border: none;
-            cursor: pointer;
-            font-family: "Quicksand", sans-serif;
-            }
-
-          .dropbtn:hover, .dropbtn:focus {
-            background-color: #00994C;
-            }
-
-          .dropdown {
-            position: relative;
-            display: inline-block;
-            width: 100%;
-            padding: 2px;
-            }
-
-          .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f1f1f1;
-            min-width: 160px;
-            overflow: auto;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            font-family: "Quicksand", sans-serif;
-            font-size: 25px;
-            }
-
-          .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            }
-
-          .dropdown a:hover {background-color: #ddd;}
-
-          .show {display: block;}
-   </style> 
 </head>
 
 <body>

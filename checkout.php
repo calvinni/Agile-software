@@ -23,7 +23,7 @@ if(isset($_POST["checkout"])) //checking if came here from click submit
     }
     else
     {
-        $sql_orderid = "SELECT * FROM orderlist WHERE cart_id=?"; // finds ID from orderlist to insert into orderitems
+        $sql_orderid = "SELECT * FROM orderlist WHERE cart_id=? ORDER BY ID DESC"; // finds ID from orderlist to insert into orderlist
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql_orderid))
         {
