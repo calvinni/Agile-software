@@ -26,7 +26,7 @@ if (isset($_POST["signup_submit"])) //checking if came here from click submit
         }
         else //checking if mobile already exists in database's 'users' table
         {
-            mysqli_stmt_bind_param($stmt, "d", $mobile);  //add s if more than one string; one string because emailUsers=? has one '?'. Binding email to stmt
+            mysqli_stmt_bind_param($stmt, "i", $mobile);  //add s if more than one string; one string because mobile=? has one '?'. Binding email to stmt
             mysqli_stmt_execute($stmt);                   
             mysqli_stmt_store_result($stmt); //stores the result we got from database in stmt
             $resultCheck = mysqli_stmt_num_rows($stmt);    //nb of rows matched, should be 0 or 1
