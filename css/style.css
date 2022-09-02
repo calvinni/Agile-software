@@ -8,15 +8,15 @@
     {
         min-width: 300px;
     }
-.tr
+tr
     {
-        min-width: 50px;
-        max-width: 100px;
+        min-width: 100px;
+        max-width: 200px;
     }
-.th
+th
     {
-        min-width: 50px;
-        max-width: 100px;
+        min-width: 100px;
+        max-width: 200px;
     }
 .wrapper 
     {
