@@ -67,7 +67,7 @@ if(isset($_POST["checkout"])) //checking if came here from click submit
                     $Rounded_Quantity = round($Cart_Quantity);
                     $new_points = $Rounded_Quantity * 500;
                     $sql_points = "UPDATE users SET Points = Points + '$new_points' WHERE ID = '$UserID'";
-                    $points = mysqli_query($conn, $SQL);
+                    $points = mysqli_query($conn, $sql_points);
                     if (mysqli_affected_rows($conn) < 1)    // if insert fail, return to cart
                     {
                         header("Location: ../cart.php?fail=points");
