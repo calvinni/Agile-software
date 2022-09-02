@@ -14,14 +14,13 @@
     }
 th, td
     {
-        width: 20%;
         min-width: 100px;
-        max-width: 150px;
+        max-width: 200px;
     }
 .wrapper 
     {
-        min-width: 500px;
-        max-width: 500px;
+        min-width: 20%;
+        max-width: 20%;
         margin: 0 auto;
     }
 .button
@@ -37,7 +36,8 @@ th, td
     {
         min-width: 60px;
     }
-.left
+.left_absolute
     {
+        position: absolute;
         left: -20%;
     }
