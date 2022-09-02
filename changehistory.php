@@ -114,7 +114,6 @@ require 'dbh.php';  //using the $conn variable
                                 <li><a class="dropdown-item" href="./register.php">Register</a></li>
                             </ul>
                         </li>  
-                        
                         <?php 
                                 if(isset($_SESSION['userId']))
                                 {
@@ -124,11 +123,7 @@ require 'dbh.php';  //using the $conn variable
                                           </li>';
                                 }
                         ?>
-                      
-                      </li>
                     </ul>
-
-                    
                 </div>
             </div>
         </nav>
