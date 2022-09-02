@@ -138,12 +138,13 @@ require 'dbh.php';  //using the $conn variable
 if (isset($_POST["List_edit"])) 
 {
 ?>
+<h1>Edit Booking</h1>
 <div class="table_box table_min table_max">
     <div class = "container">
         <!-- RESERVATION FORM -->
         <table class='table table-bordered'>
         <form id="resForm" action="edithistory.php" method="POST" target="_self">
-            <h4>Booking edit</h4>
+            <h4>Edit your booking here</h4>
             <tr>
             <td><label for="res_name">Name</label></td>
             <td><input type="text" required id="name" name="name" value="<?php echo $History_name; ?>"/></td>
@@ -154,7 +155,7 @@ if (isset($_POST["List_edit"]))
             </tr>
             <tr>
             <td><label for="res_tel">Mobile Number</label></td>
-            <td><input type="number" required id="tel" name="tel" value="<?php echo $H_mobile; ?>"/></td>
+            <td><input type="number" required id="tel" name="tel" value="<?php echo $History_mobile; ?>"/></td>
             </tr>
             <tr>
             <td><label for="res_notes">Notes (if any)</label></td>
@@ -195,8 +196,8 @@ if (isset($_POST["List_edit"]))
 }
 else if (isset($_POST["List_delete"])) 
 {
-    $Query = "DELETE FROM orderlist WHERE ID='$History_listID'";
-    mysqli_query($conn, $Query);
+    $list_delete = "DELETE FROM orderlist WHERE ID='$History_listID'";
+    mysqli_query($conn, $list_delete);
     if (mysqli_affected_rows($conn) > 0)
     {
         header("Location: ../history.php?delete=success");
@@ -238,8 +239,8 @@ else if (isset($_POST["Item_edit"]))
 }
 else if (isset($_POST["Item_delete"]))
 {
-    $Query = "DELETE FROM orderitems WHERE ID='$History_itemid'";
-    mysqli_query($conn, $Query);
+    $item_delete = "DELETE FROM orderitems WHERE ID='$History_itemid'";
+    mysqli_query($conn, $item_delete);
     if (mysqli_affected_rows($conn) > 0)
     {
         header("Location: ../history.php?delete=success");
