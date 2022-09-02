@@ -10,11 +10,11 @@
     }
 .table_max 
     {
-        max-width: 500px;
+        max-width: 800px;
     }
 th, td
     {
-        max-width: 100px;
+        max-width: 200px;
     }
 .wrapper 
     {
