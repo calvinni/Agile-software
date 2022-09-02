@@ -140,6 +140,13 @@ if ($resultCheck > 0)
             <th>Date</th>
             <th>Time</th>
             <th>Status</th>
+            <?php 
+              if ($role == 'Admin')
+              { 
+            ?> 
+                <th>Edit</th>
+                <th>Delete</th>
+        <?php } ?>
         </tr>
 <?php 
     While ( $LIST_DETAILS = mysqli_fetch_assoc($list)  ) 
@@ -186,6 +193,13 @@ if ($resultCheck > 0)
         <th>Item ID</th>
         <th>OrderName</th>
         <th>OrderQuantity</th>
+      <?php 
+      if ($role == 'Admin')
+      { 
+        ?> 
+        <th>Edit</th>
+        <th>Delete</th>
+<?php } ?>
       </tr>
       <?php 
         While ( $ITEMS_DETAILS = mysqli_fetch_assoc($items)  ) 

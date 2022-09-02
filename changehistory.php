@@ -7,24 +7,6 @@ else if ($_SESSION['userRole'] !== 'Admin')
 {
   header("Location: ../history.php");
 }
-else if (!isset($_POST["List_edit"]))
-{
-  header("Location: ../history.php");
-}
-else if (!isset($_POST["List_delete"]))
-{
-  header("Location: ../history.php");
-}
-else if (!isset($_POST["Item_edit"]))
-{
-  header("Location: ../history.php");
-}
-else if (!isset($_POST["Item_delete"]))
-{
-  header("Location: ../history.php");
-}
-
-require 'dbh.php';  //using the $conn variable
 
 if (isset($_POST["List_edit"]) or isset($_POST["List_delete"])) //checking if came here from click submit
 {
@@ -43,6 +25,13 @@ else if (isset($_POST["Item_edit"]) or isset($_POST["Item_delete"])) //checking 
     $History_OrderName = $_POST['H_OrderName'];
     $History_OrderQuantity = $_POST['H_OrderQuantity'];
 }
+else
+{
+    header("Location: ../history.php"); //if user didnt come from 'submit', return to history
+    exit();
+}
+
+require 'dbh.php';  //using the $conn variable
 
 ?>
 <!DOCTYPE html>
@@ -261,11 +250,6 @@ else if (isset($_POST["Item_delete"]))
         header("Location: ../history.php?delete=failure");
         exit();
     }
-}
-else
-{
-    header("Location: ../history.php"); //if user didnt come from 'submit', return to cart
-    exit();
 }
 ?>
 <!-- Footer -->

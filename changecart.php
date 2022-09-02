@@ -3,18 +3,18 @@ if ($_SESSION['loggedin'] !== true) // check if user came from cart and is logge
   {
     header("Location: ../login.php");
   }
-else if (!isset($_POST["edit"]))
+else if (isset($_POST["edit"]) or isset($_POST["delete"]))
+  {
+    $Order_Name = $_POST['OrderName'];
+    $Order_Quantity = $_POST['OrderQuantity'];
+    $_ID = $_POST['I_D'];
+  }
+  else
   {
     header("Location: ../cart.php");
   }
-else if (!isset($_POST["delete"]))
-  {
-    header("Location: ../cart.php");
-  }
+
 require 'dbh.php';  //using the $conn variable
-$Order_Name = $_POST['OrderName'];
-$Order_Quantity = $_POST['OrderQuantity'];
-$_ID = $_POST['I_D'];
 
 ?>
 <!DOCTYPE html>
