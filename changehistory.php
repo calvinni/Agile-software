@@ -170,7 +170,11 @@ if (isset($_POST["List_edit"]))
             </tr>
             <tr>
             <td><label>Status</label></td>
-            <td><input type="text" required id="status" name="status" value="<?php echo $History_status; ?>"/></td>
+            <td><select id="status" name="status">
+                    <option value="unfulfilled" <?php if ($History_status == 'unfulfilled') {echo 'selected';}?>>unfulfilled</option>
+                    <option value="fulfilled" <?php if ($History_status == 'fulfilled') {echo 'selected';}?>>fulfilled</option>
+                </select>
+            </td>
             </tr>  
         </table>
             <input type="hidden" id="listID" name="listID" value="<?php echo $History_listID; ?>">
