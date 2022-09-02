@@ -113,11 +113,11 @@ if ($resultCheck > 0)
 ?>
   
   <div class = "container">
-    <div class="table_box table_min table_max left_relative">
-        <h3>Your orders, <?php echo $name; ?></h3>
+    <div class="table_box table_min table_max">
+    <h3>Your orders, <?php echo $name; ?></h3>
         <p>This table contains info about your past checkouts</p>
         <p>Below table displays all orders made</p>
-        <table class ='table table-bordered'>
+        <table class ='table table-bordered left_relative'>
         <tr>
             <th>Order ID</th>
             <th>Name</th>
