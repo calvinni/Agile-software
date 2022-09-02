@@ -147,7 +147,7 @@ if ($resultCheck > 0)
 <?php } ?>
     </table>
     <br>
-    <button id="btn">Toggle form visibility</button>
+    <!-- <button id="btn">Toggle form visibility</button> -->
     <br>
     <!-- RESERVATION FORM -->
     <table class='table table-bordered'>

@@ -1,5 +1,16 @@
 <?php session_start(); 
-
+if ($_SESSION['loggedin'] !== true) // check if user came from cart and is logged in
+  {
+    header("Location: ../login.php");
+  }
+else if (!isset($_POST["edit"]))
+  {
+    header("Location: ../cart.php");
+  }
+else if (!isset($_POST["delete"]))
+  {
+    header("Location: ../cart.php");
+  }
 require 'dbh.php';  //using the $conn variable
 $Order_Name = $_POST['OrderName'];
 $Order_Quantity = $_POST['OrderQuantity'];
@@ -100,10 +111,6 @@ $_ID = $_POST['I_D'];
                       </li>
                     </ul>
 
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
                     
                 </div>
             </div>
@@ -120,7 +127,7 @@ if (isset($_POST["edit"])) //checking if came here from click submit
         <h2>Edit your order here</h2>
         <!-- Edit form -->
         <form action="editcart.php" method="POST">
-            <p>Key in the recycle items name that need to be added.</p>
+            <p>Key in the recycle items name that need to be edited.</p>
             <select id="OrderName" name="OrderName">
                 <option value="paper" <?php if ($Order_Name == 'paper') {echo 'selected';}?>>Paper</option>
                 <option value="plastic" <?php if ($Order_Name == 'plastic') {echo 'selected';}?>>Plastic</option>
@@ -128,7 +135,7 @@ if (isset($_POST["edit"])) //checking if came here from click submit
                 <option value="glass" <?php if ($Order_Name == 'glass') {echo 'selected';}?>>Glass</option>
             </select>
             <p>
-            <p>Key in the quantity in KG that need to be added.</p>
+            <p>Key in the quantity in KG that need to be edited.</p>
                 <input id="OrderQuantity" name="OrderQuantity" type="number" value="<?php echo $Order_Quantity; ?>" required>
                 <input type="hidden" id="userID" name="userID" value="<?php echo $_ID; ?>">
             <p></p>

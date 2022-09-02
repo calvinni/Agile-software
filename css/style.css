@@ -1,6 +1,6 @@
 .table_box 
     {
-        text-align: center;
+        align-content: center;
         width: 60%;
         margin: 0 auto;
     }
@@ -35,4 +35,8 @@ td
 .button_max
     {
         min-width: 60px;
+    }
+.left
+    {
+        left: 20%;
     }

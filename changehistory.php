@@ -1,27 +1,52 @@
-<?php session_start(); ?>
-<!doctype html>
-<html lang="en">
-<?php
-require 'dbh.php';
-if ($_SESSION['loggedin'] !== true)
+<?php session_start(); 
+if ($_SESSION['loggedin'] !== true) // check if user came from history and is logged in and is an admin
 {
   header("Location: ../login.php");
 }
-$UID = $_SESSION['userId'];
-$name = $_SESSION['userName'];
-$role = $_SESSION['userRole'];
+else if ($_SESSION['userRole'] !== 'Admin')
+{
+  header("Location: ../history.php");
+}
+else if (!isset($_POST["List_edit"]))
+{
+  header("Location: ../history.php");
+}
+else if (!isset($_POST["List_delete"]))
+{
+  header("Location: ../history.php");
+}
+else if (!isset($_POST["Item_edit"]))
+{
+  header("Location: ../history.php");
+}
+else if (!isset($_POST["Item_delete"]))
+{
+  header("Location: ../history.php");
+}
 
-$new_id = $UID + 1;
-    
-$sql_list = "SELECT * from orderlist where cart_id = '$UID';";
-$sql_items = "SELECT * from orderitems where cart_id = '$new_id';";
+require 'dbh.php';  //using the $conn variable
 
-$list = mysqli_query($conn, $sql_list);
-$items = mysqli_query($conn, $sql_items);
-
-$resultCheck = mysqli_num_rows($list);
+if (isset($_POST["List_edit"]) or isset($_POST["List_delete"])) //checking if came here from click submit
+{
+    $History_listID = $_POST['H_ID'];
+    $History_name = $_POST['H_name'];
+    $History_email = $_POST['H_email'];
+    $History_mobile = $_POST['H_mobile'];
+    $History_notes = $_POST['H_notes'];
+    $History_date = $_POST['H_date'];
+    $History_time = $_POST['H_time'];
+    $History_status = $_POST['H_status'];
+}
+else if (isset($_POST["Item_edit"]) or isset($_POST["Item_delete"])) //checking if came here from click submit
+{
+    $History_itemid = $_POST['H_id'];
+    $History_OrderName = $_POST['H_OrderName'];
+    $History_OrderQuantity = $_POST['H_OrderQuantity'];
+}
 
 ?>
+<!DOCTYPE html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,7 +61,7 @@ $resultCheck = mysqli_num_rows($list);
     <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
 </head>
-
+<!-- this page includes about us, how to recycle using our website, what we collect -->
 <body>
     <!-- nav bar -->
     <div class = "container-nav">
@@ -120,118 +145,129 @@ $resultCheck = mysqli_num_rows($list);
         </nav>
     </div>
     <!-- end of nav bar -->
-    <h1>History</h1>
-<?php 
-if ($resultCheck > 0)
+<?php
+if (isset($_POST["List_edit"])) 
 {
 ?>
-  <div class="table_box table_min table_max">
-    <div class = "container left">
-        <h3>Your orders, <?php echo $name; ?></h3>
-        <p>This table contains info about your past checkouts</p>
-        <p>Below table displays all orders made</p>
-        <table class ='table table-bordered'>
-        <tr>
-            <th>Order ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Mobile</th>
-            <th>Notes</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Status</th>
-        </tr>
-<?php 
-    While ( $LIST_DETAILS = mysqli_fetch_assoc($list)  ) 
-    { ?>  
-        <tr>
-          <form id="ListForm" action="changehistory.php" method="POST" target="_self">
-            <td><?php echo $LIST_DETAILS['ID']; ?></td>
-            <td><?php echo $LIST_DETAILS['name']; ?></td>
-            <td><?php echo $LIST_DETAILS['email']; ?></td>
-            <td><?php echo $LIST_DETAILS['mobile']; ?></td>
-            <td><?php echo $LIST_DETAILS['notes']; ?></td>
-            <td><?php echo $LIST_DETAILS['date']; ?></td>
-            <td><?php echo $LIST_DETAILS['time']; ?></td>
-            <td><?php echo $LIST_DETAILS['status']; ?></td>
-            <?php 
-              if ($role == 'Admin')
-              { 
-            ?> 
-            <td>
-                <button class="button button_max" type="submit" name="List_edit">Edit</button>
-            </td>
-            <td>
-                <button class="button button_max" type="submit" name="List_delete">Delete</button>
-            </td>
-                <input type="hidden" id="H_ID" name="H_ID" value="<?php echo $LIST_DETAILS['ID']; ?>">
-                <input type="hidden" id="H_name" name="H_name" value="<?php echo $LIST_DETAILS['name']; ?>">
-                <input type="hidden" id="H_email" name="H_email" value="<?php echo $LIST_DETAILS['email']; ?>">
-                <input type="hidden" id="H_mobile" name="H_mobile" value="<?php echo $LIST_DETAILS['mobile']; ?>">
-                <input type="hidden" id="H_notes" name="H_notes" value="<?php echo $LIST_DETAILS['notes']; ?>">
-                <input type="hidden" id="H_date" name="H_date" value="<?php echo $LIST_DETAILS['date']; ?>">
-                <input type="hidden" id="H_time" name="H_time" value="<?php echo $LIST_DETAILS['time']; ?>">
-                <input type="hidden" id="H_status" name="H_status" value="<?php echo $LIST_DETAILS['status']; ?>">
-        <?php } ?>
-          </form>
-        </tr>
-<?php } ?>
-    </table>
-    </div>
-    <br>
+<div class="table_box table_min table_max">
     <div class = "container">
-    <p>Below table shows the items allocated to each order, with Item ID linking to Order ID in the table above</p>
-    <table class ='table table-bordered'>
-      <tr>
-        <th>Item ID</th>
-        <th>OrderName</th>
-        <th>OrderQuantity</th>
-      </tr>
-      <?php 
-        While ( $ITEMS_DETAILS = mysqli_fetch_assoc($items)  ) 
-        { ?>
-        <tr>
-          <form id="ItemForm" action="changehistory.php" method="POST" target="_self">
-            <td><?php echo $ITEMS_DETAILS['order_id']; ?></td>
-            <td><?php echo $ITEMS_DETAILS['OrderName']; ?></td>
-            <td><?php echo $ITEMS_DETAILS['OrderQuantity']; ?></td>
-            <?php 
-                if ($role == 'Admin')
-                { 
-              ?> 
-              <td>
-                  <button class="button button_max" type="submit" name="Item_edit">Edit</button>
-              </td>
-              <td>
-                  <button class="button button_max" type="submit" name="Item_delete">Delete</button>
-              </td>
-                  <input type="hidden" id="H_id" name="H_id" value="<?php echo $ITEMS_DETAILS['ID']; ?>">
-                  <input type="hidden" id="H_OrderName" name="H_OrderName" value="<?php echo $ITEMS_DETAILS['OrderName']; ?>">
-                  <input type="hidden" id="H_OrderQuantity" name="H_OrderQuantity" value="<?php echo $ITEMS_DETAILS['OrderQuantity']; ?>">
-          <?php } ?>
-          </form>
-        </tr>
-  <?php } ?>
-    </table>
+        <!-- RESERVATION FORM -->
+        <table class='table table-bordered'>
+        <form id="resForm" action="edithistory.php" method="POST" target="_self">
+            <h4>Booking edit</h4>
+            <tr>
+            <td><label for="res_name">Name</label></td>
+            <td><input type="text" required id="name" name="name" value="<?php echo $History_name; ?>"/></td>
+            </tr>
+            <tr>
+            <td><label for="res_email">Email</label></td>
+            <td><input type="email" required id="email" name="email" value="<?php echo $History_email; ?>"/></td>
+            </tr>
+            <tr>
+            <td><label for="res_tel">Mobile Number</label></td>
+            <td><input type="number" required id="tel" name="tel" value="<?php echo $H_mobile; ?>"/></td>
+            </tr>
+            <tr>
+            <td><label for="res_notes">Notes (if any)</label></td>
+            <td><input type="text" id="notes" name="notes" value="<?php echo $History_notes; ?>"/></td>
+            </tr>
 
-  <?php } 
-        else
-        {
-          echo '<h3 style="text-align: center;">Your history is empty</br>Please go to order and checkout some recycleables!</h3>';
-        }
-        ?>
-        <?php
-            if(isset($_GET['error']))
-            {
-              if($_GET['error'] == "sqlerror")
-              {
-                echo '<p class="">Error occured, please try again</p>';
-              }
-            }
-        ?>
+            <?php
+            $mindate = date("Y-m-d");
+            ?>
+            <tr>
+            <td><label>Reservation Date</label></td>
+            <td><input type="date" required id="res_date" name="res_date" min="<?=$mindate?>" value="<?php echo $History_date; ?>"></td>
+            </tr>
+            <tr>
+            <td><label>Booking Slot</label></td>
+            <td><select id="slot" name="slot">
+                    <option value="8am" <?php if ($History_time == '8am') {echo 'selected';}?>>8am</option>
+                    <option value="10am" <?php if ($History_time == '10am') {echo 'selected';}?>>10am</option>
+                    <option value="12pm" <?php if ($History_time == '12pm') {echo 'selected';}?> >12pm</option>
+                    <option value="2pm" <?php if ($History_time == '2pm') {echo 'selected';}?> >2pm</option>
+                    <option value="4pm" <?php if ($History_time == '4pm') {echo 'selected';}?> >4pm</option>
+                    <option value="6pm" <?php if ($History_time == '6pm') {echo 'selected';}?> >6pm</option>
+                    <option value="8pm" <?php if ($History_time == '8pm') {echo 'selected';}?> >8pm</option>
+                </select>
+            </td>
+            </tr>
+            <tr>
+            <td><label>Status</label></td>
+            <td><input type="text" required id="status" name="status" value="<?php echo $History_status; ?>"/></td>
+            </tr>  
+        </table>
+            <input type="hidden" id="listID" name="listID" value="<?php echo $History_listID; ?>">
+            <button class="button button_min" type="submit" name="checkout">Checkout</button>
+            </form>
     </div>
+</div>
+<?php
+}
+else if (isset($_POST["List_delete"])) 
+{
+    $Query = "DELETE FROM orderlist WHERE ID='$History_listID'";
+    mysqli_query($conn, $Query);
+    if (mysqli_affected_rows($conn) > 0)
+    {
+        header("Location: ../history.php?delete=success");
+        exit();
+    }
+    else
+    {
+        header("Location: ../history.php?delete=failure");
+        exit();
+    }
+}
+else if (isset($_POST["Item_edit"])) 
+{
+?>
+    <section>
+    <h1>Edit item</h1>
+    <div class="wrapper">
+        <h2>Edit your item here</h2>
+        <!-- Edit form -->
+        <form action="edithistory.php" method="POST">
+            <p>Key in the recycle items name that need to be edited.</p>
+            <select id="OrderName" name="OrderName">
+                <option value="paper" <?php if ($History_OrderName == 'paper') {echo 'selected';}?>>Paper</option>
+                <option value="plastic" <?php if ($History_OrderName == 'plastic') {echo 'selected';}?>>Plastic</option>
+                <option value="metal" <?php if ($History_OrderName == 'metal') {echo 'selected';}?>>Metal</option>
+                <option value="glass" <?php if ($History_OrderName == 'glass') {echo 'selected';}?>>Glass</option>
+            </select>
+            <p>
+            <p>Key in the quantity in KG that need to be edited.</p>
+                <input id="OrderQuantity" name="OrderQuantity" type="number" value="<?php echo $History_OrderQuantity; ?>" required>
+                <input type="hidden" id="itemID" name="itemID" value="<?php echo $History_itemid; ?>">
+            <p></p>
+            <button type="submit" name="Editing_H">Edit</button>
+        </form>
+        <!-- End Of Edit form -->
+    </section>
   </div>
-  
+<?php
+}
+else if (isset($_POST["Item_delete"]))
+{
+    $Query = "DELETE FROM orderitems WHERE ID='$History_itemid'";
+    mysqli_query($conn, $Query);
+    if (mysqli_affected_rows($conn) > 0)
+    {
+        header("Location: ../history.php?delete=success");
+        exit();
+    }
+    else
+    {
+        header("Location: ../history.php?delete=failure");
+        exit();
+    }
+}
+else
+{
+    header("Location: ../history.php"); //if user didnt come from 'submit', return to cart
+    exit();
+}
+?>
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-white text-muted">
   <!-- Section: Social media -->
