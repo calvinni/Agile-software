@@ -1,15 +1,21 @@
 .table_box 
     {
         text-align: center;
-        width: 80%;
+        width: 70%;
         margin: 0 auto;
     }
 .table_min 
     {
         min-width: 300px;
     }
-.tr, .th
+.tr
     {
+        min-width: 50px;
+        max-width: 100px;
+    }
+.th
+    {
+        min-width: 50px;
         max-width: 100px;
     }
 .wrapper 
