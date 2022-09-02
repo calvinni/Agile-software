@@ -174,7 +174,7 @@ if (isset($_POST["List_edit"]))
             </tr>  
         </table>
             <input type="hidden" id="listID" name="listID" value="<?php echo $History_listID; ?>">
-            <button class="button button_min" type="submit" name="checkout">Checkout</button>
+            <button class="button button_min" type="submit" name="Editing_List">Edit</button>
             </form>
     </div>
 </div>
@@ -216,7 +216,7 @@ else if (isset($_POST["Item_edit"]))
                 <input id="OrderQuantity" name="OrderQuantity" type="number" value="<?php echo $History_OrderQuantity; ?>" required>
                 <input type="hidden" id="itemID" name="itemID" value="<?php echo $History_itemid; ?>">
             <p></p>
-            <button type="submit" name="Editing_H">Edit</button>
+            <button type="submit" name="Editing_Items">Edit</button>
         </form>
         <!-- End Of Edit form -->
     </section>

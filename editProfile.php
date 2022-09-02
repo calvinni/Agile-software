@@ -1,5 +1,4 @@
 <?php
-/*validates user input, checks if mobile already exists, inserts new input info into db*/
 
 if (isset($_POST["Edit_submit"])) //checking if came here from click submit
 {

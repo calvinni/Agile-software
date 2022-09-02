@@ -1,6 +1,4 @@
 <?php
-/*validates user input, checks if mobile already exists, inserts new input info into db*/
-
 if (isset($_POST["Editing"])) //checking if came here from click submit
 {
     require 'dbh.php';  //using the $conn variable
