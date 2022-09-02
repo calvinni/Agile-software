@@ -180,8 +180,13 @@ if ($resultCheck > 0)
         <tr>
           <td><label>Booking Slot</label></td>
           <td><select id="slot" name="slot">
-                <option value="AM">AM</option>
-                <option value="PM">PM</option>
+                <option value="8am">8am</option>
+                <option value="10am">10am</option>
+                <option value="12pm">12pm</option>
+                <option value="2pm">2pm</option>
+                <option value="4pm">4pm</option>
+                <option value="6pm">6pm</option>
+                <option value="8pm">8pm</option>
               </select>
           </td>
         </tr>  
