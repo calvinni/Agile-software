@@ -36,8 +36,8 @@ th, td
     {
         min-width: 60px;
     }
-.left_absolute
+.left_relative
     {
-        position: absolute;
+        position: relative;
         left: -20%;
     }

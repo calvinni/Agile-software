@@ -27,7 +27,7 @@ $user = mysqli_fetch_assoc($Id);
     <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
    <style>
-    tr
+    table
     {
       max-width: 500px;
     }
