@@ -147,10 +147,12 @@ if ($resultCheck > 0)
 <?php } ?>
     </table>
     <br>
+    <button id="btn">Toggle form visibility</button>
+    <br>
     <!-- RESERVATION FORM -->
     <table class='table table-bordered'>
-      <h4>Collection booking</h4>
       <form id="resForm" action="checkout.php" method="POST" target="_self">
+        <h4>Collection booking</h4>
         <tr>
           <td><label for="res_name">Name</label></td>
           <td><input type="text" required id="name" name="name" placeholder="John"/></td>
@@ -187,6 +189,7 @@ if ($resultCheck > 0)
           <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
           <button class="button button_min" type="submit" name="checkout">Checkout</button>
         </form>
+
   <?php } 
         else
         {
