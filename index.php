@@ -79,7 +79,6 @@
                                 <li><a class="dropdown-item" href="./register.php">Register</a></li>
                             </ul>
                         </li>  
-                        
                         <?php 
                                 if(isset($_SESSION['userId']))
                                 {
@@ -89,20 +88,12 @@
                                           </li>';
                                 }
                         ?>
-                      
-                      </li>
                     </ul>
-
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                    
                 </div>
             </div>
         </nav>
     </div>
-    <!-- end of nav bar -->
+    <!-- end of nav bar -->  
 
 <!-- about us slider -->
 

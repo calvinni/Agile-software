@@ -100,21 +100,7 @@ $resultCheck = mysqli_num_rows($list);
                                 <li><a class="dropdown-item" href="./register.php">Register</a></li>
                             </ul>
                         </li>  
-                        
-                        <?php 
-                                if(isset($_SESSION['userId']))
-                                {
-                                    $name = $_SESSION['userName'];
-                                    echo '<li class="nav-item">
-                                            <div class="nav-link">Hi '.$name.'</div>
-                                          </li>';
-                                }
-                        ?>
-                      
-                      </li>
                     </ul>
-
-                    
                 </div>
             </div>
         </nav>

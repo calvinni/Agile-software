@@ -97,7 +97,6 @@ require 'dbh.php';  //using the $conn variable
                                 <li><a class="dropdown-item" href="./register.php">Register</a></li>
                             </ul>
                         </li>  
-                      </li>
                     </ul>
                 </div>
             </div>
