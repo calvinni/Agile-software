@@ -82,7 +82,7 @@ $point = $user['Points'];
     <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
    <style>
-    .table_max 
+    table
     {
         max-width: 500px;
     }
