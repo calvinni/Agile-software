@@ -14,7 +14,9 @@
     }
 th, td
     {
-        max-width: 200px;
+        width: 20%;
+        min-width: 100px;
+        max-width: 150px;
     }
 .wrapper 
     {
