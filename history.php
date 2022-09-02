@@ -111,8 +111,9 @@ $resultCheck = mysqli_num_rows($list);
 if ($resultCheck > 0)
 {
 ?>
-  <div class="table_box table_min table_max">
-    <div class = "container left">
+  
+  <div class = "container left_absolute">
+    <div class="table_box table_min table_max">
         <h3>Your orders, <?php echo $name; ?></h3>
         <p>This table contains info about your past checkouts</p>
         <p>Below table displays all orders made</p>
@@ -172,7 +173,7 @@ if ($resultCheck > 0)
     </table>
     </div>
     <br>
-    <div class = "container">
+    <div class="table_box table_min table_max">
     <p>Below table shows the items allocated to each order, with Item ID linking to Order ID in the table above</p>
     <table class ='table table-bordered'>
       <tr>

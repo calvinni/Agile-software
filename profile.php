@@ -26,6 +26,12 @@ $user = mysqli_fetch_assoc($Id);
     integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
+   <style>
+    tr
+    {
+      max-width: 500px;
+    }
+   </style>
 </head>
     
 <body>

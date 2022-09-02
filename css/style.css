@@ -19,8 +19,8 @@ th, td
     }
 .wrapper 
     {
-        min-width: 20%;
-        max-width: 20%;
+        min-width: 500px;
+        max-width: 500px;
         margin: 0 auto;
     }
 .button
