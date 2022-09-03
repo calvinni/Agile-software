@@ -39,9 +39,13 @@ else if (isset($_POST["Editing_Items"])) //checking if came here from click subm
     $Update_OrderName = $_POST['OrderName'];  
     $Update_OrderQuantity = $_POST['OrderQuantity'];
     $Update_itemID = $_POST['itemID'];
+    $Update_itype = $_POST['itemtype'];
+    $Update_istatus = $_POST['status'];
 
     $Items_SQL = "UPDATE orderitems SET OrderName = '$Update_OrderName', 
-                                        OrderQuantity = '$Update_OrderQuantity'    
+                                        OrderQuantity = '$Update_OrderQuantity',
+                                        type = '$Update_itype',
+                                        status = '$Update_istatus',
                                         WHERE ID = '$Update_itemID'";
     $result = mysqli_query($conn, $Items_SQL);
     if (mysqli_affected_rows($conn) > 0)

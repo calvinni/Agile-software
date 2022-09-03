@@ -117,8 +117,7 @@ if (isset($_POST["edit"])) //checking if came here from click submit
             <select id="OrderName" name="OrderName">
                 <option value="paper" <?php if ($Order_Name == 'paper') {echo 'selected';}?>>Paper</option>
                 <option value="plastic" <?php if ($Order_Name == 'plastic') {echo 'selected';}?>>Plastic</option>
-                <option value="metal" <?php if ($Order_Name == 'metal') {echo 'selected';}?>>Metal</option>
-                <option value="glass" <?php if ($Order_Name == 'glass') {echo 'selected';}?>>Glass</option>
+                <option value="can" <?php if ($Order_Name == 'can') {echo 'selected';}?>>Can</option>
             </select>
             <p>
             <p>Key in the quantity in KG that need to be edited.</p>

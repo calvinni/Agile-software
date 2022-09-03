@@ -132,10 +132,15 @@ if ($resultCheck > 0)
     <div id="pickup" style="display:block;" >
       <form id="itemForm" action="checkout.php" method="POST" target="_self">
 
-        <button class="button button_min" type="submit" name="pickup">self pickup</button>
+          <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
+          <input type="hidden" id="type" name="type" value="Pickup">
+
+        <button class="button button_min" type="submit" name="pickup">self return</button>
       </form>
     </div>
-    <p>
+
+    <p></p>
+
     <button onclick="myFunction()">Book pick up service</button>
     <!-- RESERVATION FORM -->
     <div id="booking" style="display:none;" >
@@ -179,6 +184,7 @@ if ($resultCheck > 0)
         </tr>  
       </table>
           <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
+          <input type="hidden" id="type" name="type" value="order">
           <button class="button button_min" type="submit" name="checkout">Checkout</button>
         </form>
     </div>    

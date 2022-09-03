@@ -24,6 +24,8 @@ else if (isset($_POST["Item_edit"]) or isset($_POST["Item_delete"])) //checking 
     $History_itemid = $_POST['H_id'];
     $History_OrderName = $_POST['H_OrderName'];
     $History_OrderQuantity = $_POST['H_OrderQuantity'];
+    $History_type = $_POST['itemtype'];
+    $History_istatus = $_POST['H_istatus'];
 }
 else
 {
@@ -212,13 +214,24 @@ else if (isset($_POST["Item_edit"]))
             <select id="OrderName" name="OrderName">
                 <option value="paper" <?php if ($History_OrderName == 'paper') {echo 'selected';}?>>Paper</option>
                 <option value="plastic" <?php if ($History_OrderName == 'plastic') {echo 'selected';}?>>Plastic</option>
-                <option value="metal" <?php if ($History_OrderName == 'metal') {echo 'selected';}?>>Metal</option>
-                <option value="glass" <?php if ($History_OrderName == 'glass') {echo 'selected';}?>>Glass</option>
+                <option value="can" <?php if ($History_OrderName == 'can') {echo 'selected';}?>>Can</option>
             </select>
             <p>
             <p>Key in the quantity in KG that need to be edited.</p>
                 <input id="OrderQuantity" name="OrderQuantity" type="number" value="<?php echo $History_OrderQuantity; ?>" required>
                 <input type="hidden" id="itemID" name="itemID" value="<?php echo $History_itemid; ?>">
+            <p>
+            <p>Type of order</p>
+            <select id="itemtype" name="itemtype">
+              <option value="pickup" <?php if ($History_type == 'pickup') {echo 'selected';}?>>Pickup</option>
+              <option value="order" <?php if ($History_type == 'order') {echo 'selected';}?>>Order</option>
+            </select>
+            <p>Status of item</p>
+            <select id="status" name="status">
+              <option value="pending" <?php if ($History_istatus == 'pending') {echo 'selected';}?>>Pending</option>
+              <option value="decline" <?php if ($History_istatus == 'decline') {echo 'selected';}?>>Decline</option>
+              <option value="accept" <?php if ($History_istatus == 'accept') {echo 'selected';}?>>Accept</option>
+            </select>
             <p></p>
             <button type="submit" name="Editing_Items">Edit</button>
         </form>
