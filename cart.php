@@ -129,7 +129,7 @@ if ($resultCheck > 0)
         </tr>
 <?php } ?>
     </table>
-    <div id="booking" style="display:block;" >
+    <div id="pickup" style="display:block;" >
       <form id="itemForm" action="checkout.php" method="POST" target="_self">
 
         <button class="button button_min" type="submit" name="pickup">self pickup</button>
@@ -343,12 +343,20 @@ if ($resultCheck > 0)
     <!-- bootstrap js link-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script>
-      function myFunction() {
+      function myFunction() 
+      {
         var x = document.getElementById("booking");
         if (x.style.display === "none") {
           x.style.display = "block";
         } else {
           x.style.display = "none";
+        }
+
+        var y = document.getElementById("pickup");
+        if (y.style.display === "block") {
+          y.style.display = "none";
+        } else {
+          y.style.display = "block";
         }
       }
     </script>
