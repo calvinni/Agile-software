@@ -1,6 +1,23 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
+<?php 
+
+require 'dbh.php';
+if ($_SESSION['loggedin'] !== true)
+{
+  header("Location: ../login.php");
+}
+$UID = $_SESSION['userId'];
+
+if (isset($_POST['Ordering']))
+{
+    $OrderName = $_POST['OrderName'];
+    $OrderQuantity = $_POST['OrderQuantity'];
+    $sql = "INSERT INTO cart (cart_id, OrderName, OrderQuantity) VALUES ('$UID', '$OrderName', '$OrderQuantity');";
+    mysqli_query($conn, $sql);
+}
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,122 +34,130 @@
 </head>
 <!-- this page includes about us, how to recycle using our website, what we collect -->
 <body>
-    <!-- nav bar -->
-    <div class = "container-nav">
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/index.php"><i class="fa-solid fa-recycle"></i> ReCircle</a>
-                <!-- extend button -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="./index.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./locateUs.php">Locate Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./startRecycle.php">Start Recycle!</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./faqs.php">FAQs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./rewards.php">Rewards</a>
-                        </li>
+  <!-- nav bar -->
+  <div class = "container-nav">
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/index.php"><i class="fa-solid fa-recycle"></i> ReCircle</a>
+          <!-- extend button -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link" href="./index.php">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="./locateUs.php">Locate Us</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="./startRecycle.php">Start Recycle!</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="./faqs.php">FAQs</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="./rewards.php">Rewards</a>
+                  </li>
+                
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fa-solid fa-user"></i> View More
+                      </a>
+                      <ul class="dropdown-menu">
                         <!-- hidden links -->
-                        <?php 
-                             if(isset($_SESSION['userId']))
-                             {
-                                echo '<li class="nav-item">
-                                          <a class="nav-link" href="./profile.php">View Profile</a>
-                                      </li>
-                                      <li class="nav-item">
-                                          <a class="nav-link" href="./order.php">Order</a>
-                                      </li>
-                                      <li class="nav-item">
-                                          <a class="nav-link" href="./cart.php">Cart</a>
-                                      </li>
-                                      <li class="nav-item">
-                                          <a class="nav-link" href="./history.php">History</a>
-                                      </li>';
-                             }
-                        ?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-user"></i>   
-                            </a>
-                            <ul class="dropdown-menu">
-                                <?php 
-                                    if(isset($_SESSION['userId']))
-                                    {
-                                      echo '<li><a class="dropdown-item" href="./logout.php">logout</a></li>';
-                                    }
-                                    else 
-                                    {
-                                      echo '<li><a class="dropdown-item" href="./login.php">Login</a></li>';
-                                    }
-                                    ?>
-                                <li><a class="dropdown-item" href="./register.php">Register</a></li>
-                            </ul>
-                        </li>  
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <!-- end of nav bar -->
+                          <?php 
+                              if(isset($_SESSION['userId']))
+                              {
+                                echo '<li><a class="dropdown-item" href="./logout.php">Logout</a></li>';
+                              }
+                              else 
+                              {
+                                echo '<li><a class="dropdown-item" href="./login.php">Login</a></li>';
+                              }
+                              ?>
+                          <?php 
+                              if(isset($_SESSION['userId']))
+                              {
+                                echo 
+                              '<li><a class="dropdown-item" href="./profile.php">Profile</a></li>
+                              <li><a class="dropdown-item" href="./cart.php">Recycle bins</a></li>
+                              <li><a class="dropdown-item" href="./history.php">Recycle history</a></li>
+                              ';
+                              }
+                              else
+                              {
+                                echo '<li><a class="dropdown-item" href="./register.php">Register</a></li>';
+                              }
+                              ?>
+                      </ul>
+                  </li>  
+              </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- end of nav bar -->
     <!--recyable items-->
+    <br>
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
-                <form action="#" method="post">
+                <form action="startRecycle.php" method="POST">
                     <div class="card">
                         <img src="./images/index-wwc1.png" class="card-img-top" >
-                        <div class="card-body text-center" >
-                            <h5 class="card-title">Plastic bottles</h5>
-                            <p class="card-text">1kg of bottles</p>
-                            <!-- <a href="#" class="btn btn-primary">Go somewher</a> -->
-                            <button type="submit" name="add_to_cart" class="btn btn-info" color="#2D3D61">Add to cart</button>
-                            <input type="hidden" name="Item_name" value="plastic_bottle">
-                            <input type="hidden" name="Weight" value="1">
+                        <div class="card-body text-center" id="OrderName" name="OrderName">
+                            <h5 class="card-title">Plastic Bottles</h5>
+                            <input type="hidden" id="OrderName" name="OrderName" value="plastic">
+                            <!-- <p class="card-text">1kg of bottles</p> -->
+                            <input id="OrderQuantity" name="OrderQuantity" placeholder="quantity" min="1" max="100" type="number" required><a>Kg</a><br><br>
+                            <!-- <a href="./order.php" class="btn btn-primar">Add to bin !</a> -->
+                            <button type="submit" name="Ordering" class="btn btn-primary">Add to bin !</button>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="col-lg-4">
-                <form action="#" method="post">
-                    <div class="card" >
+                <form action="startRecycle.php" method="POST">
+                    <div class="card">
                         <img src="./images/index-wwc2.png" class="card-img-top" >
-                        <div class="card-body text-center" >
-                            <h5 class="card-title">Papers</h5>
-                            <p class="card-text">1kg of papers</p>
-                            <button type="submit" name="add_to_cart" class="btn btn-info" color="#2D3D61">Add to cart</button>
-                            <input type="hidden" name="Item_name" value="paper">
-                            <input type="hidden" name="Weight" value="1">
+                        <div class="card-body text-center" id="OrderName" name="OrderName">
+                            <h5 class="card-title">Paper</h5>
+                            <input type="hidden" id="OrderName" name="OrderName" value="paper">
+                            <input id="OrderQuantity" name="OrderQuantity" placeholder="quantity" min="1" max="100" type="number" required><a>Kg</a><br><br>
+                            <button type="submit" name="Ordering" class="btn btn-primary">Add to bin !</button>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="col-lg-4">
-                <form action="#" method="post">
-                    <div class="card" >
+                <form action="startRecycle.php" method="POST">
+                    <div class="card">
                         <img src="./images/index-wwc3.png" class="card-img-top" >
-                        <div class="card-body text-center" >
-                            <h5 class="card-title">Cans</h5>
-                            <p class="card-text">1kg of cans</p>
-                            <button type="submit" name="add_to_cart" class="btn btn-info" color="#2D3D61">Add to cart</button>
-                            <input type="hidden" name="Item_name" value="can">
-                            <input type="hidden" name="Weight" value="1">
+                        <div class="card-body text-center" id="OrderName" name="OrderName">
+                            <h5 class="card-title">Can</h5>
+                            <input type="hidden" id="OrderName" name="OrderName" value="can">
+                            <input id="OrderQuantity" name="OrderQuantity" placeholder="quantity" min="1" max="100" type="number" required><a>Kg</a><br><br>
+                            <button type="submit" name="Ordering" class="btn btn-primary">Add to bin !</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    
+    <?php
+            if (isset($_POST['Ordering'])) 
+            {
+              echo '<p class="">successfully added to bin!</p>';
+            }
+            else
+            {
+              echo'failed';
+            }
+          ?>
+          <p></p>
 </body>
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-white text-muted">
@@ -184,14 +209,14 @@
             Recycle
           </h6>
           <p>
-            <a href="#!" class="text-reset">Bottles</a>
+            <a href="./startRecycle.php" class="text-reset">Bottles</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Can</a>
+            <a href="./startRecycle.php" class="text-reset">Can</a>
           </p>
           
           <p>
-            <a href="#!" class="text-reset">Paper</a>
+            <a href="./startRecycle.php" class="text-reset">Paper</a>
           </p>
         </div>
         <!-- Grid column -->
