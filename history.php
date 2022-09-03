@@ -58,7 +58,7 @@ $resultCheck = mysqli_num_rows($list);
         echo '.left_relative
         {
           position: relative;
-          left: -10%;
+          left: -5%;
         }';
       }
     ?>
