@@ -12,9 +12,17 @@ $name = $_SESSION['userName'];
 $role = $_SESSION['userRole'];
 
 $new_id = $UID + 1;
-    
-$sql_list = "SELECT * from orderlist where cart_id = '$UID';";
-$sql_items = "SELECT * from orderitems where cart_id = '$new_id';";
+
+if ($role == 'Admin')
+{    
+  $sql_list = "SELECT * from orderlist";
+  $sql_items = "SELECT * from orderitems";
+}
+else
+{
+  $sql_list = "SELECT * from orderlist where cart_id = '$UID';";
+  $sql_items = "SELECT * from orderitems where cart_id = '$new_id';";
+}
 
 $list = mysqli_query($conn, $sql_list);
 $items = mysqli_query($conn, $sql_items);
