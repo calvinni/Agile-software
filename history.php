@@ -199,10 +199,12 @@ if ($resultCheck > 0)
     </div>
     <br>
     <div class="table_box table_min table_max">
-    <p>Below table shows the items allocated to each order, with Item ID linking to Order ID in the table above</p>
+    <p>Below table shows the all the items ordered by this account,</p>
+    <p>Order ID item links to Order ID order in the table above</p>
     <table class ='table table-bordered'>
       <tr>
         <th>Item ID</th>
+        <th>Order ID</th>
         <th>OrderName</th>
         <th>OrderQuantity</th>
         <th>Type</th>
@@ -220,6 +222,7 @@ if ($resultCheck > 0)
         { ?>
         <tr>
           <form id="ItemForm" action="changehistory.php" method="POST" target="_self">
+            <td><?php echo $ITEMS_DETAILS['ID']; ?></td>
             <td><?php echo $ITEMS_DETAILS['order_id']; ?></td>
             <td><?php echo $ITEMS_DETAILS['OrderName']; ?></td>
             <td><?php echo $ITEMS_DETAILS['OrderQuantity']; ?></td>
