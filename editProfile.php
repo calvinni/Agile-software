@@ -10,6 +10,7 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
     $password = $_POST['password'];
     $passwordRepeat = $_POST['confpw'];
     $UserID = $_POST['UID'];
+    $OG_mobile = $_POST['OGmobile'];
 
     if ($password !== $passwordRepeat) //checks if password valid
     {
@@ -25,6 +26,8 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
         $stmt = mysqli_stmt_init($conn);                //prepare statement; prepping the database $conn (stmnt = statement)
         if (!mysqli_stmt_prepare($stmt, $sql_check))
         {
+            $sql_reset = "UPDATE users SET Mobile = '$OG_mobile' WHERE ID = '$UserID'"; // reset the mobile if error
+            mysqli_query($conn, $sql_mobile);
             header("Location: ../profile?error=sqlerror"); //checks if statement prepare failed
             exit();
         }
@@ -36,6 +39,8 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
             $resultCheck = mysqli_stmt_num_rows($stmt);    //nb of rows matched, should be 0 or 1
             if($resultCheck > 0) 
             {
+                $sql_reset = "UPDATE users SET Mobile = '$OG_mobile' WHERE ID = '$UserID'"; // reset the mobile if error
+                mysqli_query($conn, $sql_mobile);
                 header("Location: ../profile.php?error=mobile"); //checks if duplicate mobile number exist
                 exit();
             }
@@ -45,6 +50,8 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
                 $stmt = mysqli_stmt_init($conn);
                 if(!mysqli_stmt_prepare($stmt, $sql_update))
                 {
+                    $sql_reset = "UPDATE users SET Mobile = '$OG_mobile' WHERE ID = '$UserID'"; // reset the mobile if error
+                    mysqli_query($conn, $sql_mobile);
                     header("Location: ../profile.php?error=sqlerror2"); //checks if statement prepare failed
                     exit();
                 }
@@ -53,8 +60,10 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
                     $hashedPwd = password_hash($password, PASSWORD_DEFAULT);              //hasing password (security: if hacker gets in db he'll see all the pw)
                     mysqli_stmt_bind_param($stmt, "sssd", $username, $mobile, $hashedPwd, $UserID); //variables inserting
                     mysqli_stmt_execute($stmt);
-                    if (mysqli_affected_rows($conn) < 1)    // if insert fail, return to profile
+                    if (mysqli_affected_rows($conn) < 1)    // if update fail, return to profile
                     {
+                        $sql_reset = "UPDATE users SET Mobile = '$OG_mobile' WHERE ID = '$UserID'"; // reset the mobile if error
+                        mysqli_query($conn, $sql_mobile);
                         header("Location: ../profile.php?edit=failure");
                         exit();
                     }

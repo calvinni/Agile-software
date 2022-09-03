@@ -158,7 +158,7 @@ $user = mysqli_fetch_assoc($Id);
             <td><input type="password" id="confpw" name="confpw" required></td>
           </tr> 
             <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
-
+            <input type="hidden" id="OGmobile" name="OGmobile" value="<?php echo $user['Mobile']; ?>">
         </table>
             <button class="button button_min" role="submit" name="Edit_submit">Edit</button>
         </form>
