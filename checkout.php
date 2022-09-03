@@ -65,7 +65,18 @@ if(isset($_POST["checkout"])) //checking if came here from click submit
                     }
 
                     $Rounded_Quantity = round($Cart_Quantity);
-                    $new_points = $Rounded_Quantity * 500;
+                    if ($Cart_Name == 'plastic')
+                    {
+                        $new_points = $Rounded_Quantity * 500;
+                    }
+                    else if ($Cart_Name == 'paper')
+                    {
+                        $new_points = $Rounded_Quantity * 500;
+                    }
+                    else if ($Cart_Name == 'can')
+                    {
+                        $new_points = $Rounded_Quantity * 1000;
+                    }
                     $sql_points = "UPDATE users SET Points = Points + '$new_points' WHERE ID = '$UserID'";
                     $points = mysqli_query($conn, $sql_points);
                     if (mysqli_affected_rows($conn) < 1)    // if insert fail, return to cart
@@ -73,6 +84,7 @@ if(isset($_POST["checkout"])) //checking if came here from click submit
                         header("Location: ../cart.php?fail=points");
                         exit();
                     }
+                    
                 }    
 
                 $delete = "DELETE FROM cart WHERE cart_id='$UserID'"; // Delete from the cart once inserted
