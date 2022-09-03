@@ -18,7 +18,10 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
     }
     else //initialize db statement / select db values
     {
-        $sql_check = " SELECT * FROM users where Username=?; ";  //prepare for every new SQL statement (?) here it's SELECT
+        $sql_mobile = "UPDATE users SET Mobile = '-65481' WHERE ID = '$UserID'"; // avoid conflict with mobile checker as it can activate itself
+        mysqli_query($conn, $sql_mobile);
+
+        $sql_check = " SELECT * FROM users where Mobile=?; ";  //prepare for every new SQL statement (?) here it's SELECT
         $stmt = mysqli_stmt_init($conn);                //prepare statement; prepping the database $conn (stmnt = statement)
         if (!mysqli_stmt_prepare($stmt, $sql_check))
         {
