@@ -43,6 +43,26 @@ $resultCheck = mysqli_num_rows($list);
     integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
+   <style>
+    <?php
+      if ($role == 'Admin')
+      { 
+        echo '.left_relative
+        {
+          position: relative;
+          left: -30%;
+        }';
+      }
+      else
+      {
+        // echo '.left_relative
+        // {
+        //   position: relative;
+        //   left: -30%;
+        // }';
+      }
+    ?>
+   </style>
 </head>
 
 <body>

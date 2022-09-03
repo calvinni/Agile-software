@@ -36,8 +36,3 @@ td
     {
         min-width: 60px;
     }
-.left_relative
-    {
-        position: relative;
-        left: -30%;
-    }
