@@ -112,8 +112,7 @@ if (isset($_POST['Ordering']))
             <select id="OrderName" name="OrderName">
                 <option value="paper">Paper</option>
                 <option value="plastic">Plastic</option>
-                <option value="metal">Metal</option>
-                <option value="glass">Glass</option>
+                <option value="can">can</option>
             </select>
             <p>
             <p>Key in the quantity in KG that need to be added</p>
