@@ -64,12 +64,12 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
             }
         }
     }
-}
     mysqli_stmt_close($stmt); //closing statement
     mysqli_close($conn); //closing db connection
+}
 else
 {
-    header("Location: ../profile.php"); //if user didnt come from 'submit', return to sign up
+    header("Location: ../profile.php"); //if user didnt come from 'submit', return to profile
     exit();
 }
 
