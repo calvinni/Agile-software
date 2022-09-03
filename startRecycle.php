@@ -146,11 +146,11 @@ $UID = $_SESSION['userId'];
                   mysqli_query($conn, $sql);
                   if (mysqli_affected_rows($conn) > 0)    // if insert fail, return to start recyle
                   {
-                    echo '<p class="">successfully added to bin!</p>';
+                    echo '<p style="text-align: center;">successfully added to bin!</p>';
                   }
                   else
                   {
-                    echo'failed';
+                    echo'<p style="text-align: center;">Failed to add to cart, please try again</p>';
                   }
             }
           ?>
