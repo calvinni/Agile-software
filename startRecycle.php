@@ -9,14 +9,6 @@ if ($_SESSION['loggedin'] !== true)
   header("Location: ../login.php");
 }
 $UID = $_SESSION['userId'];
-
-if (isset($_POST['Ordering']))
-{
-    $OrderName = $_POST['OrderName'];
-    $OrderQuantity = $_POST['OrderQuantity'];
-    $sql = "INSERT INTO cart (cart_id, OrderName, OrderQuantity) VALUES ('$UID', '$OrderName', '$OrderQuantity');";
-    mysqli_query($conn, $sql);
-}
 ?>
 <head>
     <meta charset="UTF-8">
@@ -145,18 +137,24 @@ if (isset($_POST['Ordering']))
                 </form>
             </div>
         </div>
-    </div>
-    
-    <?php
+        <?php
             if (isset($_POST['Ordering'])) 
             {
-              echo '<p class="">successfully added to bin!</p>';
-            }
-            else
-            {
-              echo'failed';
+                  $OrderName = $_POST['OrderName'];
+                  $OrderQuantity = $_POST['OrderQuantity'];
+                  $sql = "INSERT INTO cart (cart_id, OrderName, OrderQuantity) VALUES ('$UID', '$OrderName', '$OrderQuantity');";
+                  mysqli_query($conn, $sql);
+                  if (mysqli_affected_rows($conn) > 0)    // if insert fail, return to start recyle
+                  {
+                    echo '<p class="">successfully added to bin!</p>';
+                  }
+                  else
+                  {
+                    echo'failed';
+                  }
             }
           ?>
+    </div>
           <p></p>
 </body>
 <!-- Footer -->
