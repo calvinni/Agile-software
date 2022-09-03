@@ -129,6 +129,10 @@ if ($resultCheck > 0)
         </tr>
 <?php } ?>
     </table>
+      <form id="itemForm" action="checkout.php" method="POST" target="_self">
+
+        <button class="button button_min" type="submit" name="pickup">self pickup</button>
+      </form>
     <br>
     <button onclick="myFunction()">Book pick up service</button>
     <!-- RESERVATION FORM -->
@@ -172,10 +176,10 @@ if ($resultCheck > 0)
           </td>
         </tr>  
       </table>
-    </div>
           <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
           <button class="button button_min" type="submit" name="checkout">Checkout</button>
         </form>
+    </div>    
   <?php } 
         else
         {
