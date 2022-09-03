@@ -40,7 +40,7 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
             if($resultCheck > 0) 
             {
                 $sql_reset = "UPDATE users SET Mobile = '$OG_mobile' WHERE ID = '$UserID'"; // reset the mobile if error
-                mysqli_query($conn, $sql_mobile);
+                mysqli_query($conn, $sql_reset);
                 header("Location: ../profile.php?error=mobile"); //checks if duplicate mobile number exist
                 exit();
             }
@@ -51,7 +51,7 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
                 if(!mysqli_stmt_prepare($stmt, $sql_update))
                 {
                     $sql_reset = "UPDATE users SET Mobile = '$OG_mobile' WHERE ID = '$UserID'"; // reset the mobile if error
-                    mysqli_query($conn, $sql_mobile);
+                    mysqli_query($conn, $sql_reset);
                     header("Location: ../profile.php?error=sqlerror2"); //checks if statement prepare failed
                     exit();
                 }
@@ -63,7 +63,7 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
                     if (mysqli_affected_rows($conn) < 1)    // if update fail, return to profile
                     {
                         $sql_reset = "UPDATE users SET Mobile = '$OG_mobile' WHERE ID = '$UserID'"; // reset the mobile if error
-                        mysqli_query($conn, $sql_mobile);
+                        mysqli_query($conn, $sql_reset);
                         header("Location: ../profile.php?edit=failure");
                         exit();
                     }
