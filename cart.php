@@ -3,6 +3,10 @@
 <html lang="en">
 <?php
 require 'dbh.php';
+if ($_SESSION['loggedin'] !== true)
+{
+  header("Location: ../login.php");
+}
 $UID = $_SESSION['userId'];
 $CART = "SELECT * from cart where cart_id = '$UID';";
 $Query = mysqli_query($conn, $CART);
@@ -25,82 +29,79 @@ $resultCheck = mysqli_num_rows($Query);
 </head>
 
 <body>
-    <!-- nav bar -->
-    <div class = "container-nav">
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/index.php"><i class="fa-solid fa-recycle"></i> ReCircle</a>
-                <!-- extend button -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="./index.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./locateUs.php">Locate Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./startRecycle.php">Start Recycle!</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./faqs.php">FAQs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./rewards.php">Rewards</a>
-                        </li>
+     <!-- nav bar -->
+  <div class = "container-nav">
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/index.php"><i class="fa-solid fa-recycle"></i> ReCircle</a>
+          <!-- extend button -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link" href="./index.php">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="./locateUs.php">Locate Us</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="./startRecycle.php">Start Recycle!</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="./faqs.php">FAQs</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="./rewards.php">Rewards</a>
+                  </li>
+                
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fa-solid fa-user"></i> View More   
+                      </a>
+                      <ul class="dropdown-menu">
                         <!-- hidden links -->
-                        <?php 
-                             if(isset($_SESSION['userId']))
-                             {
-                                echo '<li class="nav-item">
-                                          <a class="nav-link" href="./profile.php">View Profile</a>
-                                      </li>
-                                      <li class="nav-item">
-                                          <a class="nav-link" href="./order.php">Order</a>
-                                      </li>
-                                      <li class="nav-item">
-                                          <a class="nav-link" href="./cart.php">Cart</a>
-                                      </li>
-                                      <li class="nav-item">
-                                          <a class="nav-link" href="./history.php">History</a>
-                                      </li>';
-                             }
-                        ?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-user"></i>   
-                            </a>
-                            <ul class="dropdown-menu">
-                                <?php 
-                                    if(isset($_SESSION['userId']))
-                                    {
-                                      echo '<li><a class="dropdown-item" href="./logout.php">logout</a></li>';
-                                    }
-                                    else 
-                                    {
-                                      echo '<li><a class="dropdown-item" href="./login.php">Login</a></li>';
-                                    }
-                                    ?>
-                                <li><a class="dropdown-item" href="./register.php">Register</a></li>
-                            </ul>
-                        </li>  
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <!-- end of nav bar -->
-    <h1>Cart</h1>
+                          <?php 
+                              if(isset($_SESSION['userId']))
+                              {
+                                echo '<li><a class="dropdown-item" href="./logout.php">Logout</a></li>';
+                              }
+                              else 
+                              {
+                                echo '<li><a class="dropdown-item" href="./login.php">Login</a></li>';
+                              }
+                              ?>
+                          <?php 
+                              if(isset($_SESSION['userId']))
+                              {
+                                echo 
+                              '<li><a class="dropdown-item" href="./profile.php">Profile</a></li>
+                              <li><a class="dropdown-item" href="./cart.php">Recycle bins</a></li>
+                              <li><a class="dropdown-item" href="./history.php">Recycle history</a></li>
+                              ';
+                              }
+                              else
+                              {
+                                echo '<li><a class="dropdown-item" href="./register.php">Register</a></li>';
+                              }
+                              ?>
+                      </ul>
+                  </li>  
+              </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- end of nav bar -->
+    <h1></h1>
 <?php 
 if ($resultCheck > 0)
 {
 ?>
   <div class="table_box table_min table_max">
     <div class = "container">
-        <h3>Your cart</h3>
+        <h3>Recycle Bin</h3>
         <table class ='table table-bordered'>
         <tr>
             <th>Recyclable</th>
@@ -129,12 +130,12 @@ if ($resultCheck > 0)
 <?php } ?>
     </table>
     <br>
-    <!-- <button id="btn">Toggle form visibility</button> -->
-    <br>
+    <button onclick="myFunction()">Book pick up service</button>
     <!-- RESERVATION FORM -->
-    <table class='table table-bordered'>
+    <div id="booking" style="display:none;" >
+    <table class='table table-bordered'  >
+      <h4>Pick up service booking</h4>
       <form id="resForm" action="checkout.php" method="POST" target="_self">
-        <h4>Collection booking</h4>
         <tr>
           <td><label for="res_name">Name</label></td>
           <td><input type="text" required id="name" name="name" placeholder="John"/></td>
@@ -167,16 +168,14 @@ if ($resultCheck > 0)
                 <option value="12pm">12pm</option>
                 <option value="2pm">2pm</option>
                 <option value="4pm">4pm</option>
-                <option value="6pm">6pm</option>
-                <option value="8pm">8pm</option>
               </select>
           </td>
         </tr>  
       </table>
+    </div>
           <input type="hidden" id="UID" name="UID" value="<?php echo $UID; ?>">
           <button class="button button_min" type="submit" name="checkout">Checkout</button>
         </form>
-
   <?php } 
         else
         {
@@ -337,6 +336,15 @@ if ($resultCheck > 0)
 
     <!-- bootstrap js link-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <script src="hide.js"></script>
+    <script>
+      function myFunction() {
+        var x = document.getElementById("booking");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
+    </script>
 </body>
 </html>
