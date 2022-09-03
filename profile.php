@@ -165,7 +165,7 @@ $user = mysqli_fetch_assoc($Id);
         <?php
         if(isset($_GET['error'])) //<!-- Checking the error that we wrote in URL -->
             { 
-                if($_GET['error'] == 'usertaken')
+                if($_GET['error'] == 'mobile')
                     echo '<p class="">Mobile already registered. Please change your mobile Number.</p>';
                 else if($_GET['error'] == 'passwordinvalid')
                     echo '<p class="">Password and Confirm Password does not match. Please try again.</p>';
@@ -178,6 +178,8 @@ $user = mysqli_fetch_assoc($Id);
         {
             if($_GET['edit'] == "success")
                     echo '<p class="">Edit successfull!</p>';
+            if($_GET['edit'] == "failure")
+                    echo '<p class="">Edit failed, please try again</p>';
         }
         ?>
             

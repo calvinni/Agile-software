@@ -18,29 +18,29 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
     }
     else //initialize db statement / select db values
     {
-        $sql = " SELECT * FROM users where Username=?; ";  //prepare for every new SQL statement (?) here it's SELECT
+        $sql_check = " SELECT * FROM users where Username=?; ";  //prepare for every new SQL statement (?) here it's SELECT
         $stmt = mysqli_stmt_init($conn);                //prepare statement; prepping the database $conn (stmnt = statement)
-        if (!mysqli_stmt_prepare($stmt, $sql))
+        if (!mysqli_stmt_prepare($stmt, $sql_check))
         {
             header("Location: ../profile?error=sqlerror"); //checks if statement prepare failed
             exit();
         }
         else //checking if mobile already exists in database's 'users' table
         {
-            mysqli_stmt_bind_param($stmt, "d", $mobile);  //add s if more than one string; one string because emailUsers=? has one '?'. Binding email to stmt
+            mysqli_stmt_bind_param($stmt, "d", $mobile);  //add s if more than one string; one string because mobile=? has one '?'. Binding email to stmt
             mysqli_stmt_execute($stmt);                   //executing statement into database, will run email inside database for a match
-            mysqli_stmt_store_result($stmt); //stores the result we got from database in stmt
+            mysqli_stmt_store_result($stmt);                //stores the result we got from database in stmt
             $resultCheck = mysqli_stmt_num_rows($stmt);    //nb of rows matched, should be 0 or 1
             if($resultCheck > 0) 
             {
-                header("Location: ../profile.php?error=usertaken&mobile=".$mobile); //checks if duplicate mobile number exist
+                header("Location: ../profile.php?error=mobile"); //checks if duplicate mobile number exist
                 exit();
             }
             else //if no duplicate email above, we insert the new info into database
             {
-                $sql = "UPDATE users SET Username = ?, Mobile = ?, Password = ? WHERE ID = ? "; //new SQL statement UPDATE
+                $sql_update = "UPDATE users SET Username = ?, Mobile = ?, Password = ? WHERE ID = ? "; //new SQL statement UPDATE
                 $stmt = mysqli_stmt_init($conn);
-                if(!mysqli_stmt_prepare($stmt, $sql))
+                if(!mysqli_stmt_prepare($stmt, $sql_update))
                 {
                     header("Location: ../profile.php?error=sqlerror2"); //checks if statement prepare failed
                     exit();
@@ -50,28 +50,23 @@ if (isset($_POST["Edit_submit"])) //checking if came here from click submit
                     $hashedPwd = password_hash($password, PASSWORD_DEFAULT);              //hasing password (security: if hacker gets in db he'll see all the pw)
                     mysqli_stmt_bind_param($stmt, "sssd", $username, $mobile, $hashedPwd, $UserID); //variables inserting
                     mysqli_stmt_execute($stmt);
-
-                    $sql = "SELECT * FROM users WHERE ID=?";            // Starting a new session with new username
-                    mysqli_stmt_bind_param($stmt, "d", $UserID);
-                    mysqli_stmt_execute($stmt); 
-                    $result = mysqli_stmt_get_result($stmt); 
-                    $row = mysqli_fetch_assoc($result);
-
-                    session_start();
-                    session_destroy();                                  // To restart the session
-                    session_start();                                        
-                    $_SESSION['userId'] = $row['ID'];                   // Update the session user
-                    $_SESSION['userName'] = $row['Username'];
-                    
-                    header("Location: ../profile.php?edit=success");
-                    exit();
+                    if (mysqli_affected_rows($conn) < 1)    // if insert fail, return to profile
+                    {
+                        header("Location: ../profile.php?edit=failure");
+                        exit();
+                    }
+                    else
+                    {
+                        header("Location: ../profile.php?edit=success");
+                        exit();
+                    }
                 }
             }
         }
     }
+}
     mysqli_stmt_close($stmt); //closing statement
     mysqli_close($conn); //closing db connection
-}
 else
 {
     header("Location: ../profile.php"); //if user didnt come from 'submit', return to sign up
