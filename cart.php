@@ -129,11 +129,13 @@ if ($resultCheck > 0)
         </tr>
 <?php } ?>
     </table>
+    <div id="booking" style="display:block;" >
       <form id="itemForm" action="checkout.php" method="POST" target="_self">
 
         <button class="button button_min" type="submit" name="pickup">self pickup</button>
       </form>
-    <br>
+    </div>
+    <p>
     <button onclick="myFunction()">Book pick up service</button>
     <!-- RESERVATION FORM -->
     <div id="booking" style="display:none;" >
